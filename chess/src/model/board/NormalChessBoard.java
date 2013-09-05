@@ -137,7 +137,7 @@ public class NormalChessBoard extends RectangularBoard {
                         return "Error: Pawns can't attack directly in front";
                     }
                 }
-
+                executeMove(move);
                 return "Success";
             }
         } else {

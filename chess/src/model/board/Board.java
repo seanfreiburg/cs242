@@ -8,6 +8,12 @@ import model.player.*;
 
 public abstract class Board {
 
+
+
+    protected int width;
+    protected int height;
+    protected Piece[][] pieces;
+
     public int getWidth() {
         return width;
     }
@@ -23,10 +29,6 @@ public abstract class Board {
     public void setHeight(int height) {
         this.height = height;
     }
-
-    protected int width;
-    protected int height;
-    protected Piece[][] pieces;
 
     public abstract boolean moveIsOnBoard(Move move);
 
