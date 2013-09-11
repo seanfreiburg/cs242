@@ -40,7 +40,7 @@ public class Bishop extends Piece {
      * @param board current board the piece is checking against
      * @return return true if a piece is in the way, false otherwise
      */
-    protected boolean pieceInWay(Move move, Board board) {
+    public boolean pieceInWay(Move move, Board board) {
         int modifierX = getModifier(move.getStartX(), move.getEndX());
         int modifierY = getModifier(move.getStartY(), move.getEndY());
 

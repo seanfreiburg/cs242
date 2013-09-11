@@ -32,7 +32,7 @@ public abstract class Board {
 
     public abstract boolean moveIsOnBoard(Move move);
 
-    protected abstract Piece[][] fill_board();
+    public abstract Piece[][] fill_board();
 
     public abstract Piece getPiece(int x, int y);
 
@@ -47,7 +47,7 @@ public abstract class Board {
      * @param player
      * @return boolean, true if the piece at the start of move belongs to player, false otherwise
      */
-    protected boolean pieceBelongsToPlayerToMove(Move move, Player player) {
+    public boolean pieceBelongsToPlayerToMove(Move move, Player player) {
         Piece piece = getPiece(move.getStartX(), move.getStartY());
         return piece.getColor() == player.getColor();
     }
@@ -59,7 +59,7 @@ public abstract class Board {
      * @param player
      * @return boolean, true if the piece at the end of move belongs to player, false otherwise
      */
-    protected boolean pieceBelongsToPlayerToReplace(Move move, Player player) {
+    public boolean pieceBelongsToPlayerToReplace(Move move, Player player) {
         Piece piece = getPiece(move.getEndX(), move.getEndY());
         return piece.getColor() == player.getColor();
     }
@@ -80,7 +80,7 @@ public abstract class Board {
      * @param move
      * @return Coordinates of location piece moved to
      */
-    protected Position executeMove(Move move) {
+    public Position executeMove(Move move) {
         // I need to check if this move put the king in check
 
         Piece pieceToBeMoved = this.getPiece(move.getStartX(), move.getStartY());

@@ -60,7 +60,7 @@ public class Pawn extends Piece {
      * @param board
      * @return return true if a piece is in the way, false otherwise
      */
-    protected boolean pieceInWay(Move move, Board board) {
+    public boolean pieceInWay(Move move, Board board) {
         // @todo needed only for init jump
         return false;
     }

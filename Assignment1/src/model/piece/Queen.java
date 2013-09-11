@@ -53,7 +53,7 @@ public class Queen extends Piece {
      * @param board
      * @return return true if a piece is in the way, false otherwise
      */
-    protected boolean pieceInWay(Move move, Board board) {
+    public boolean pieceInWay(Move move, Board board) {
         return false;
     }
 
@@ -64,7 +64,7 @@ public class Queen extends Piece {
      * @param board
      * @return return true if a piece is in the way, false otherwise
      */
-    protected boolean pieceInWayDiagonal(Move move, Board board) {
+    public boolean pieceInWayDiagonal(Move move, Board board) {
         int modifierX = getModifier(move.getStartX(), move.getEndX());
         int modifierY = getModifier(move.getStartY(), move.getEndY());
 
@@ -106,7 +106,7 @@ public class Queen extends Piece {
      * @param board
      * @return return true if a piece is in the way, false otherwise
      */
-    protected boolean pieceInWayStraight(Move move, Board board) {
+    public boolean pieceInWayStraight(Move move, Board board) {
         if (move.getStartX() - move.getEndX() == 0) {
             // it is moving vertically
             int diff;

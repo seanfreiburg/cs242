@@ -2,6 +2,7 @@ package model.board;
 
 import model.Move;
 import model.Position;
+import model.board.NormalChessBoard;
 import model.piece.*;
 import model.player.*;
 import org.junit.Test;
@@ -172,3 +173,4 @@ public class NormalChessBoardTest {
 
 
 }
+

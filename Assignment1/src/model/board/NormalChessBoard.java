@@ -25,7 +25,7 @@ public class NormalChessBoard extends RectangularBoard {
      *
      * @return A pieces array filled with pieces
      */
-    protected Piece[][] fill_board() {
+    public Piece[][] fill_board() {
 
         pieces = new Piece[this.width][this.height];
         pieces[0][0] = new Rook(Player.BLACK);
@@ -192,7 +192,7 @@ public class NormalChessBoard extends RectangularBoard {
      * @param color
      * @return position of that piece
      */
-    protected Position findKing(boolean color) {
+    public Position findKing(boolean color) {
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
                 Piece currentPiece = this.getPiece(x, y);

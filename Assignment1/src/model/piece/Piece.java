@@ -51,7 +51,7 @@ public abstract class Piece {
      * @param board
      * @return return true if a piece is in the way, false otherwise
      */
-    protected abstract boolean pieceInWay(Move move, Board board);
+    public abstract boolean pieceInWay(Move move, Board board);
 
 
 }

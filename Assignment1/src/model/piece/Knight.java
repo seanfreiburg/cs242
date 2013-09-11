@@ -31,7 +31,7 @@ public class Knight extends Piece {
      * @param board
      * @return return true if a piece is in the way, false otherwise
      */
-    protected boolean pieceInWay(Move move, Board board) {
+    public boolean pieceInWay(Move move, Board board) {
         // not needed, LOL
         return false;
     }
