@@ -20,7 +20,7 @@ import javax.swing.*;
 
 public class BoardView extends JFrame {
     public BoardView() {
-        super("Game Frame");
+        super("Chess Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Squares squares = new Squares();
 
@@ -81,8 +81,8 @@ class Squares extends JPanel {
     public void fillBoardWithPieces(Graphics g, Board board) {
         int width = board.getWidth();
         int height = board.getHeight();
-        for (int y = 0; y < 8; y++) {
-            for (int x = 0; x < 8; x++) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 Piece currentPiece = board.getPiece(x, y);
                 setPiece(g, currentPiece, x, y);
             }
@@ -110,10 +110,8 @@ class Squares extends JPanel {
             image = ImageIO.read(new File("src/assets/images/" +imageName + ".png"));
 
         } catch (IOException ex) {
-            System.out.println("/../assets/images/" +imageName + ".png");
-            System.out.println(System.getProperty("user.dir"));
             System.exit(1);
-            return;
+            return; // java complains without this
         }
 
         g.drawImage(image, x*75, y*75, null);
@@ -125,26 +123,6 @@ class Squares extends JPanel {
         } else {
             g.setColor(Color.BLACK);
         }
-    }
-
-}
-
-class ImagePanel extends JPanel {
-
-    private BufferedImage image;
-
-    public ImagePanel() {
-        try {
-            image = ImageIO.read(new File("image name and path"));
-        } catch (IOException ex) {
-            // handle exception...
-        }
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, null); // see javadoc for more info on the parameters
     }
 
 }
