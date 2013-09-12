@@ -45,6 +45,9 @@ public class BoardView extends JFrame {
 
 }
 
+/**
+ * Squares class to define spaces
+ */
 class Squares extends JPanel {
     private static final int PREF_W = 700;
     private static final int PREF_H = PREF_W;
@@ -55,11 +58,19 @@ class Squares extends JPanel {
         squares.add(rect);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(PREF_W, PREF_H);
     }
 
+    /**
+     * Paints the screen
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -81,6 +92,11 @@ class Squares extends JPanel {
         fillBoardWithPieces(g, board);
     }
 
+    /**
+     * Fills board view based on the board
+     * @param g
+     * @param board
+     */
     public void fillBoardWithPieces(Graphics g, Board board) {
         int width = board.getWidth();
         int height = board.getHeight();
@@ -92,6 +108,13 @@ class Squares extends JPanel {
         }
     }
 
+    /**
+     * Place the image of the piece given at the x y given
+     * @param g Graphics
+     * @param piece
+     * @param x
+     * @param y
+     */
     private void setPiece(Graphics g, Piece piece, int x, int y) {
         if (piece == null) {
             return;
@@ -110,16 +133,20 @@ class Squares extends JPanel {
         BufferedImage image;
 
         try {
-            image = ImageIO.read(new File("src/assets/images/" +imageName + ".png"));
+            image = ImageIO.read(new File("assets/images/" +imageName + ".png"));
 
         } catch (IOException ex) {
             System.exit(1);
             return; // java complains without this
         }
 
-        g.drawImage(image, x*BoardView.SQUARE_SPACING, y*BoardView.SQUARE_SPACING, null);
+        g.drawImage(image, x*BoardView.SQUARE_SPACING + 13, y*BoardView.SQUARE_SPACING+13, null);
     }
 
+    /**
+     * Inverts the square color value
+     * @param g Graphics
+     */
     private void invertSquareColor(Graphics g) {
         if (g.getColor() == Color.BLACK) {
             g.setColor(Color.WHITE);
