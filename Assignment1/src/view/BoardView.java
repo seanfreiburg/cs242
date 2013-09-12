@@ -1,5 +1,8 @@
 package view;
 
+import model.board.Board;
+import model.board.NormalChessBoard;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,7 @@ public class BoardView extends JFrame {
         super("Game Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Squares squares = new Squares();
+
         getContentPane().add(squares);
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
@@ -61,6 +65,14 @@ class Squares extends JPanel {
                 invertSquareColor(g);
             }
         }
+        //@todo for debugging, remove
+        Board board = new NormalChessBoard();
+        //
+        fillBoardWithPieces(g, board);
+    }
+
+    public void fillBoardWithPieces(Graphics g, Board board){
+
     }
 
     private void invertSquareColor(Graphics g) {
