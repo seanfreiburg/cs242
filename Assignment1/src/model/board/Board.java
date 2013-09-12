@@ -12,6 +12,8 @@ public abstract class Board {
 
     protected int width;
     protected int height;
+
+
     protected Piece[][] pieces;
 
     public int getWidth() {
