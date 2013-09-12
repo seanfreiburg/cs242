@@ -1,0 +1,211 @@
+\hypertarget{classmodel_1_1board_1_1_board}{\section{model.\-board.\-Board Class Reference}
+\label{classmodel_1_1board_1_1_board}\index{model.\-board.\-Board@{model.\-board.\-Board}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_ae49d2dd17586c9487302e3d072606011}{int {\bfseries get\-Width} ()}\label{classmodel_1_1board_1_1_board_ae49d2dd17586c9487302e3d072606011}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_ae74beaedbf44d6c618d917e0e8a16399}{void {\bfseries set\-Width} (int width)}\label{classmodel_1_1board_1_1_board_ae74beaedbf44d6c618d917e0e8a16399}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_a186f90661074eca42ab9bb9b60a168b6}{int {\bfseries get\-Height} ()}\label{classmodel_1_1board_1_1_board_a186f90661074eca42ab9bb9b60a168b6}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_ad0c3e3366862ed2c6698721180e1459c}{void {\bfseries set\-Height} (int height)}\label{classmodel_1_1board_1_1_board_ad0c3e3366862ed2c6698721180e1459c}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_a058a9e371a7a6dd3bdde2b8d7e112f1e}{abstract boolean {\bfseries move\-Is\-On\-Board} (\hyperlink{classmodel_1_1_move}{Move} move)}\label{classmodel_1_1board_1_1_board_a058a9e371a7a6dd3bdde2b8d7e112f1e}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_aed1e1dd7d6d069d6d11d4d6814861031}{abstract \hyperlink{classmodel_1_1piece_1_1_piece}{Piece}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} {\bfseries fill\-\_\-board} ()}\label{classmodel_1_1board_1_1_board_aed1e1dd7d6d069d6d11d4d6814861031}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_a99c41d693f7d98e0c19d36219b510cfa}{abstract \hyperlink{classmodel_1_1piece_1_1_piece}{Piece} {\bfseries get\-Piece} (int x, int y)}\label{classmodel_1_1board_1_1_board_a99c41d693f7d98e0c19d36219b510cfa}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_a520ffa2d6ca956b0137d1e7841cf3e10}{abstract boolean {\bfseries set\-Piece} (int x, int y, \hyperlink{classmodel_1_1piece_1_1_piece}{Piece} piece)}\label{classmodel_1_1board_1_1_board_a520ffa2d6ca956b0137d1e7841cf3e10}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_a3d0852d2482ad9a3e581d644b8b3d52d}{abstract String {\bfseries validate\-And\-Execute\-Move} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1player_1_1_player}{Player} player)}\label{classmodel_1_1board_1_1_board_a3d0852d2482ad9a3e581d644b8b3d52d}
+
+\item 
+boolean \hyperlink{classmodel_1_1board_1_1_board_a25524102795e56cb1e51ae50e0975230}{piece\-Belongs\-To\-Player\-To\-Move} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1player_1_1_player}{Player} player)
+\item 
+boolean \hyperlink{classmodel_1_1board_1_1_board_a1aaad68031edc96bc28b5ac2dca9c4e6}{piece\-Belongs\-To\-Player\-To\-Replace} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1player_1_1_player}{Player} player)
+\item 
+boolean \hyperlink{classmodel_1_1board_1_1_board_a2d92dbb7ef019dacc5a3e7c6cca2ac88}{piece\-Is\-On\-Board} (int x, int y)
+\item 
+\hyperlink{classmodel_1_1_position}{Position} \hyperlink{classmodel_1_1board_1_1_board_a072a1a10d257f6b85b0c860fdb88830a}{execute\-Move} (\hyperlink{classmodel_1_1_move}{Move} move)
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_a82ad5e04b8495408a84288410d92eb65}{void {\bfseries remove\-Piece} (int x, int y)}\label{classmodel_1_1board_1_1_board_a82ad5e04b8495408a84288410d92eb65}
+
+\item 
+abstract boolean \hyperlink{classmodel_1_1board_1_1_board_ac7d7654faa69c9bde6de7bf9d8f7f1fe}{coordinate\-On\-Board} (int x, int y)
+\item 
+abstract boolean \hyperlink{classmodel_1_1board_1_1_board_ac3b426f656139555b5bc6a2c1e35cf99}{in\-Check} (\hyperlink{classmodel_1_1player_1_1_player}{Player} player)
+\item 
+abstract boolean \hyperlink{classmodel_1_1board_1_1_board_a7640ad17b1574b8f013b7212ea01b3ec}{in\-Checkmate} (\hyperlink{classmodel_1_1player_1_1_player}{Player} player)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_afaeaa3fb0d6348792cb12dab2926a4e5}{int {\bfseries width}}\label{classmodel_1_1board_1_1_board_afaeaa3fb0d6348792cb12dab2926a4e5}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_a11b279c6ef1e92ff059af7f0cf3a7581}{int {\bfseries height}}\label{classmodel_1_1board_1_1_board_a11b279c6ef1e92ff059af7f0cf3a7581}
+
+\item 
+\hypertarget{classmodel_1_1board_1_1_board_acd796329098f2be64564be8e9b52c31b}{\hyperlink{classmodel_1_1piece_1_1_piece}{Piece}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} {\bfseries pieces}}\label{classmodel_1_1board_1_1_board_acd796329098f2be64564be8e9b52c31b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmodel_1_1board_1_1_board_ac7d7654faa69c9bde6de7bf9d8f7f1fe}{\index{model\-::board\-::\-Board@{model\-::board\-::\-Board}!coordinate\-On\-Board@{coordinate\-On\-Board}}
+\index{coordinate\-On\-Board@{coordinate\-On\-Board}!model::board::Board@{model\-::board\-::\-Board}}
+\subsubsection[{coordinate\-On\-Board}]{\setlength{\rightskip}{0pt plus 5cm}abstract boolean model.\-board.\-Board.\-coordinate\-On\-Board (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmodel_1_1board_1_1_board_ac7d7654faa69c9bde6de7bf9d8f7f1fe}
+Sees if given x,y is on board
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if x,y is on board, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classmodel_1_1board_1_1_normal_chess_board_ad1a7f2d7ae6bca92f08b921eeb61975c}{model.\-board.\-Normal\-Chess\-Board}.
+
+\hypertarget{classmodel_1_1board_1_1_board_a072a1a10d257f6b85b0c860fdb88830a}{\index{model\-::board\-::\-Board@{model\-::board\-::\-Board}!execute\-Move@{execute\-Move}}
+\index{execute\-Move@{execute\-Move}!model::board::Board@{model\-::board\-::\-Board}}
+\subsubsection[{execute\-Move}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} model.\-board.\-Board.\-execute\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1board_1_1_board_a072a1a10d257f6b85b0c860fdb88830a}
+Executes the move by moving the piece object 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Coordinates of location piece moved to 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1board_1_1_board_ac3b426f656139555b5bc6a2c1e35cf99}{\index{model\-::board\-::\-Board@{model\-::board\-::\-Board}!in\-Check@{in\-Check}}
+\index{in\-Check@{in\-Check}!model::board::Board@{model\-::board\-::\-Board}}
+\subsubsection[{in\-Check}]{\setlength{\rightskip}{0pt plus 5cm}abstract boolean model.\-board.\-Board.\-in\-Check (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmodel_1_1board_1_1_board_ac3b426f656139555b5bc6a2c1e35cf99}
+Checks if the King is in check
+
+\begin{DoxyReturn}{Returns}
+True if King is in check, false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classmodel_1_1board_1_1_normal_chess_board_a8831075b8adda3e79d232918f1857129}{model.\-board.\-Normal\-Chess\-Board}.
+
+\hypertarget{classmodel_1_1board_1_1_board_a7640ad17b1574b8f013b7212ea01b3ec}{\index{model\-::board\-::\-Board@{model\-::board\-::\-Board}!in\-Checkmate@{in\-Checkmate}}
+\index{in\-Checkmate@{in\-Checkmate}!model::board::Board@{model\-::board\-::\-Board}}
+\subsubsection[{in\-Checkmate}]{\setlength{\rightskip}{0pt plus 5cm}abstract boolean model.\-board.\-Board.\-in\-Checkmate (
+\begin{DoxyParamCaption}
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmodel_1_1board_1_1_board_a7640ad17b1574b8f013b7212ea01b3ec}
+Checks if the King is in checkmate
+
+\begin{DoxyReturn}{Returns}
+True if King is in checkmate, false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classmodel_1_1board_1_1_normal_chess_board_aed1f285c6ebcb4ee46bb5563ce3bad54}{model.\-board.\-Normal\-Chess\-Board}.
+
+\hypertarget{classmodel_1_1board_1_1_board_a25524102795e56cb1e51ae50e0975230}{\index{model\-::board\-::\-Board@{model\-::board\-::\-Board}!piece\-Belongs\-To\-Player\-To\-Move@{piece\-Belongs\-To\-Player\-To\-Move}}
+\index{piece\-Belongs\-To\-Player\-To\-Move@{piece\-Belongs\-To\-Player\-To\-Move}!model::board::Board@{model\-::board\-::\-Board}}
+\subsubsection[{piece\-Belongs\-To\-Player\-To\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-board.\-Board.\-piece\-Belongs\-To\-Player\-To\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1board_1_1_board_a25524102795e56cb1e51ae50e0975230}
+Checks if piece belongs to player that is specified to move
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em player} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean, true if the piece at the start of move belongs to player, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1board_1_1_board_a1aaad68031edc96bc28b5ac2dca9c4e6}{\index{model\-::board\-::\-Board@{model\-::board\-::\-Board}!piece\-Belongs\-To\-Player\-To\-Replace@{piece\-Belongs\-To\-Player\-To\-Replace}}
+\index{piece\-Belongs\-To\-Player\-To\-Replace@{piece\-Belongs\-To\-Player\-To\-Replace}!model::board::Board@{model\-::board\-::\-Board}}
+\subsubsection[{piece\-Belongs\-To\-Player\-To\-Replace}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-board.\-Board.\-piece\-Belongs\-To\-Player\-To\-Replace (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Player}}]{player}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1board_1_1_board_a1aaad68031edc96bc28b5ac2dca9c4e6}
+Checks if landing position of the move belongs to the player
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em player} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean, true if the piece at the end of move belongs to player, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1board_1_1_board_a2d92dbb7ef019dacc5a3e7c6cca2ac88}{\index{model\-::board\-::\-Board@{model\-::board\-::\-Board}!piece\-Is\-On\-Board@{piece\-Is\-On\-Board}}
+\index{piece\-Is\-On\-Board@{piece\-Is\-On\-Board}!model::board::Board@{model\-::board\-::\-Board}}
+\subsubsection[{piece\-Is\-On\-Board}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-board.\-Board.\-piece\-Is\-On\-Board (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1board_1_1_board_a2d92dbb7ef019dacc5a3e7c6cca2ac88}
+Checks if the piece specified at start of move is on the board
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean, true if piece is on board, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/model/board/Board.\-java\end{DoxyCompactItemize}

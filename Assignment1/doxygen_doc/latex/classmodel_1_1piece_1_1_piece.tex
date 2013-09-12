@@ -1,0 +1,115 @@
+\hypertarget{classmodel_1_1piece_1_1_piece}{\section{model.\-piece.\-Piece Class Reference}
+\label{classmodel_1_1piece_1_1_piece}\index{model.\-piece.\-Piece@{model.\-piece.\-Piece}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{classmodel_1_1piece_1_1_piece_ade136dec6d1257b4f9254789469c7e7a}{get\-Color} ()
+\item 
+\hyperlink{classmodel_1_1piece_1_1_piece_affc8fb007453dfe48f93ce19ab686fcc}{Piece} (boolean color)
+\item 
+\hyperlink{classmodel_1_1piece_1_1_piece_a20f6e7ef7d17647a4a472e32b8330e64}{Piece} ()
+\item 
+abstract boolean \hyperlink{classmodel_1_1piece_1_1_piece_af7ce06755c9f20f3481796ca5b512849}{validate\-Move} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+abstract boolean \hyperlink{classmodel_1_1piece_1_1_piece_a5d0c25ee8eec8a6d8b24644f16c6c58b}{piece\-In\-Way} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmodel_1_1piece_1_1_piece_a1d47bc71ab231c4c6ec1aaa85ed12427}{boolean {\bfseries color}}\label{classmodel_1_1piece_1_1_piece_a1d47bc71ab231c4c6ec1aaa85ed12427}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generic abstract class of chess pieces 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmodel_1_1piece_1_1_piece_affc8fb007453dfe48f93ce19ab686fcc}{\index{model\-::piece\-::\-Piece@{model\-::piece\-::\-Piece}!Piece@{Piece}}
+\index{Piece@{Piece}!model::piece::Piece@{model\-::piece\-::\-Piece}}
+\subsubsection[{Piece}]{\setlength{\rightskip}{0pt plus 5cm}model.\-piece.\-Piece.\-Piece (
+\begin{DoxyParamCaption}
+\item[{boolean}]{color}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1piece_1_1_piece_affc8fb007453dfe48f93ce19ab686fcc}
+Sets the color of the piece
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classmodel_1_1piece_1_1_piece_a20f6e7ef7d17647a4a472e32b8330e64}{\index{model\-::piece\-::\-Piece@{model\-::piece\-::\-Piece}!Piece@{Piece}}
+\index{Piece@{Piece}!model::piece::Piece@{model\-::piece\-::\-Piece}}
+\subsubsection[{Piece}]{\setlength{\rightskip}{0pt plus 5cm}model.\-piece.\-Piece.\-Piece (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1piece_1_1_piece_a20f6e7ef7d17647a4a472e32b8330e64}
+Default constructor that sets color to null 
+
+\subsection{Member Function Documentation}
+\hypertarget{classmodel_1_1piece_1_1_piece_ade136dec6d1257b4f9254789469c7e7a}{\index{model\-::piece\-::\-Piece@{model\-::piece\-::\-Piece}!get\-Color@{get\-Color}}
+\index{get\-Color@{get\-Color}!model::piece::Piece@{model\-::piece\-::\-Piece}}
+\subsubsection[{get\-Color}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-piece.\-Piece.\-get\-Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1piece_1_1_piece_ade136dec6d1257b4f9254789469c7e7a}
+Gets the color of the piece
+
+\begin{DoxyReturn}{Returns}
+color of the piece 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1piece_1_1_piece_a5d0c25ee8eec8a6d8b24644f16c6c58b}{\index{model\-::piece\-::\-Piece@{model\-::piece\-::\-Piece}!piece\-In\-Way@{piece\-In\-Way}}
+\index{piece\-In\-Way@{piece\-In\-Way}!model::piece::Piece@{model\-::piece\-::\-Piece}}
+\subsubsection[{piece\-In\-Way}]{\setlength{\rightskip}{0pt plus 5cm}abstract boolean model.\-piece.\-Piece.\-piece\-In\-Way (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmodel_1_1piece_1_1_piece_a5d0c25ee8eec8a6d8b24644f16c6c58b}
+Says whether a piece is in the way of the move
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return true if a piece is in the way, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classmodel_1_1piece_1_1_pawn_a45d2d108819fcc52ab549034aa532daa}{model.\-piece.\-Pawn}, \hyperlink{classmodel_1_1piece_1_1_queen_a24af88436f5a433f5bf1407b96b8a31a}{model.\-piece.\-Queen}, \hyperlink{classmodel_1_1piece_1_1_peasant_ab0b679d6a1e2725d86b989e3c3d53ded}{model.\-piece.\-Peasant}, \hyperlink{classmodel_1_1piece_1_1_rook_a69f4870f9bdd292d8e87a61ad57e673d}{model.\-piece.\-Rook}, \hyperlink{classmodel_1_1piece_1_1_bishop_a3d7362e3b6af46ae0d728ebdfacbb226}{model.\-piece.\-Bishop}, \hyperlink{classmodel_1_1piece_1_1_viking_a53bc536e26139f510bae8d2ea05af005}{model.\-piece.\-Viking}, \hyperlink{classmodel_1_1piece_1_1_king_a2bd3b82286ed1c05142531c7e77aa95a}{model.\-piece.\-King}, and \hyperlink{classmodel_1_1piece_1_1_knight_a5f530f0d140f9ce26f875dc8757f9c0b}{model.\-piece.\-Knight}.
+
+\hypertarget{classmodel_1_1piece_1_1_piece_af7ce06755c9f20f3481796ca5b512849}{\index{model\-::piece\-::\-Piece@{model\-::piece\-::\-Piece}!validate\-Move@{validate\-Move}}
+\index{validate\-Move@{validate\-Move}!model::piece::Piece@{model\-::piece\-::\-Piece}}
+\subsubsection[{validate\-Move}]{\setlength{\rightskip}{0pt plus 5cm}abstract boolean model.\-piece.\-Piece.\-validate\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmodel_1_1piece_1_1_piece_af7ce06755c9f20f3481796ca5b512849}
+Validates moves for the pieces
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean based on if the move is valid 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classmodel_1_1piece_1_1_peasant_aa647d075081ab28fab549961c0fa7878}{model.\-piece.\-Peasant}, \hyperlink{classmodel_1_1piece_1_1_viking_abe7bc35e1db4fd036eda0af46454e706}{model.\-piece.\-Viking}, \hyperlink{classmodel_1_1piece_1_1_queen_a2f074bb8d91720315e9a91eeb51dda39}{model.\-piece.\-Queen}, \hyperlink{classmodel_1_1piece_1_1_bishop_aab82c3462e8a4134d7ccdb7f292b5513}{model.\-piece.\-Bishop}, \hyperlink{classmodel_1_1piece_1_1_pawn_aec070ccbd1fe82f963077ea22fd5fbcd}{model.\-piece.\-Pawn}, \hyperlink{classmodel_1_1piece_1_1_rook_a379f1a9dc16a825d8c9170f9ac948417}{model.\-piece.\-Rook}, \hyperlink{classmodel_1_1piece_1_1_king_a5e521a5bddde9716ca337eb2171bfd29}{model.\-piece.\-King}, and \hyperlink{classmodel_1_1piece_1_1_knight_a58f4d45bd7c75069f2b35820fea0a383}{model.\-piece.\-Knight}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/model/piece/Piece.\-java\end{DoxyCompactItemize}

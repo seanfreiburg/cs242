@@ -1,0 +1,131 @@
+\hypertarget{classmodel_1_1piece_1_1_queen}{\section{model.\-piece.\-Queen Class Reference}
+\label{classmodel_1_1piece_1_1_queen}\index{model.\-piece.\-Queen@{model.\-piece.\-Queen}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmodel_1_1piece_1_1_queen_a51e77e8c3636697d0f140e2b210b8523}{Queen} (boolean color)
+\item 
+boolean \hyperlink{classmodel_1_1piece_1_1_queen_a2f074bb8d91720315e9a91eeb51dda39}{validate\-Move} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{classmodel_1_1piece_1_1_queen_a24af88436f5a433f5bf1407b96b8a31a}{piece\-In\-Way} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{classmodel_1_1piece_1_1_queen_aa1da81b8f3afff28f2b643f66b7a44ea}{piece\-In\-Way\-Diagonal} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{classmodel_1_1piece_1_1_queen_a68782e144c87f3f22127caff20534cf5}{piece\-In\-Way\-Straight} (\hyperlink{classmodel_1_1_move}{Move} move, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class for the \hyperlink{classmodel_1_1piece_1_1_queen}{Queen} \hyperlink{classmodel_1_1piece_1_1_piece}{Piece} 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmodel_1_1piece_1_1_queen_a51e77e8c3636697d0f140e2b210b8523}{\index{model\-::piece\-::\-Queen@{model\-::piece\-::\-Queen}!Queen@{Queen}}
+\index{Queen@{Queen}!model::piece::Queen@{model\-::piece\-::\-Queen}}
+\subsubsection[{Queen}]{\setlength{\rightskip}{0pt plus 5cm}model.\-piece.\-Queen.\-Queen (
+\begin{DoxyParamCaption}
+\item[{boolean}]{color}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1piece_1_1_queen_a51e77e8c3636697d0f140e2b210b8523}
+Default constructor for \hyperlink{classmodel_1_1piece_1_1_queen}{Queen} that sets it's color
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmodel_1_1piece_1_1_queen_a24af88436f5a433f5bf1407b96b8a31a}{\index{model\-::piece\-::\-Queen@{model\-::piece\-::\-Queen}!piece\-In\-Way@{piece\-In\-Way}}
+\index{piece\-In\-Way@{piece\-In\-Way}!model::piece::Queen@{model\-::piece\-::\-Queen}}
+\subsubsection[{piece\-In\-Way}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-piece.\-Queen.\-piece\-In\-Way (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classmodel_1_1piece_1_1_queen_a24af88436f5a433f5bf1407b96b8a31a}
+Not actually used, just had to be implemented
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return true if a piece is in the way, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmodel_1_1piece_1_1_piece_a5d0c25ee8eec8a6d8b24644f16c6c58b}{model.\-piece.\-Piece}.
+
+\hypertarget{classmodel_1_1piece_1_1_queen_aa1da81b8f3afff28f2b643f66b7a44ea}{\index{model\-::piece\-::\-Queen@{model\-::piece\-::\-Queen}!piece\-In\-Way\-Diagonal@{piece\-In\-Way\-Diagonal}}
+\index{piece\-In\-Way\-Diagonal@{piece\-In\-Way\-Diagonal}!model::piece::Queen@{model\-::piece\-::\-Queen}}
+\subsubsection[{piece\-In\-Way\-Diagonal}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-piece.\-Queen.\-piece\-In\-Way\-Diagonal (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1piece_1_1_queen_aa1da81b8f3afff28f2b643f66b7a44ea}
+Says whether a piece is in the way of the move
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return true if a piece is in the way, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1piece_1_1_queen_a68782e144c87f3f22127caff20534cf5}{\index{model\-::piece\-::\-Queen@{model\-::piece\-::\-Queen}!piece\-In\-Way\-Straight@{piece\-In\-Way\-Straight}}
+\index{piece\-In\-Way\-Straight@{piece\-In\-Way\-Straight}!model::piece::Queen@{model\-::piece\-::\-Queen}}
+\subsubsection[{piece\-In\-Way\-Straight}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-piece.\-Queen.\-piece\-In\-Way\-Straight (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1piece_1_1_queen_a68782e144c87f3f22127caff20534cf5}
+Says whether a piece is in the way of the move This uses \hyperlink{classmodel_1_1piece_1_1_rook}{Rook} code, if bug, use both
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return true if a piece is in the way, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1piece_1_1_queen_a2f074bb8d91720315e9a91eeb51dda39}{\index{model\-::piece\-::\-Queen@{model\-::piece\-::\-Queen}!validate\-Move@{validate\-Move}}
+\index{validate\-Move@{validate\-Move}!model::piece::Queen@{model\-::piece\-::\-Queen}}
+\subsubsection[{validate\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-piece.\-Queen.\-validate\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Move}}]{move, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classmodel_1_1piece_1_1_queen_a2f074bb8d91720315e9a91eeb51dda39}
+Validates the moves for the \hyperlink{classmodel_1_1piece_1_1_queen}{Queen}
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean based on if move is valid for \hyperlink{classmodel_1_1piece_1_1_queen}{Queen} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmodel_1_1piece_1_1_piece_af7ce06755c9f20f3481796ca5b512849}{model.\-piece.\-Piece}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/model/piece/Queen.\-java\end{DoxyCompactItemize}

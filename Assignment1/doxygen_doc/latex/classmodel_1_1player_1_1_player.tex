@@ -1,0 +1,148 @@
+\hypertarget{classmodel_1_1player_1_1_player}{\section{model.\-player.\-Player Class Reference}
+\label{classmodel_1_1player_1_1_player}\index{model.\-player.\-Player@{model.\-player.\-Player}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmodel_1_1player_1_1_player_a5561bd22416d82d6e42eddaa70d994e7}{Player} (boolean color)
+\item 
+boolean \hyperlink{classmodel_1_1player_1_1_player_a94b99ab0e9b9c30effe09eb3c138630b}{get\-Color} ()
+\item 
+String \hyperlink{classmodel_1_1player_1_1_player_a4a9708059cfd3e137afd96612a14e2e0}{send\-Move} (int start\-X, int start\-Y, int end\-X, int end\-Y, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{classmodel_1_1player_1_1_player_a450d4ad35eb99076e4a749a1a2cc840a}{piece\-Is\-Mine} (int x, int y, \hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{classmodel_1_1player_1_1_player_a043bd3918e2c70d803d9a282dc437146}{is\-In\-Check} (\hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{classmodel_1_1player_1_1_player_af7234474a49fa36db7baff7123f84c90}{in\-Check\-Mate} (\hyperlink{classmodel_1_1board_1_1_board}{Board} board)
+\item 
+\hypertarget{classmodel_1_1player_1_1_player_a62815a859fb1e3299223c799e655070a}{void {\bfseries set\-In\-Check} (boolean in\-Check)}\label{classmodel_1_1player_1_1_player_a62815a859fb1e3299223c799e655070a}
+
+\item 
+\hypertarget{classmodel_1_1player_1_1_player_aa6da181047898b4b81771cab63672633}{boolean {\bfseries get\-In\-Check} ()}\label{classmodel_1_1player_1_1_player_aa6da181047898b4b81771cab63672633}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmodel_1_1player_1_1_player_a8bcf4f6d7aa08fe379be1fb9107735e7}{static final boolean {\bfseries W\-H\-I\-T\-E} = true}\label{classmodel_1_1player_1_1_player_a8bcf4f6d7aa08fe379be1fb9107735e7}
+
+\item 
+\hypertarget{classmodel_1_1player_1_1_player_ad300b893fd067016f6d9b83d04e8ffdc}{static final boolean {\bfseries B\-L\-A\-C\-K} = false}\label{classmodel_1_1player_1_1_player_ad300b893fd067016f6d9b83d04e8ffdc}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class that defines base \hyperlink{classmodel_1_1player_1_1_player}{Player} attributes 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmodel_1_1player_1_1_player_a5561bd22416d82d6e42eddaa70d994e7}{\index{model\-::player\-::\-Player@{model\-::player\-::\-Player}!Player@{Player}}
+\index{Player@{Player}!model::player::Player@{model\-::player\-::\-Player}}
+\subsubsection[{Player}]{\setlength{\rightskip}{0pt plus 5cm}model.\-player.\-Player.\-Player (
+\begin{DoxyParamCaption}
+\item[{boolean}]{color}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1player_1_1_player_a5561bd22416d82d6e42eddaa70d994e7}
+Constructor for player that sets the players color
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmodel_1_1player_1_1_player_a94b99ab0e9b9c30effe09eb3c138630b}{\index{model\-::player\-::\-Player@{model\-::player\-::\-Player}!get\-Color@{get\-Color}}
+\index{get\-Color@{get\-Color}!model::player::Player@{model\-::player\-::\-Player}}
+\subsubsection[{get\-Color}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-player.\-Player.\-get\-Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1player_1_1_player_a94b99ab0e9b9c30effe09eb3c138630b}
+Gets \hyperlink{classmodel_1_1player_1_1_player}{Player}'s color
+
+\begin{DoxyReturn}{Returns}
+string as color of player 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1player_1_1_player_af7234474a49fa36db7baff7123f84c90}{\index{model\-::player\-::\-Player@{model\-::player\-::\-Player}!in\-Check\-Mate@{in\-Check\-Mate}}
+\index{in\-Check\-Mate@{in\-Check\-Mate}!model::player::Player@{model\-::player\-::\-Player}}
+\subsubsection[{in\-Check\-Mate}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-player.\-Player.\-in\-Check\-Mate (
+\begin{DoxyParamCaption}
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1player_1_1_player_af7234474a49fa36db7baff7123f84c90}
+Checks if the King is in checkmate
+
+\begin{DoxyReturn}{Returns}
+True if King is in checkmate, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1player_1_1_player_a043bd3918e2c70d803d9a282dc437146}{\index{model\-::player\-::\-Player@{model\-::player\-::\-Player}!is\-In\-Check@{is\-In\-Check}}
+\index{is\-In\-Check@{is\-In\-Check}!model::player::Player@{model\-::player\-::\-Player}}
+\subsubsection[{is\-In\-Check}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-player.\-Player.\-is\-In\-Check (
+\begin{DoxyParamCaption}
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1player_1_1_player_a043bd3918e2c70d803d9a282dc437146}
+Checks if the King is in check 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if player is in check 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1player_1_1_player_a450d4ad35eb99076e4a749a1a2cc840a}{\index{model\-::player\-::\-Player@{model\-::player\-::\-Player}!piece\-Is\-Mine@{piece\-Is\-Mine}}
+\index{piece\-Is\-Mine@{piece\-Is\-Mine}!model::player::Player@{model\-::player\-::\-Player}}
+\subsubsection[{piece\-Is\-Mine}]{\setlength{\rightskip}{0pt plus 5cm}boolean model.\-player.\-Player.\-piece\-Is\-Mine (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1player_1_1_player_a450d4ad35eb99076e4a749a1a2cc840a}
+Sees if move belongs to player 
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if piece does belongs to player 
+\end{DoxyReturn}
+\hypertarget{classmodel_1_1player_1_1_player_a4a9708059cfd3e137afd96612a14e2e0}{\index{model\-::player\-::\-Player@{model\-::player\-::\-Player}!send\-Move@{send\-Move}}
+\index{send\-Move@{send\-Move}!model::player::Player@{model\-::player\-::\-Player}}
+\subsubsection[{send\-Move}]{\setlength{\rightskip}{0pt plus 5cm}String model.\-player.\-Player.\-send\-Move (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-X, }
+\item[{int}]{start\-Y, }
+\item[{int}]{end\-X, }
+\item[{int}]{end\-Y, }
+\item[{{\bf Board}}]{board}
+\end{DoxyParamCaption}
+)}}\label{classmodel_1_1player_1_1_player_a4a9708059cfd3e137afd96612a14e2e0}
+Send the move to the board for validation and execution 
+\begin{DoxyParams}{Parameters}
+{\em start\-X} & \\
+\hline
+{\em end\-X} & \\
+\hline
+{\em start\-Y} & \\
+\hline
+{\em end\-Y} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+message from board 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/model/player/Player.\-java\end{DoxyCompactItemize}
