@@ -19,6 +19,9 @@ import javax.swing.*;
 // http://stackoverflow.com/questions/299495/java-swing-how-to-add-an-image-to-a-jpanel
 
 public class BoardView extends JFrame {
+
+    public static final int SQUARE_SPACING = 75;
+
     public BoardView() {
         super("Chess Frame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,7 +30,7 @@ public class BoardView extends JFrame {
         getContentPane().add(squares);
         for (int y = 0; y < 8; y++) {
             for (int x = 0; x < 8; x++) {
-                squares.addSquare(x * 75, y * 75, 75, 75);
+                squares.addSquare(x * SQUARE_SPACING, y * SQUARE_SPACING, SQUARE_SPACING, SQUARE_SPACING);
             }
         }
         pack();
@@ -114,7 +117,7 @@ class Squares extends JPanel {
             return; // java complains without this
         }
 
-        g.drawImage(image, x*75, y*75, null);
+        g.drawImage(image, x*BoardView.SQUARE_SPACING, y*BoardView.SQUARE_SPACING, null);
     }
 
     private void invertSquareColor(Graphics g) {
