@@ -18,6 +18,16 @@ import javax.swing.*;
 // Cite: http://stackoverflow.com/questions/15870608/creating-a-draw-rectangle-filled-with-black-color-function-in-java-for-a-grid
 // http://stackoverflow.com/questions/299495/java-swing-how-to-add-an-image-to-a-jpanel
 
+/*
+    Test Plan:
+
+        Look at the board, if it looks correct, it's good
+
+        Check on pieces move
+        Check starting game
+ */
+
+
 public class BoardView extends JFrame {
 
     // how far apart im putting the squares, I should probably make this a class variable at some point
