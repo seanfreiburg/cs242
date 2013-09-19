@@ -3,6 +3,7 @@ package view;
 
 // Cite: Java examples on Oracle site
 
+import controller.GameController;
 import model.PlayerColors;
 import model.board.NormalChessBoard;
 import model.piece.Pawn;
@@ -24,13 +25,15 @@ public class BoardView extends JFrame {
     GridLayout boardLayout = new GridLayout(8, 8);
     SquareButton[][] buttons = new SquareButton[8][8];
     int startX, startY, endX, endY;
+    GameController controller;
 
-    public BoardView(String name) {
+    public BoardView(String name, GameController controller) {
         super(name);
         startX = -1;
         startY = -1;
         endX = -1;
         endY = -1;
+        this.controller = controller;
 
         setResizable(false);
 
@@ -128,12 +131,19 @@ public class BoardView extends JFrame {
                 if (startX == -1 && startY == -1) {
                     startX = i;
                     startY = j;
-                    //validate if it is your piece
+                    System.out.println(startX + " "+ startY+ " "+ endX+ " "+ endY);
 
                 } else {
                     endX = i;
                     endY = j;
-                    // send a move to the controller
+                    String status = controller.sendMove(startX,startY,endX,endY, controller.getCurrentPlayer());
+                    startX =-1;
+                    startY = -1;
+                    endX = -1;
+                    endY = -1;
+                    System.out.println(startX + " "+ startY+ " "+ endX+ " "+ endY);
+                    System.out.println(status);
+
                 }
             }
         };
@@ -142,9 +152,9 @@ public class BoardView extends JFrame {
     public void setPiece(int x, int y, Piece piece) {
         BufferedImage image = getImage(piece);
         if (image == null) {
-            //clear the button
+            buttons[x][y].setIcon(null);
         } else {
-            //set a new image on the button
+            buttons[x][y].setIcon(new ImageIcon(image));
         }
     }
 

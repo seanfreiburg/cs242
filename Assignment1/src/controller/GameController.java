@@ -5,12 +5,36 @@ import model.PlayerColors;
 import model.board.NormalChessBoard;
 import model.player.HumanPlayer;
 import model.player.Player;
+import view.BoardView;
 
 public class GameController {
 
     NormalChessBoard board;
     Player whitePlayer;
     Player blackPlayer;
+
+    public BoardView getView() {
+        return view;
+    }
+
+    public void setView(BoardView view) {
+        this.view = view;
+    }
+
+    BoardView view;
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    Player currentPlayer;
+
+
+
 
     public Player getWhitePlayer() {
         return whitePlayer;
@@ -41,6 +65,7 @@ public class GameController {
         board = new NormalChessBoard();
         whitePlayer = new HumanPlayer(PlayerColors.WHITE);
         blackPlayer = new HumanPlayer(PlayerColors.BLACK);
+        currentPlayer = whitePlayer;
     }
 
     public Player getNextPlayer(Player player) {
@@ -52,9 +77,16 @@ public class GameController {
     }
 
     public String sendMove(int startX, int startY, int endX, int endY, Player player) {
-        String status = player.sendMove(startX, endX, startX, endY, board);
-        postMoveChecks();
+        String status = player.sendMove(startX, startY, endX, endY, board);
+        if (status.equals("Success")){
+            view.setPiece(startX,startY, null);
+            view.setPiece(endX,endY, board.getPiece(endX,endY));
+            this.currentPlayer = getNextPlayer(currentPlayer);
+        }
+
+
         return status;
+
     }
 
     public void postMoveChecks() {

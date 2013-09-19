@@ -1,5 +1,6 @@
 import controller.GameController;
 import model.board.Board;
+import model.board.NormalChessBoard;
 import model.player.Player;
 import view.BoardView;
 
@@ -10,42 +11,22 @@ import java.io.InputStreamReader;
 public class Game {
 
     public static void main(String[] args) throws IOException {
-        BoardView view = new BoardView("Chess");
+
         GameController game = new GameController();
+        BoardView view = new BoardView("Chess", game);
+        game.setView(view);
+        NormalChessBoard board = new NormalChessBoard();
         Player currentPlayer = game.getWhitePlayer();
+
+
+
+
+        /*
         String color = "Blank";
         while (true) {
             String message = " ";
             while (!message.equals("Success")) {
-                game.getBoard().printBoard();
 
-                ///getMoveFromPlayer
-
-                if (currentPlayer.getColor()) {
-                    color = "Black";
-                } else {
-                    color = "White";
-                }
-                System.out.println(color + " player's turn");
-                System.out.println("Enter Start x:");
-                BufferedReader consoleIn = new BufferedReader(new InputStreamReader(System.in));
-                int startX = Integer.parseInt(consoleIn.readLine());
-
-                System.out.println("Enter Start y:");
-                consoleIn = new BufferedReader(new InputStreamReader(System.in));
-                int startY = Integer.parseInt(consoleIn.readLine());
-
-                System.out.println("Enter End x:");
-                consoleIn = new BufferedReader(new InputStreamReader(System.in));
-                int endX = Integer.parseInt(consoleIn.readLine());
-
-                System.out.println("Enter End y:");
-                consoleIn = new BufferedReader(new InputStreamReader(System.in));
-                int endY = Integer.parseInt(consoleIn.readLine());
-
-                //send move to board
-                message = game.sendMove(startX, startY, endX, endY, currentPlayer);
-                System.out.println(message);
             }
             //reset message
             message = " ";
@@ -62,6 +43,7 @@ public class Game {
 
 
         }
+        */
 
     }
 
