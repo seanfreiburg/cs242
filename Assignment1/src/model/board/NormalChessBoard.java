@@ -6,6 +6,8 @@ import model.Position;
 import model.piece.*;
 import model.player.Player;
 
+import java.util.Random;
+
 
 public class NormalChessBoard extends RectangularBoard {
 
@@ -114,6 +116,10 @@ public class NormalChessBoard extends RectangularBoard {
 
 
         Piece piece = this.getPiece(move.getStartX(), move.getStartY());
+        if (piece.getClass().getSimpleName().equals("Viking")){
+            move.setEndX(new Random().nextInt(8));
+            move.setEndY(new Random().nextInt(8));
+        }
         if (!piece.validateMove(move, this)) {
             return "Error: That is an invalid move";
         }
@@ -126,7 +132,7 @@ public class NormalChessBoard extends RectangularBoard {
         // check for another piece at position
         if (this.pieceIsOnBoard(move.getEndX(), move.getEndY())) {
             // if king raise error
-            if (this.getPiece(move.getEndX(), move.getEndY()).getColor() == currentPlayer.getColor()) {
+            if (this.getPiece(move.getEndX(), move.getEndY()).getColor() == currentPlayer.getColor() && !piece.getClass().getSimpleName().equals("Viking")) {
                 return "Error: You can't kill your own player";
             }
             if (this.getPiece(move.getEndX(), move.getEndY()).getClass().getSimpleName().equals("King")) {

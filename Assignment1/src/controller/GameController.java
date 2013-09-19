@@ -94,11 +94,6 @@ public class GameController {
     public void postMoveChecks() {
         //@todo add check
         //@todo not working
-        /*if (board.isInCheck(whitePlayer.getColor())) {
-            System.out.println("White King is in check");
-        }
-        if (board.isInCheck(blackPlayer.getColor())) {
-            System.out.println("Black King is in check");
-        }*/
+
     }
 }
