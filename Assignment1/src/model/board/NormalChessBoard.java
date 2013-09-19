@@ -290,4 +290,7 @@ public class NormalChessBoard extends RectangularBoard {
         }
     }
 
+
+
+
 }

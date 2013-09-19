@@ -96,4 +96,8 @@ public class GameController {
         //@todo not working
 
     }
+
+    /*
+       @todo For undo I have to make a stack with information stored of the delta of the move
+     */
 }
