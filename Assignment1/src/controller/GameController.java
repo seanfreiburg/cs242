@@ -1,6 +1,7 @@
 package controller;
 
 
+import model.PlayerColors;
 import model.board.NormalChessBoard;
 import model.player.HumanPlayer;
 import model.player.Player;
@@ -38,12 +39,12 @@ public class GameController {
 
     public GameController() {
         board = new NormalChessBoard();
-        whitePlayer = new HumanPlayer(Player.WHITE);
-        blackPlayer = new HumanPlayer(Player.BLACK);
+        whitePlayer = new HumanPlayer(PlayerColors.WHITE);
+        blackPlayer = new HumanPlayer(PlayerColors.BLACK);
     }
 
     public Player getNextPlayer(Player player) {
-        if (player.getColor() == Player.BLACK) {
+        if (player.getColor() == PlayerColors.BLACK) {
             return this.getWhitePlayer();
         } else {
             return this.getBlackPlayer();

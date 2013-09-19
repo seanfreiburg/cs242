@@ -1,6 +1,7 @@
 package model.piece;
 
 import model.Move;
+import model.PlayerColors;
 import model.board.Board;
 import model.player.Player;
 
@@ -31,7 +32,7 @@ public class Pawn extends Piece {
         int direction;
         int startingY;
 
-        if (this.color == Player.BLACK) {
+        if (this.color == PlayerColors.BLACK) {
             direction = 1;
             startingY = 1;
         } else {

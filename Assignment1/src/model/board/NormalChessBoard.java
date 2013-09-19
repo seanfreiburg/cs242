@@ -1,6 +1,7 @@
 package model.board;
 
 import model.Move;
+import model.PlayerColors;
 import model.Position;
 import model.piece.*;
 import model.player.Player;
@@ -28,28 +29,28 @@ public class NormalChessBoard extends RectangularBoard {
     public Piece[][] fill_board() {
 
         pieces = new Piece[this.width][this.height];
-        pieces[0][0] = new Rook(Player.BLACK);
-        pieces[1][0] = new Knight(Player.BLACK);
-        pieces[2][0] = new Bishop(Player.BLACK);
-        pieces[3][0] = new King(Player.BLACK);
-        pieces[4][0] = new Queen(Player.BLACK);
-        pieces[5][0] = new Bishop(Player.BLACK);
-        pieces[6][0] = new Knight(Player.BLACK);
-        pieces[7][0] = new Rook(Player.BLACK);
+        pieces[0][0] = new Rook(PlayerColors.BLACK);
+        pieces[1][0] = new Knight(PlayerColors.BLACK);
+        pieces[2][0] = new Bishop(PlayerColors.BLACK);
+        pieces[3][0] = new King(PlayerColors.BLACK);
+        pieces[4][0] = new Queen(PlayerColors.BLACK);
+        pieces[5][0] = new Bishop(PlayerColors.BLACK);
+        pieces[6][0] = new Knight(PlayerColors.BLACK);
+        pieces[7][0] = new Rook(PlayerColors.BLACK);
 
         for (int i = 0; i < 8; i++) {
-            pieces[i][1] = new Pawn(Player.BLACK);
-            pieces[i][6] = new Pawn(Player.WHITE);
+            pieces[i][1] = new Pawn(PlayerColors.BLACK);
+            pieces[i][6] = new Pawn(PlayerColors.WHITE);
         }
 
-        pieces[0][7] = new Rook(Player.WHITE);
-        pieces[1][7] = new Knight(Player.WHITE);
-        pieces[2][7] = new Bishop(Player.WHITE);
-        pieces[3][7] = new King(Player.WHITE);
-        pieces[4][7] = new Queen(Player.WHITE);
-        pieces[5][7] = new Bishop(Player.WHITE);
-        pieces[6][7] = new Knight(Player.WHITE);
-        pieces[7][7] = new Rook(Player.WHITE);
+        pieces[0][7] = new Rook(PlayerColors.WHITE);
+        pieces[1][7] = new Knight(PlayerColors.WHITE);
+        pieces[2][7] = new Bishop(PlayerColors.WHITE);
+        pieces[3][7] = new King(PlayerColors.WHITE);
+        pieces[4][7] = new Queen(PlayerColors.WHITE);
+        pieces[5][7] = new Bishop(PlayerColors.WHITE);
+        pieces[6][7] = new Knight(PlayerColors.WHITE);
+        pieces[7][7] = new Rook(PlayerColors.WHITE);
 
         return pieces;
     }
@@ -258,7 +259,7 @@ public class NormalChessBoard extends RectangularBoard {
     private String getPrintRepresentation(Piece piece) {
         String color;
 
-        if (piece != null && piece.getColor() == Player.BLACK) {
+        if (piece != null && piece.getColor() == PlayerColors.BLACK) {
             color = "b";
         } else {
             color = "w";

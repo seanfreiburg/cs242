@@ -1,5 +1,7 @@
 import controller.GameController;
+import model.board.Board;
 import model.player.Player;
+import view.BoardView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.io.InputStreamReader;
 public class Game {
 
     public static void main(String[] args) throws IOException {
+        BoardView view = new BoardView("Chess");
         GameController game = new GameController();
         Player currentPlayer = game.getWhitePlayer();
         String color = "Blank";

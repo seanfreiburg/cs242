@@ -9,6 +9,7 @@ package view;
 // Cite: http://stackoverflow.com/questions/15870608/creating-a-draw-rectangle-filled-with-black-color-function-in-java-for-a-grid
 // http://stackoverflow.com/questions/299495/java-swing-how-to-add-an-image-to-a-jpanel
 
+import model.PlayerColors;
 import model.board.Board;
 import model.board.NormalChessBoard;
 import model.piece.Piece;
@@ -97,7 +98,7 @@ class Squares extends JPanel {
             return;
         }
         String color;
-        if (piece.getColor() == Player.BLACK) {
+        if (piece.getColor() == PlayerColors.BLACK) {
             color = "black";
         } else {
             color = "white";
@@ -117,7 +118,7 @@ class Squares extends JPanel {
             return; // java complains without this
         }
 
-        g.drawImage(image, x*BoardView.SQUARE_SPACING + 13, y*BoardView.SQUARE_SPACING+13, null);
+        g.drawImage(image, x* BoardViewOld.SQUARE_SPACING + 13, y* BoardViewOld.SQUARE_SPACING+13, null);
     }
 
     /**

@@ -1,9 +1,7 @@
 package model.player;
 
-import model.Move;
+import model.PlayerColors;
 import model.board.NormalChessBoard;
-import model.piece.*;
-import model.player.HumanPlayer;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,8 +12,8 @@ public class PlayerTest {
     @Test
     public void testSendMove() {
         NormalChessBoard board = new NormalChessBoard();
-        HumanPlayer blackPlayer = new HumanPlayer(Player.BLACK);
-        HumanPlayer whitePlayer = new HumanPlayer(Player.WHITE);
+        HumanPlayer blackPlayer = new HumanPlayer(PlayerColors.BLACK);
+        HumanPlayer whitePlayer = new HumanPlayer(PlayerColors.WHITE);
         assertEquals("Success", blackPlayer.sendMove(0, 1, 0, 3, board));
         assertEquals("Error: No piece exists in that position", blackPlayer.sendMove(0, 1, 0, 3, board));
 
@@ -24,8 +22,8 @@ public class PlayerTest {
     @Test
     public void testPieceIsMine() {
         NormalChessBoard board = new NormalChessBoard();
-        HumanPlayer blackPlayer = new HumanPlayer(Player.BLACK);
-        HumanPlayer whitePlayer = new HumanPlayer(Player.WHITE);
+        HumanPlayer blackPlayer = new HumanPlayer(PlayerColors.BLACK);
+        HumanPlayer whitePlayer = new HumanPlayer(PlayerColors.WHITE);
 
         assertEquals(true, blackPlayer.pieceIsMine(0, 0, board));
         assertEquals(false, blackPlayer.pieceIsMine(0, -1, board));

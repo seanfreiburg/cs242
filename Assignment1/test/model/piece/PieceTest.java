@@ -1,6 +1,7 @@
 package model.piece;
 
 
+import model.PlayerColors;
 import model.board.NormalChessBoard;
 import model.player.HumanPlayer;
 import model.player.Player;
@@ -16,24 +17,24 @@ public class PieceTest {
     public void testPawnValidateMove() {
 
         NormalChessBoard board = new NormalChessBoard();
-        board.setPiece(0, 3, new Pawn(Player.BLACK));
-        Player whitePlayer = new HumanPlayer(Player.WHITE);
-        Player blackPlayer = new HumanPlayer(Player.BLACK);
+        board.setPiece(0, 3, new Pawn(PlayerColors.BLACK));
+        Player whitePlayer = new HumanPlayer(PlayerColors.WHITE);
+        Player blackPlayer = new HumanPlayer(PlayerColors.BLACK);
         assertEquals(true, board.getPiece(0, 3).validateMove(new Move(0, 3, 0, 4), board));
         assertEquals(false, board.getPiece(0, 3).validateMove(new Move(0, 3, 0, 5), board));
-        board.setPiece(0, 3, new Pawn(Player.WHITE));
+        board.setPiece(0, 3, new Pawn(PlayerColors.WHITE));
         assertEquals(true, board.getPiece(0, 3).validateMove(new Move(0, 3, 0, 2), board));
         assertEquals(false, board.getPiece(0, 3).validateMove(new Move(0, 3, 0, 5), board));
 
-        board.setPiece(1, 3, new Pawn(Player.BLACK));
+        board.setPiece(1, 3, new Pawn(PlayerColors.BLACK));
         assertEquals(false, board.getPiece(1, 3).validateMove(new Move(1, 3, 0, 2), board));
         assertEquals(false, board.getPiece(0, 3).validateMove(new Move(0, 3, 1, 4), board));
         assertEquals(false, board.getPiece(0, 3).validateMove(new Move(-1, 3, -1, -1), board));
 
         assertEquals(true, board.getPiece(0, 1).validateMove(new Move(0, 1, 0, 3), board));
-        board.setPiece(0, 2, new Pawn(Player.WHITE));
+        board.setPiece(0, 2, new Pawn(PlayerColors.WHITE));
         assertEquals(false, board.getPiece(0, 2).validateMove(new Move(0, 2, 0, 4), board));
-        board.setPiece(0, 7, new Pawn(Player.WHITE));
+        board.setPiece(0, 7, new Pawn(PlayerColors.WHITE));
         assertEquals(true, board.getPiece(0, 6).validateMove(new Move(0, 6, 0, 4), board));
         assertEquals(false, board.getPiece(0, 7).validateMove(new Move(0, 7, -1, 5), board));
 
@@ -42,9 +43,9 @@ public class PieceTest {
     @Test
     public void testKnightValidateMove() {
         NormalChessBoard board = new NormalChessBoard();
-        board.setPiece(0, 3, new Knight(Player.BLACK));
-        Player whitePlayer = new HumanPlayer(Player.WHITE);
-        Player blackPlayer = new HumanPlayer(Player.BLACK);
+        board.setPiece(0, 3, new Knight(PlayerColors.BLACK));
+        Player whitePlayer = new HumanPlayer(PlayerColors.WHITE);
+        Player blackPlayer = new HumanPlayer(PlayerColors.BLACK);
         assertEquals(true, board.getPiece(1, 0).validateMove(new Move(1, 0, 2, 2), board));
         assertEquals(true, board.getPiece(1, 0).validateMove(new Move(1, 0, 0, 2), board));
         assertEquals(false, board.getPiece(1, 0).validateMove(new Move(1, 0, 0, 3), board));
@@ -65,9 +66,9 @@ public class PieceTest {
     @Test
     public void testRookValidateMove() {
         NormalChessBoard board = new NormalChessBoard();
-        board.setPiece(0, 3, new Rook(Player.BLACK));
-        Player whitePlayer = new HumanPlayer(Player.WHITE);
-        Player blackPlayer = new HumanPlayer(Player.BLACK);
+        board.setPiece(0, 3, new Rook(PlayerColors.BLACK));
+        Player whitePlayer = new HumanPlayer(PlayerColors.WHITE);
+        Player blackPlayer = new HumanPlayer(PlayerColors.BLACK);
         assertEquals(true, board.getPiece(0, 3).validateMove(new Move(0, 3, 0, 5), board));
         assertEquals(false, board.getPiece(0, 3).validateMove(new Move(0, 3, 1, 5), board));
         assertEquals(true, board.getPiece(0, 3).validateMove(new Move(0, 3, 2, 3), board));
@@ -80,14 +81,14 @@ public class PieceTest {
     @Test
     public void testBishopValidateMove() {
         NormalChessBoard board = new NormalChessBoard();
-        Player whitePlayer = new HumanPlayer(Player.WHITE);
-        Player blackPlayer = new HumanPlayer(Player.BLACK);
+        Player whitePlayer = new HumanPlayer(PlayerColors.WHITE);
+        Player blackPlayer = new HumanPlayer(PlayerColors.BLACK);
         board.removePiece(3, 1);
 
         assertEquals(true, board.getPiece(2, 0).validateMove(new Move(2, 0, 3, 1), board));
 
         assertEquals(true, board.getPiece(2, 0).validateMove(new Move(2, 0, 6, 4), board));
-        board.setPiece(3, 2, new Bishop(Player.BLACK));
+        board.setPiece(3, 2, new Bishop(PlayerColors.BLACK));
         assertEquals(false, board.getPiece(3, 2).validateMove(new Move(3, 2, 1, 0), board));
         assertEquals(true, board.getPiece(3, 2).validateMove(new Move(3, 2, 4, 3), board));
         assertEquals(false, board.getPiece(3, 2).validateMove(new Move(3, 2, 4, 2), board));

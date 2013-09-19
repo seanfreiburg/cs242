@@ -26,6 +26,7 @@ public class Viking extends Piece {
      * @param move
      * @return boolean based on if move is valid for Viking
      */
+    //@todo random movement
     public boolean validateMove(Move move, Board board) {
 
         return true;

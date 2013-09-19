@@ -12,7 +12,7 @@ public class Bishop extends Piece {
     /**
      * Default constructor for Bishop that sets it's color
      *
-     * @param color Color of piece desired
+     * @param color PlayerColors of piece desired
      */
     public Bishop(boolean color) {
         super(color);
