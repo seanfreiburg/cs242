@@ -15,8 +15,6 @@ public class Game {
         GameController game = new GameController();
         BoardView view = new BoardView("Chess", game);
         game.setView(view);
-        NormalChessBoard board = new NormalChessBoard();
-        Player currentPlayer = game.getWhitePlayer();
 
     }
 

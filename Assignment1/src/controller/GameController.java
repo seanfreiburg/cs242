@@ -13,6 +13,7 @@ public class GameController {
     Player whitePlayer;
     Player blackPlayer;
     Player currentPlayer;
+    BoardView view;
 
 
     public BoardView getView() {
@@ -23,7 +24,7 @@ public class GameController {
         this.view = view;
     }
 
-    BoardView view;
+
 
     public Player getCurrentPlayer() {
         return currentPlayer;
