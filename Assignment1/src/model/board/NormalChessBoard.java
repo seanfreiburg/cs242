@@ -14,6 +14,8 @@ public class NormalChessBoard extends RectangularBoard {
     private static final int WIDTH = 8;
     private static final int HEIGHT = 8;
 
+
+
     /**
      * Default constructor for the NormalChessBoard
      */
@@ -44,6 +46,7 @@ public class NormalChessBoard extends RectangularBoard {
             pieces[i][1] = new Pawn(PlayerColors.BLACK);
             pieces[i][6] = new Pawn(PlayerColors.WHITE);
         }
+
 
         pieces[0][7] = new Rook(PlayerColors.WHITE);
         pieces[1][7] = new Knight(PlayerColors.WHITE);
@@ -116,10 +119,7 @@ public class NormalChessBoard extends RectangularBoard {
 
 
         Piece piece = this.getPiece(move.getStartX(), move.getStartY());
-        if (piece.getClass().getSimpleName().equals("Viking")){
-            move.setEndX(new Random().nextInt(8));
-            move.setEndY(new Random().nextInt(8));
-        }
+
         if (!piece.validateMove(move, this)) {
             return "Error: That is an invalid move";
         }
@@ -132,7 +132,7 @@ public class NormalChessBoard extends RectangularBoard {
         // check for another piece at position
         if (this.pieceIsOnBoard(move.getEndX(), move.getEndY())) {
             // if king raise error
-            if (this.getPiece(move.getEndX(), move.getEndY()).getColor() == currentPlayer.getColor() && !piece.getClass().getSimpleName().equals("Viking")) {
+            if (this.getPiece(move.getEndX(), move.getEndY()).getColor() == currentPlayer.getColor()) {
                 return "Error: You can't kill your own player";
             }
             if (this.getPiece(move.getEndX(), move.getEndY()).getClass().getSimpleName().equals("King")) {

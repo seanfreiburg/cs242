@@ -28,6 +28,8 @@ public class BoardView extends JFrame {
     GameController controller;
     Label playerLabel;
     Label statusLabel;
+    Label scoreLabel;
+
 
     public BoardView(String name, GameController controller) {
         super(name);
@@ -37,7 +39,8 @@ public class BoardView extends JFrame {
         endY = -1;
         this.controller = controller;
         playerLabel = new Label(getPlayerLabel() + " Player's turn");
-        statusLabel = new Label(" ");
+        statusLabel = new Label("New game");
+        scoreLabel = new Label("White 0 to Black 0");
         setResizable(false);
 
         this.createAndShowGUI();
@@ -74,15 +77,13 @@ public class BoardView extends JFrame {
         //setPieces(new NormalChessBoard());
     }
 
-
-
     public void addComponentsToPane(final Container pane) {
         JPanel squaresPanel = new JPanel();
         squaresPanel.setLayout(boardLayout);
         JPanel controls = new JPanel();
-        controls.setLayout(new GridLayout(2, 3));
+        controls.setLayout(new GridLayout(2, 2));
 
-        Dimension buttonSize = new Dimension(250, 150);
+        Dimension buttonSize = new Dimension(275, 175);
         squaresPanel.setPreferredSize(new Dimension((int) (buttonSize.getWidth() * 2.5),
                 (int) (buttonSize.getHeight() * 3.5)));
 
@@ -102,7 +103,6 @@ public class BoardView extends JFrame {
                 buttons[x][y].addActionListener(e(x, y));
                 Image image = null;
 
-                //major hack haha
                 NormalChessBoard board = controller.getBoard();
                 Piece piece = board.getPiece(x, y);
                 if (piece != null) {
@@ -116,18 +116,49 @@ public class BoardView extends JFrame {
 
         controls.add(playerLabel);
         controls.add(statusLabel);
+        controls.add(scoreLabel);
+
+
+        JButton forfeitButton = new JButton("Forfeit");
+        forfeitButton.addActionListener(forfeit());
+        controls.add(forfeitButton);
+
+        JButton restartButton = new JButton("Restart");
+        restartButton.addActionListener(restart());
+        controls.add(restartButton);
+
 
         pane.add(squaresPanel, BorderLayout.NORTH);
         pane.add(new JSeparator(), BorderLayout.CENTER);
         pane.add(controls, BorderLayout.SOUTH);
     }
 
+    private ActionListener restart() {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                System.out.println("Restart");
+                controller.restart();
+            }
+
+        };
+    }
+
+    private ActionListener forfeit() {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                System.out.println("Forfeit");
+                controller.forfeit();
+            }
+        };
+    }
+
     private String getPlayerLabel() {
         boolean color = controller.getCurrentPlayer().getColor();
-        if (color == PlayerColors.BLACK){
+        if (color == PlayerColors.BLACK) {
             return "Black";
-        }
-        else{
+        } else {
             return "White";
         }
     }
@@ -147,16 +178,24 @@ public class BoardView extends JFrame {
                 if (startX == -1 && startY == -1) {
                     startX = i;
                     startY = j;
+                    buttons[i][j].setBackground(Color.YELLOW);
 
                 } else {
                     endX = i;
                     endY = j;
-                    String status = controller.sendMove(startX,startY,endX,endY, controller.getCurrentPlayer());
-                    startX =-1;
+                    String status = controller.sendMove(startX, startY, endX, endY, controller.getCurrentPlayer());
+                    statusLabel.setText(status);
+                    if ((startX %2 ==0 && startY%2 == 0) || (startX %2 ==1 && startY%2 == 1)){
+                        buttons[startX][startY].setBackground(Color.WHITE);
+                    }
+                    else{
+                        buttons[startX][startY].setBackground(Color.BLACK);
+                    }
+                    startX = -1;
                     startY = -1;
                     endX = -1;
                     endY = -1;
-                    statusLabel.setText(status);
+
 
                 }
             }
@@ -204,5 +243,9 @@ public class BoardView extends JFrame {
 
         playerLabel.setText(getPlayerLabel() + " Player's turn");
 
+    }
+
+    public void setScoreLabel(int blackScore, int whiteScore) {
+        scoreLabel.setText("White " + whiteScore + " to Black" + blackScore);
     }
 }

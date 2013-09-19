@@ -3,6 +3,8 @@ package model.player;
 
 public class HumanPlayer extends Player {
 
+
+
     /**
      * Default constructor that calls Player's constructor
      *
@@ -11,4 +13,6 @@ public class HumanPlayer extends Player {
     public HumanPlayer(boolean color) {
         super(color);
     }
+
+
 }
