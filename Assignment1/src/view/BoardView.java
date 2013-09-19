@@ -1,7 +1,7 @@
 package view;
 
 
-// Cite: Java examples on Oracle site
+// Cite: Java examples on Oracle site , http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/layout/GridLayoutDemoProject/src/layout/GridLayoutDemo.java
 
 import controller.GameController;
 import model.PlayerColors;
@@ -26,6 +26,8 @@ public class BoardView extends JFrame {
     SquareButton[][] buttons = new SquareButton[8][8];
     int startX, startY, endX, endY;
     GameController controller;
+    Label playerLabel;
+    Label statusLabel;
 
     public BoardView(String name, GameController controller) {
         super(name);
@@ -34,7 +36,8 @@ public class BoardView extends JFrame {
         endX = -1;
         endY = -1;
         this.controller = controller;
-
+        playerLabel = new Label(getPlayerLabel() + " Player's turn");
+        statusLabel = new Label(" ");
         setResizable(false);
 
         this.createAndShowGUI();
@@ -100,7 +103,7 @@ public class BoardView extends JFrame {
                 Image image = null;
 
                 //major hack haha
-                NormalChessBoard board = new NormalChessBoard();
+                NormalChessBoard board = controller.getBoard();
                 Piece piece = board.getPiece(x, y);
                 if (piece != null) {
                     image = getImage(piece);
@@ -111,9 +114,22 @@ public class BoardView extends JFrame {
             }
         }
 
+        controls.add(playerLabel);
+        controls.add(statusLabel);
+
         pane.add(squaresPanel, BorderLayout.NORTH);
         pane.add(new JSeparator(), BorderLayout.CENTER);
         pane.add(controls, BorderLayout.SOUTH);
+    }
+
+    private String getPlayerLabel() {
+        boolean color = controller.getCurrentPlayer().getColor();
+        if (color == PlayerColors.BLACK){
+            return "Black";
+        }
+        else{
+            return "White";
+        }
     }
 
     private Color invertSquareColor(Color color) {
@@ -131,7 +147,6 @@ public class BoardView extends JFrame {
                 if (startX == -1 && startY == -1) {
                     startX = i;
                     startY = j;
-                    System.out.println(startX + " "+ startY+ " "+ endX+ " "+ endY);
 
                 } else {
                     endX = i;
@@ -141,8 +156,7 @@ public class BoardView extends JFrame {
                     startY = -1;
                     endX = -1;
                     endY = -1;
-                    System.out.println(startX + " "+ startY+ " "+ endX+ " "+ endY);
-                    System.out.println(status);
+                    statusLabel.setText(status);
 
                 }
             }
@@ -186,4 +200,9 @@ public class BoardView extends JFrame {
         return image;
     }
 
+    public void setTurnText(boolean color) {
+
+        playerLabel.setText(getPlayerLabel() + " Player's turn");
+
+    }
 }

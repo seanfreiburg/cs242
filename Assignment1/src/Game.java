@@ -18,33 +18,6 @@ public class Game {
         NormalChessBoard board = new NormalChessBoard();
         Player currentPlayer = game.getWhitePlayer();
 
-
-
-
-        /*
-        String color = "Blank";
-        while (true) {
-            String message = " ";
-            while (!message.equals("Success")) {
-
-            }
-            //reset message
-            message = " ";
-            Player otherPlayer = game.getNextPlayer(currentPlayer);
-
-            if (otherPlayer.isInCheck(game.getBoard())){
-                otherPlayer.setInCheck(true);
-            }
-            if (otherPlayer.inCheckMate(game.getBoard())){
-                System.out.println(color +" player wins!");
-                return;
-            }
-            currentPlayer = game.getNextPlayer(currentPlayer);
-
-
-        }
-        */
-
     }
 
 

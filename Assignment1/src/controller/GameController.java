@@ -82,8 +82,10 @@ public class GameController {
             view.setPiece(startX,startY, null);
             view.setPiece(endX,endY, board.getPiece(endX,endY));
             this.currentPlayer = getNextPlayer(currentPlayer);
+            view.setTurnText(currentPlayer.getColor());
         }
 
+        postMoveChecks();
 
         return status;
 
