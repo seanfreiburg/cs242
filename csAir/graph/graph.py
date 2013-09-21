@@ -6,8 +6,18 @@ from node import *
 class Graph:
   def __init__(self, metros, routes):
     self.nodes = dict()
+    self.longest_dist = None
+    self.shortest_dist = None
+    self.average_dist = None
+    self.biggest = None
+    self.smallest = None
+    self.average = None
+    self.con_n_cities = None
+    self.hubs = None
+
     self.build_nodes(self,metros)
     self.build_edges(self,routes)
+
 
 
 
@@ -29,10 +39,39 @@ class Graph:
 
   # the longest single flight in the network
   def longest_flight(self):
-    return 'blah'
+    if(self.longest_dist is None):
+
+      max_distance = 0
+      for key,node in self.nodes.iteritems():
+        for entry in node.edges:
+          distance = entry.distance
+          if distance > max_distance:
+            max_distance = distance
+            start = node.code
+            end  = entry.destination
+
+      self.longest_dist = (start,end,max_distance)
+      return self.longest_dist
+    else:
+      return self.longest_dist
+
    # the shortest single flight in the network
   def shortest_flight(self):
-    return
+    if(self.longest_dist is None):
+
+      min_distance = 65000
+      for key,node in self.nodes.iteritems():
+        for entry in node.edges:
+          distance = entry.distance
+          if distance < min_distance:
+            min_distance = distance
+            start = node.code
+            end  = entry.destination
+
+      self.longest_dist = (start,end,min_distance)
+      return self.longest_dist
+    else:
+      return self.longest_dist
   # the average distance of all the flights in the network
   def average_distance(self):
     return
