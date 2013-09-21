@@ -10,8 +10,8 @@ class Node:
     self.continent = continent
     self.timezone = timezone
     # @todo find out how to do longitude and lat
-    #self.latitude = latitude
-    #self.longitude = longitude
+    self.latitude = latitude
+    self.longitude = longitude
     self.population = population
     self.region = region
     self.edges = []
@@ -26,5 +26,6 @@ class Node:
     for edge in self.edges:
       destinations.append(edge.destination)
     return destinations
+
 
 
