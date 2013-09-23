@@ -146,6 +146,12 @@ class Graph:
 
     return map_string
 
+  def get_cities(self):
+    cities = []
+    for key, node in self.nodes.iteritems():
+      cities.append((node.code,node.name))
+    return cities
+
 
 
 
