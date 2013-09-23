@@ -26,10 +26,14 @@ class Graph:
         , metro['timezone'], 0, metro['population'], metro['region'])
 
 
+  def add_edge_to_node(self, route,src,dst):
+    node = self.nodes.get(route['ports'][src])
+    node.add_edge(route['ports'][dst], route['distance'])
+
   def build_edges(self, _, routes):
     for route in routes:
-      node = self.nodes.get(route['ports'][0])
-      node.add_edge(route['ports'][1], route['distance'])
+      self.add_edge_to_node(route,0,1)
+      self.add_edge_to_node(route,1,0)
 
   def get_node(self, code):
     return self.nodes.get(code)

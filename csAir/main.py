@@ -35,7 +35,7 @@ def city_info(code):
 
 
 while (True):
-  print("Enter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n[4] graph url\n[5] average flight distance \n[6] Biggest pop\n[7] Smallest pop\n[8] Average pop\n[9] Continents and cities\n[10] Hub cities\n[11] List all cities")
+  print("\nEnter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n[4] graph url\n[5] average flight distance \n[6] Biggest pop\n[7] Smallest pop\n[8] Average pop\n[9] Continents and cities\n[10] Hub cities\n[11] List all cities")
   code = raw_input()
   if (code == '0'):
     exit()
