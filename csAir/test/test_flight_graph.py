@@ -17,6 +17,32 @@ class TestFlightGraph(TestCase):
   def testEdgeDestinations(self):
     assert (self.g.nodes.get('CHI').get_destinations() == ['YYZ', 'ATL'])
 
+  def testLongestFlight(self):
+    assert(self.g.longest_flight() == ('SYD', 'LAX', 12051))
+
+  def testShortestFlight(self):
+    assert(self.g.shortest_flight() == ('WAS', 'NYC', 334))
+
+  def testMapUrl(self):
+    assert(self.g.get_map_string() == 'PAR-ESS,+PAR-MIL,+MIL-ESS,+MIL-IST,+MIA-WAS,+CCU-HKG,+CCU-BKK,+LIM-MEX,+LIM-BOG,+ATL-WAS,+ATL-MIA,+PEK-ICN,+LON-NYC,+LON-ESS,+LON-PAR,+IST-BGW,+LOS-KRT,+LOS-FIH,+CAI-ALG,+CAI-IST,+CAI-BGW,+CAI-RUH,+DEL-CCU,+DEL-MAA,+DEL-BOM,+BOM-MAA,+BGW-THR,+BGW-KHI,+BGW-RUH,+NYC-YYZ,+BOG-MIA,+BOG-SAO,+BOG-BUE,+SCL-LIM,+SAO-MAD,+SAO-LOS,+SFO-CHI,+JKT-SYD,+BKK-HKG,+BKK-SGN,+BKK-JKT,+KHI-DEL,+KHI-BOM,+MNL-SFO,+MNL-SYD,+MNL-SGN,+SGN-JKT,+OSA-TPE,+HKG-SHA,+HKG-TPE,+HKG-MNL,+HKG-SGN,+BUE-SAO,+TPE-MNL,+ESS-LED,+ICN-TYO,+CHI-YYZ,+CHI-ATL,+THR-DEL,+THR-KHI,+THR-RUH,+KRT-CAI,+SHA-PEK,+SHA-ICN,+SHA-TYO,+SHA-TPE,+FIH-KRT,+FIH-JNB,+WAS-YYZ,+WAS-NYC,+RUH-KHI,+TYO-SFO,+TYO-OSA,+LED-MOW,+LED-IST,+SYD-LAX,+ALG-MAD,+ALG-PAR,+ALG-IST,+MOW-THR,+MOW-IST,+MAA-CCU,+MAA-BKK,+MAA-JKT,+JNB-KRT,+LAX-SFO,+LAX-CHI,+MAD-NYC,+MAD-LON,+MAD-PAR,+MEX-LAX,+MEX-CHI,+MEX-MIA,+MEX-BOG')
+
+  def testAverageDist(self):
+    assert(self.g.average_distance() ==2300)
+
+  def testBiggestPop(self):
+    assert self.g.biggest_city() == ('TYO', 34000000)
+
+  def testSmallestPop(self):
+    assert self.g.smallest_city() == ( 'ESS', 589900)
+
+  def testAveragePop(self):
+    assert self.g.average_city() == 11796143
+  def testContinents(self):
+    pass
+  def testHubs(self):
+    assert self.g.hub_cities() == ['CAI','HKG','SHA','MEX']
+
+
 
 
 

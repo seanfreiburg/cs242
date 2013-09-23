@@ -35,7 +35,7 @@ def city_info(code):
 
 
 while (True):
-  print("Enter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n[4] graph url\n[5] average flight distance \n[6] Biggest pop\n[7] Smallest pop\n[8] Average pop\n[9] Continents and cities\n[9] Hub cities\n")
+  print("Enter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n[4] graph url\n[5] average flight distance \n[6] Biggest pop\n[7] Smallest pop\n[8] Average pop\n[9] Continents and cities\n[10] Hub cities\n")
   code = raw_input()
   if (code == '0'):
     exit()
@@ -43,10 +43,10 @@ while (True):
     city_info(code)
   elif (code == '2'):
     longest = g.longest_flight()
-    print('Start: ' + longest[0] + ',2 End: ' + longest[1] + ', Distance: ' + str(longest[2]))
+    print('Start: ' + longest[0] + ', End: ' + longest[1] + ', Distance: ' + str(longest[2]))
   elif (code == '3'):
     shortest = g.shortest_flight()
-    print('Start: ' + shortest[0] + ',2 End: ' + shortest[1] + ', Distance: ' + str(shortest[2]))
+    print('Start: ' + shortest[0] + ', End: ' + shortest[1] + ', Distance: ' + str(shortest[2]))
   elif(code=='4'):
     print('http://www.gcmap.com/mapui?P=' + g.get_map_string())
   elif(code=='5'):
@@ -60,8 +60,10 @@ while (True):
     print('Smallest pop:  ' + smallest[0] + ' '+ str(smallest[1]) )
   elif(code=='8'):
     average = g.average_city()
-    print('Average pop:  ' + average[0] + ' '+ str(average[1]) )
+    print('Average pop:  ' + str(average))
   elif(code=='9'):
+    print('not done')
+  elif(code=='10'):
     hubs = g.hub_cities()
     for hub in hubs:
       print(hub + ', ')

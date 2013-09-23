@@ -48,14 +48,13 @@ class Graph:
             end = entry.destination
 
       self.longest_dist = (start, end, max_distance)
-      return self.longest_dist
-    else:
-      return self.longest_dist
+
+    return self.longest_dist
 
       # the shortest single flight in the network
 
   def shortest_flight(self):
-    if (self.longest_dist is None):
+    if (self.shortest_dist is None):
 
       min_distance = sys.maxint
       for key, node in self.nodes.iteritems():
@@ -113,7 +112,7 @@ class Graph:
       sum = 0
       for key, node in self.nodes.iteritems():
         number_of_cities += 1
-        sum += node.distance
+        sum += node.population
         self.average_pop = sum/number_of_cities
     return self.average_pop
 
