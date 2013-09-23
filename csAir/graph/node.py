@@ -1,24 +1,22 @@
 __author__ = 'seanfreiburg'
 from edge import *
 
+
 class Node:
-  def __init__(self, code, name, country, continent, timezone, latitude, longitude, population, region):
+  def __init__(self, code, name, country, continent, timezone, coordinates, population, region):
     self.code = code
     self.name = name
     self.name = name
     self.country = country
     self.continent = continent
     self.timezone = timezone
-    # @todo find out how to do longitude and lat
-    self.latitude = latitude
-    self.longitude = longitude
+    self.coordinates = coordinates
     self.population = population
     self.region = region
     self.edges = []
 
 
-
-  def add_edge(self,code, distance):
+  def add_edge(self, code, distance):
     self.edges.append(Edge(code, distance))
 
   def get_destinations(self):

@@ -20,8 +20,7 @@ def print_city_info(code):
     print('Country: ' + node.country)
     print('Continent: ' + node.continent)
     print('Timezone: ' + str(node.timezone))
-    print('Latitude: ' + str(node.latitude))
-    print('Longitude: ' + str(node.longitude))
+    print('Coordinates: ' + str(node.coordinates))
     print('Population: ' + str(node.population))
     print('Region: ' + str(node.region))
     dest_and_dists = node.edges
@@ -35,16 +34,18 @@ def city_info(code):
   print_city_info(code)
 
 
-while(True):
+while (True):
   print("Enter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n")
   code = raw_input()
-  if(code == '0'):
+  if (code == '0'):
     exit()
-  elif(code == '1'):
+  elif (code == '1'):
     city_info(code)
-  elif(code == '2'):
+  elif (code == '2'):
     longest = g.longest_flight()
-    print('Start: '+ longest[0] + ',2 End: ' + longest[1] + ', Distance: ' + str(longest[2]))
-  elif(code == '3'):
+    print('Start: ' + longest[0] + ',2 End: ' + longest[1] + ', Distance: ' + str(longest[2]))
+  elif (code == '3'):
     shortest = g.shortest_flight()
-    print('Start: '+ shortest[0] + ',2 End: ' + shortest[1] + ', Distance: ' + str(shortest[2]))
+    print('Start: ' + shortest[0] + ',2 End: ' + shortest[1] + ', Distance: ' + str(shortest[2]))
+  elif(code=='4'):
+    print('http://www.gcmap.com/mapui?P=' + g.get_map_string())
