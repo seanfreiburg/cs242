@@ -35,7 +35,7 @@ def city_info(code):
 
 
 while (True):
-  print("Enter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n")
+  print("Enter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n[4] graph url\n[5] average flight distance \n[6] Biggest pop\n[7] Smallest pop\n[8] Average pop\n[9] Continents and cities\n[9] Hub cities\n")
   code = raw_input()
   if (code == '0'):
     exit()
@@ -49,3 +49,21 @@ while (True):
     print('Start: ' + shortest[0] + ',2 End: ' + shortest[1] + ', Distance: ' + str(shortest[2]))
   elif(code=='4'):
     print('http://www.gcmap.com/mapui?P=' + g.get_map_string())
+  elif(code=='5'):
+    print('Average flight distance:  ' + str(g.average_distance()))
+
+  elif(code=='6'):
+    biggest = g.biggest_city()
+    print('Biggest pop:  ' + biggest[0] + ' '+ str(biggest[1]) )
+  elif(code=='7'):
+    smallest = g.smallest_city()
+    print('Smallest pop:  ' + smallest[0] + ' '+ str(smallest[1]) )
+  elif(code=='8'):
+    average = g.average_city()
+    print('Average pop:  ' + average[0] + ' '+ str(average[1]) )
+  elif(code=='9'):
+    hubs = g.hub_cities()
+    for hub in hubs:
+      print(hub + ', ')
+    print('\n')
+
