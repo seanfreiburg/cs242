@@ -122,7 +122,15 @@ class Graph:
 
     # a list of the continents served by CSAir and which cities are in them
   def continents_and_cities(self):
-    return
+    continents_dict = dict()
+
+    for key, node in self.nodes.iteritems():
+      city_arr = continents_dict.get(node.continent)
+      if city_arr is None:
+        continents_dict[node.continent] = [node.name]
+      else:
+        continents_dict[node.continent].append(node.name)
+    return continents_dict
 
     # identifying CSAir's hub cities – the cities that have the most direct connections.
   def hub_cities(self):

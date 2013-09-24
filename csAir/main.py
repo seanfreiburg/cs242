@@ -62,7 +62,11 @@ while (True):
     average = g.average_city()
     print('Average pop:  ' + str(average))
   elif(code=='9'):
-    print('not done')
+    continents_dict = g.continents_and_cities()
+    for key, arr in continents_dict.iteritems():
+      print(key +':')
+      for entry in arr:
+        print(entry )
   elif(code=='10'):
     hubs = g.hub_cities()
     for hub in hubs:
