@@ -3,7 +3,7 @@ __author__ = 'seanfreiburg'
 from node import *
 import sys
 
-
+# Holds query functions and nodes
 class Graph:
   def __init__(self, metros, routes):
     self.nodes = dict()
@@ -20,21 +20,24 @@ class Graph:
     self.build_edges(self, routes)
 
 
+  # Adds all nodes from data set
   def build_nodes(self, _, metros):
     for metro in metros:
       self.nodes[metro['code']] = Node(metro['code'], metro['name'], metro['country'], metro['continent']
         , metro['timezone'], 0, metro['population'], metro['region'])
 
-
+  # Adds an edge to the node
   def add_edge_to_node(self, route,src,dst):
     node = self.nodes.get(route['ports'][src])
     node.add_edge(route['ports'][dst], route['distance'])
 
+  # Adds all routes to the nodes
   def build_edges(self, _, routes):
     for route in routes:
       self.add_edge_to_node(route,0,1)
       self.add_edge_to_node(route,1,0)
 
+  # returns node based on code
   def get_node(self, code):
     return self.nodes.get(code)
 
@@ -55,8 +58,7 @@ class Graph:
 
     return self.longest_dist
 
-      # the shortest single flight in the network
-
+  # the shortest single flight in the network
   def shortest_flight(self):
     if (self.shortest_dist is None):
 
@@ -73,7 +75,7 @@ class Graph:
 
     return self.shortest_dist
 
-    # the average distance of all the flights in the network
+  # the average distance of all the flights in the network
   def average_distance(self):
     if(self.average_dist == None):
       number_of_flights =0
@@ -85,7 +87,7 @@ class Graph:
           self.average_dist = sum/number_of_flights
     return self.average_dist
 
-    # the biggest city (by population) served by CSAir
+  # the biggest city (by population) served by CSAir
   def biggest_city(self):
     if (self.biggest_pop == None):
       max_pop = 0
@@ -97,7 +99,7 @@ class Graph:
       self.biggest_pop = (city_code,max_pop)
     return self.biggest_pop
 
-    # the smallest city (by population) served by CSAir
+   # the smallest city (by population) served by CSAir
   def smallest_city(self):
     if (self.smallest_pop == None):
       min_pop = sys.maxint
@@ -109,7 +111,7 @@ class Graph:
       self.smallest_pop = (city_code,min_pop)
     return self.smallest_pop
 
-    # the average size (by population) of all the cities served by CSAir
+  # the average size (by population) of all the cities served by CSAir
   def average_city(self):
     if(self.average_pop== None):
       number_of_cities =0
@@ -120,7 +122,7 @@ class Graph:
         self.average_pop = sum/number_of_cities
     return self.average_pop
 
-    # a list of the continents served by CSAir and which cities are in them
+  # a list of the continents served by CSAir and which cities are in them
   def continents_and_cities(self):
     continents_dict = dict()
 
@@ -132,7 +134,7 @@ class Graph:
         continents_dict[node.continent].append(node.name)
     return continents_dict
 
-    # identifying CSAir's hub cities – the cities that have the most direct connections.
+  # identifying CSAir's hub cities – the cities that have the most direct connections.
   def hub_cities(self):
     node_codes = []
     max_length = 0
@@ -145,7 +147,8 @@ class Graph:
     return node_codes
 
 
-#http://www.gcmap.com/mapui?P=LIM-MEX,+LIM-BOG,+MEX-LAX
+  # Gets the map string to add to the url
+  # Should probably be abstracted
   def get_map_string(self):
 
     map_string = ''
@@ -158,6 +161,7 @@ class Graph:
 
     return map_string
 
+  # Returns array of all city names and codes
   def get_cities(self):
     cities = []
     for key, node in self.nodes.iteritems():

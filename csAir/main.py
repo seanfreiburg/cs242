@@ -1,7 +1,8 @@
+# Main console execution path
+
+
 __author__ = 'seanfreiburg'
 from graph import graph
-import pprint
-
 import json
 
 f = open('assets/data/map_data.json', 'r')
