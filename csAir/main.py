@@ -5,7 +5,7 @@ __author__ = 'seanfreiburg'
 from graph import graph
 import json
 import webbrowser
-
+import os
 
 new = 2
 
@@ -82,4 +82,8 @@ while (True):
     cities = g.get_cities()
     for entry in cities:
       print( entry[1] +', Code: '+ entry[0])
+  else:
+    print("I'm sorry, Dave, I'm afraid I can't do that.")
+    os.system("say \"I'm sorry, Dave, I'm afraid I can't do that.\"")
+
 
