@@ -21,27 +21,35 @@ class Graph:
 
 
   # Adds all nodes from data set
+  # @param metros The array from the json encoding
   def build_nodes(self, _, metros):
     for metro in metros:
       self.nodes[metro['code']] = Node(metro['code'], metro['name'], metro['country'], metro['continent']
         , metro['timezone'], 0, metro['population'], metro['region'])
 
   # Adds an edge to the node
+  # @param route route array from json
+  # @param src index of source data
+  # @param dst index of destination data
   def add_edge_to_node(self, route,src,dst):
     node = self.nodes.get(route['ports'][src])
     node.add_edge(route['ports'][dst], route['distance'])
 
   # Adds all routes to the nodes
+  # @param routes route array from json
   def build_edges(self, _, routes):
     for route in routes:
       self.add_edge_to_node(route,0,1)
       self.add_edge_to_node(route,1,0)
 
   # returns node based on code
+  # @param code string of city code
+  # @return the node that matches the city code
   def get_node(self, code):
     return self.nodes.get(code)
 
   # the longest single flight in the network
+  # @return a triple of start code, end code, and distance
   def longest_flight(self):
     if (self.longest_dist is None):
 
@@ -59,6 +67,7 @@ class Graph:
     return self.longest_dist
 
   # the shortest single flight in the network
+  # @return a triple of start code, end code, and distance
   def shortest_flight(self):
     if (self.shortest_dist is None):
 
@@ -76,6 +85,7 @@ class Graph:
     return self.shortest_dist
 
   # the average distance of all the flights in the network
+  # @return the distince as a number
   def average_distance(self):
     if(self.average_dist == None):
       number_of_flights =0
@@ -88,6 +98,7 @@ class Graph:
     return self.average_dist
 
   # the biggest city (by population) served by CSAir
+  # @return a tuple of the city code and population of the city
   def biggest_city(self):
     if (self.biggest_pop == None):
       max_pop = 0
@@ -99,7 +110,8 @@ class Graph:
       self.biggest_pop = (city_code,max_pop)
     return self.biggest_pop
 
-   # the smallest city (by population) served by CSAir
+  # the smallest city (by population) served by CSAir
+  # @return a tuple of the city code and population of the city
   def smallest_city(self):
     if (self.smallest_pop == None):
       min_pop = sys.maxint
@@ -112,6 +124,7 @@ class Graph:
     return self.smallest_pop
 
   # the average size (by population) of all the cities served by CSAir
+  # @return a number of the average
   def average_city(self):
     if(self.average_pop== None):
       number_of_cities =0
@@ -123,6 +136,7 @@ class Graph:
     return self.average_pop
 
   # a list of the continents served by CSAir and which cities are in them
+  # @return a dict of continents as keys and city name in array as values
   def continents_and_cities(self):
     continents_dict = dict()
 
@@ -135,6 +149,7 @@ class Graph:
     return continents_dict
 
   # identifying CSAir's hub cities – the cities that have the most direct connections.
+  # @return an array of city codes
   def hub_cities(self):
     node_codes = []
     max_length = 0
@@ -149,6 +164,7 @@ class Graph:
 
   # Gets the map string to add to the url
   # Should probably be abstracted
+  # @return the map url sting to attach to the base url
   def get_map_string(self):
 
     map_string = ''
@@ -162,6 +178,7 @@ class Graph:
     return map_string
 
   # Returns array of all city names and codes
+  # @return array of all city names and codes
   def get_cities(self):
     cities = []
     for key, node in self.nodes.iteritems():

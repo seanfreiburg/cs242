@@ -16,11 +16,15 @@ class Node:
     self.region = region
     self.edges = []
 
-  #Adds edge to the edges array
+  # Adds edge to the edges array
+  # @param code - The city code in a string
+  # @param distance - The distance of the flight in an int
+  # @return void
   def add_edge(self, code, distance):
     self.edges.append(Edge(code, distance))
 
   # Return a array of destinations from edges array
+  # @return array of city code
   def get_destinations(self):
     destinations = []
     for edge in self.edges:
