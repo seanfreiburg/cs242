@@ -4,6 +4,10 @@
 __author__ = 'seanfreiburg'
 from graph import graph
 import json
+import webbrowser
+
+
+new = 2
 
 f = open('assets/data/map_data.json', 'r')
 decoded = json.loads(f.read())
@@ -49,7 +53,8 @@ while (True):
     shortest = g.shortest_flight()
     print('Start: ' + shortest[0] + ', End: ' + shortest[1] + ', Distance: ' + str(shortest[2]))
   elif(code=='4'):
-    print('http://www.gcmap.com/mapui?P=' + g.get_map_string())
+    url = 'http://www.gcmap.com/mapui?P=' + g.get_map_string()
+    webbrowser.open(url,new=new)
   elif(code=='5'):
     print('Average flight distance:  ' + str(g.average_distance()))
 
