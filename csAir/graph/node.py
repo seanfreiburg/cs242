@@ -4,16 +4,15 @@ from edge import *
 # Holds the city info
 class Node:
   # Assigns values as constructor
-  def __init__(self, code, name, country, continent, timezone, coordinates, population, region):
-    self.code = code
-    self.name = name
-    self.name = name
-    self.country = country
-    self.continent = continent
-    self.timezone = timezone
-    self.coordinates = coordinates
-    self.population = population
-    self.region = region
+  def __init__(self, metro):
+    self.code = metro['code']
+    self.name = metro['name']
+    self.country = metro['country']
+    self.continent = metro['continent']
+    self.timezone = metro['timezone']
+    self.coordinates = metro['coordinates']
+    self.population = metro['population']
+    self.region = metro['region']
     self.edges = []
 
   # Adds edge to the edges array

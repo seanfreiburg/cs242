@@ -1,89 +1,83 @@
 # Main console execution path
+from graph.graph import Graph
+from graph.graph_utils import GraphUtils
+from graph.view import View
+import json
+
+def add_city_menu():
+  return
+def add_route_menu():
+  return
+def remove_city_menu():
+  return
+def remove_route_menu():
+  return
+def edit_city_menu():
+  return
 
 
 __author__ = 'seanfreiburg'
-from graph import graph
-import json
-import webbrowser
-import os
 
-new = 2
 
+view = View()
 f = open('assets/data/map_data.json', 'r')
 decoded = json.loads(f.read())
-g = graph.Graph(decoded['metros'], decoded['routes'])
-
-
-def print_city_info(code):
-  global node, dest_and_dists, item
-  node = g.get_node(code)
-  if (node is None):
-    print('Code not found\n')
-  else:
-    print('Code: ' + node.code)
-    print('Name: ' + node.name)
-    print('Country: ' + node.country)
-    print('Continent: ' + node.continent)
-    print('Timezone: ' + str(node.timezone))
-    print('Coordinates: ' + str(node.coordinates))
-    print('Population: ' + str(node.population))
-    print('Region: ' + str(node.region))
-    dest_and_dists = node.edges
-    for item in dest_and_dists:
-      print('Destination code: ' + item.destination + ' distance: ' + str(item.distance))
-
-
-def city_info(code):
-  print("Enter a country code for data about it: ")
-  code = raw_input()
-  print_city_info(code)
-
+g = Graph(decoded['metros'], decoded['routes'])
+utils = GraphUtils()
 
 while (True):
-  print("\nEnter a number for query\n[0] exit\n[1] city info\n[2] longest flight\n[3] shortest flight\n[4] graph url\n[5] average flight distance \n[6] Biggest pop\n[7] Smallest pop\n[8] Average pop\n[9] Continents and cities\n[10] Hub cities\n[11] List all cities")
+  view.print_menu()
   code = raw_input()
   if (code == '0'):
-    exit()
+    exit(0)
   elif (code == '1'):
-    city_info(code)
+    #@todo fix this
+    view.city_info(code)
   elif (code == '2'):
-    longest = g.longest_flight()
-    print('Start: ' + longest[0] + ', End: ' + longest[1] + ', Distance: ' + str(longest[2]))
+    longest_flight = utils.longest_flight(g)
+    view.print_flight(longest_flight)
   elif (code == '3'):
-    shortest = g.shortest_flight()
-    print('Start: ' + shortest[0] + ', End: ' + shortest[1] + ', Distance: ' + str(shortest[2]))
+    shortest_flight = utils.shortest_flight(g)
+    view.print_flight(shortest_flight)
   elif(code=='4'):
-    url = 'http://www.gcmap.com/mapui?P=' + g.get_map_string()
-    webbrowser.open(url,new=new)
+    map_string = utils.get_map_string(g)
+    view.display_map(map_string)
   elif(code=='5'):
-    print('Average flight distance:  ' + str(g.average_distance()))
-
+    average_flight_distance = utils.average_dist(g)
+    view.print_average_flight_distance(average_flight_distance)
   elif(code=='6'):
-    biggest = g.biggest_city()
-    print('Biggest pop:  ' + biggest[0] + ' '+ str(biggest[1]) )
+    largest_population = utils.biggest_city(g)
+    view.print_population(largest_population)
   elif(code=='7'):
-    smallest = g.smallest_city()
-    print('Smallest pop:  ' + smallest[0] + ' '+ str(smallest[1]) )
+    smallest_population = utils.smallest_city(g)
+    view.print_population(smallest_population)
   elif(code=='8'):
-    average = g.average_city()
-    print('Average pop:  ' + str(average))
+    average_population = utils.average_pop(g)
+    view.print_population_number(average_population)
   elif(code=='9'):
-    continents_dict = g.continents_and_cities()
-    for key, arr in continents_dict.iteritems():
-      print(key +':')
-      for entry in arr:
-        print(entry )
+    continents_dict = utils.get_continents_and_cities(g)
+    view.print_continents_and_cities(continents_dict)
   elif(code=='10'):
-    hubs = g.hub_cities()
-    for hub in hubs:
-      print(hub + ', ')
-    print('\n')
+    hubs = utils.get_hub_cities(g)
+    view.print_hub_cities(hubs)
   elif(code=='11'):
-    cities = g.get_cities()
-    for entry in cities:
-      print( entry[1] +', Code: '+ entry[0])
+    cities = utils.get_cities(g)
+    view.print_cities(cities)
+  elif(code=='12'):
+    # add a city
+
+  elif(code=='13'):
+    # add a route
+  elif(code=='14'):
+    # remove a city
+  elif(code=='15'):
+    # remove a route
+  elif(code=='16'):
+    # edit a city
+  elif(code=='17'):
+    # save to disk
   else:
-    print("I'm sorry, Dave, I'm afraid I can't do that.")
-    os.system("say \"I'm sorry, Dave, I'm afraid I can't do that.\"")
+    view.print_error()
+
 
 
