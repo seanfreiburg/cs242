@@ -15,9 +15,9 @@ class View:
           "[10] Hub cities\n[11] List all cities")
 
   # this is bad
-  def print_city_info(self,code):
-    global node, dest_and_dists, item
-    node = g.get_node_from_code(code)
+  def print_city_info(self,graph,code):
+
+    node = graph.get_node_from_code(code)
     if (node is None):
       print('Code not found\n')
     else:
@@ -35,16 +35,16 @@ class View:
 
 
   # this is bad
-  def city_info(code,self):
+  def city_info(self,graph):
     print("Enter a country code for data about it: ")
     code = raw_input()
-    self.print_city_info(code)
+    self.print_city_info(graph,code)
 
   def print_flight(self, flight):
     print('Start: ' + flight[0] + ', End: ' + flight[1] + ', Distance: ' + str(flight[2]))
 
   def display_map(self,map_string):
-    url = 'http://www.gcmap.com/mapui?P=' + g.get_map_string()
+    url = 'http://www.gcmap.com/mapui?P=' + map_string
     webbrowser.open(url,new=2)
 
   def print_average_flight_distance(self, average_flight_distance):

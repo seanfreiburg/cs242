@@ -32,7 +32,7 @@ while (True):
     exit(0)
   elif (code == '1'):
     #@todo fix this
-    view.city_info(code)
+    view.city_info(g)
   elif (code == '2'):
     longest_flight = utils.longest_flight(g)
     view.print_flight(longest_flight)
@@ -43,7 +43,7 @@ while (True):
     map_string = utils.get_map_string(g)
     view.display_map(map_string)
   elif(code=='5'):
-    average_flight_distance = utils.average_dist(g)
+    average_flight_distance = utils.average_distance(g)
     view.print_average_flight_distance(average_flight_distance)
   elif(code=='6'):
     largest_population = utils.biggest_city(g)
@@ -52,7 +52,7 @@ while (True):
     smallest_population = utils.smallest_city(g)
     view.print_population(smallest_population)
   elif(code=='8'):
-    average_population = utils.average_pop(g)
+    average_population = utils.average_city(g)
     view.print_population_number(average_population)
   elif(code=='9'):
     continents_dict = utils.get_continents_and_cities(g)
@@ -65,17 +65,22 @@ while (True):
     view.print_cities(cities)
   elif(code=='12'):
     # add a city
-
+    pass
   elif(code=='13'):
     # add a route
+    pass
   elif(code=='14'):
     # remove a city
+    pass
   elif(code=='15'):
     # remove a route
+    pass
   elif(code=='16'):
     # edit a city
+    pass
   elif(code=='17'):
     # save to disk
+    pass
   else:
     view.print_error()
 

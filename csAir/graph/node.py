@@ -14,6 +14,7 @@ class Node:
     self.population = metro['population']
     self.region = metro['region']
     self.edges = []
+    self.visited = False
 
   # Adds edge to the edges array
   # @param code - The city code in a string
@@ -30,5 +31,7 @@ class Node:
       destinations.append(edge.destination)
     return destinations
 
+  def edit(self,data):
+    pass
 
 

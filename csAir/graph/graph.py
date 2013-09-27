@@ -38,6 +38,16 @@ class Graph:
   def get_node_from_code(self, code):
     return self.nodes.get(code)
 
+  def reset_visited_nodes(self):
+    for key, node in self.nodes.iteritems():
+      node.visited = False
+
+  def add_node(self):
+    pass
+
+  def remove_node(self):
+    pass
+
 
 
 
