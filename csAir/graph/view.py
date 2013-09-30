@@ -121,8 +121,7 @@ class View:
     src = raw_input()
     print('Enter destination code: \n')
     dst = raw_input()
-    graph.remove_route(src, dst)
-    return
+    return {'src': src, 'dst': dst}
 
 
   def edit_city_menu(self,graph):
@@ -143,7 +142,15 @@ class View:
     data['population'] = raw_input()
     print('Enter Region: \n')
     data['region'] = raw_input()
-    graph.edit_node(data)
-    return
+
+    return data
+
+  def route_menu(self):
+    print('Enter the city codes: \n')
+    cities = raw_input()
+    return cities.split(',')
+
+  def print_route_info(self, route_return):
+    pass
 
 

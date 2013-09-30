@@ -53,27 +53,35 @@ while (True):
     view.print_cities(cities)
   elif(code=='12'):
     # add a city
-    view.add_city_menu(g)
+    view.add_city_menu(g) #@todo fix
     pass
   elif(code=='13'):
-    view.add_route_menu(g)
+    view.add_route_menu(g) #@todo fix
     # add a route
     pass
   elif(code=='14'):
     # remove a city
-    view.remove_city_menu(g)
+    view.remove_city_menu(g) # @todo fix
     pass
   elif(code=='15'):
     # remove a route
-    view.remove_route_menu(g)
+    data =view.remove_route_menu(g)
+    g.remove_route(data['src'], data['dst'])
     pass
   elif(code=='16'):
     # edit a city
-    view.edit_city_menu(g)
+    data = view.edit_city_menu(g)
+    g.edit_node(data)
     pass
   elif(code=='17'):
     # save to disk
     utils.save_to_disk(g)
+    # @todo prints errors success
+  elif(code=='18'):
+    cities = view.route_menu()
+    route_return = utils.route_info(cities)
+    view.print_route_info(route_return)
+
   else:
     view.print_error()
 

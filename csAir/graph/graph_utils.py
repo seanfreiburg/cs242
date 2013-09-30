@@ -171,5 +171,8 @@ class GraphUtils:
     f.write(string_data)
     return
 
+  def route_info(self, cities):
+    pass
+
 
 
