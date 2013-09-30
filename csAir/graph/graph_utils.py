@@ -1,4 +1,5 @@
 # coding=utf-8
+import json
 import sys
 
 __author__ = 'seanfreiburg'
@@ -153,5 +154,34 @@ class GraphUtils:
       cities.append((node.code, node.name))
     return cities
 
+  def save_to_disk(self,graph):
+    data = dict()
+    data['metros'] = []
+    for key,value in graph.nodes.iteritems():
+      data['metros'].append({'code' : value.code, 'name' : value.name, 'country':value.country, 'continent': value.continent,
+                             'timezone': value.timezone, 'coordinates': value.coordinates, 'population': value.population,
+                             'region': value.region })
+    data['routes'] = []
+    for key,value in graph.nodes.iteritems():
+      for edge in value.edges:
+        data['routes'].append({'ports':[value.code, edge.destination] , 'distance': edge.distance})
 
+    string_data = json.dumps(data)
+    f = open('map_data_written', 'w')
+    f.write(string_data)
+    return
+
+ #{
+ #       "code": "SCL",
+ #       "name": "Santiago",
+ #       "country": "CL",
+ #       "continent": "South America",
+ #       "timezone": -4,
+ #       "coordinates": {
+ #           "S": 33,
+ #           "W": 71
+ #       },
+ #       "population": 6000000,
+ #       "region": 1
+ #   },
 

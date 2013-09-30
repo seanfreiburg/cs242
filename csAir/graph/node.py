@@ -32,6 +32,14 @@ class Node:
     return destinations
 
   def edit(self,data):
-    pass
+    self.code = data['code']
+    self.name = data['name']
+    self.country = data['country']
+    self.continent = data['continent']
+    self.timezone = data['timezone']
+    self.coordinates = data['coordinates']
+    self.population = data['population']
+    self.region = data['region']
+
 
 

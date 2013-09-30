@@ -1,23 +1,11 @@
 # Main console execution path
+__author__ = 'seanfreiburg'
+
+
 from graph.graph import Graph
 from graph.graph_utils import GraphUtils
 from graph.view import View
 import json
-
-def add_city_menu():
-  return
-def add_route_menu():
-  return
-def remove_city_menu():
-  return
-def remove_route_menu():
-  return
-def edit_city_menu():
-  return
-
-
-__author__ = 'seanfreiburg'
-
 
 view = View()
 f = open('assets/data/map_data.json', 'r')
@@ -65,22 +53,27 @@ while (True):
     view.print_cities(cities)
   elif(code=='12'):
     # add a city
+    view.add_city_menu(g)
     pass
   elif(code=='13'):
+    view.add_route_menu(g)
     # add a route
     pass
   elif(code=='14'):
     # remove a city
+    view.remove_city_menu(g)
     pass
   elif(code=='15'):
     # remove a route
+    view.remove_route_menu(g)
     pass
   elif(code=='16'):
     # edit a city
+    view.edit_city_menu(g)
     pass
   elif(code=='17'):
     # save to disk
-    pass
+    utils.save_to_disk(g)
   else:
     view.print_error()
 

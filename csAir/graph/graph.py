@@ -42,11 +42,45 @@ class Graph:
     for key, node in self.nodes.iteritems():
       node.visited = False
 
-  def add_node(self):
-    pass
+  def add_node(self,data):
+    if( not self.nodes.get(data['code'])):
+      self.nodes[data['code']] = Node(data)
 
-  def remove_node(self):
-    pass
+  def remove_node(self,code):
+    if (self.nodes.get(code)):
+      self.nodes.pop(code)
+      self.remove_edges(code)
+
+  def remove_edges(self,code):
+    for code,node in self.nodes.iteritems():
+      i = 0
+      for edge in node.edges:
+        if (edge.destination == code):
+          node.edges[i].pop()
+        i += 1
+
+  def remove_route(self,src,dst):
+    node = self.nodes.get(src)
+    if node is not None:
+      i =0
+      for edge in node.edges:
+        if edge.destination == dst:
+          node.edges[i].pop()
+        i +=1
+
+  def add_route(self,src,dst,distance):
+    node = self.nodes.get(src )
+    if node is not Node:
+      node.add_edge(dst,distance)
+
+  def edit_node(self,data):
+    node = self.nodes.get(data['code'])
+    if node is not None:
+      node.edit(data)
+
+
+
+
 
 
 
