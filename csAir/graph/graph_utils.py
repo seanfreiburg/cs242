@@ -167,21 +167,9 @@ class GraphUtils:
         data['routes'].append({'ports':[value.code, edge.destination] , 'distance': edge.distance})
 
     string_data = json.dumps(data)
-    f = open('map_data_written', 'w')
+    f = open('assets/data/map_data_written.json', 'w')
     f.write(string_data)
     return
 
- #{
- #       "code": "SCL",
- #       "name": "Santiago",
- #       "country": "CL",
- #       "continent": "South America",
- #       "timezone": -4,
- #       "coordinates": {
- #           "S": 33,
- #           "W": 71
- #       },
- #       "population": 6000000,
- #       "region": 1
- #   },
+
 
