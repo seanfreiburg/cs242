@@ -79,7 +79,7 @@ while (True):
     # @todo prints errors success
   elif(code=='18'):
     cities = view.route_menu()
-    route_return = utils.route_info(cities)
+    route_return = utils.route_info(g, cities)
     view.print_route_info(route_return)
   elif(code=='19'):
     print(utils.shortestPath(g,'CHI','TYO'))

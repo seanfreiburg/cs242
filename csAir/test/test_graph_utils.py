@@ -59,3 +59,6 @@ class TestGraphUtils(TestCase):
 
   def testDijkstra(self):
     pass
+
+  def testRouteDistance(self):
+    assert self.utils.route_distance(self.g, ['CHI', 'SFO', 'TYO']) == (8296+2994)

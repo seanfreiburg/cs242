@@ -173,13 +173,58 @@ class GraphUtils:
     f.write(string_data)
     return
 
-  def route_info(self, cities):
-    print(cities)
+  def route_distance(self, graph, cities):
     length = len(cities)
     i = 0
+    distance = []
     while i < length -1 :
-
+      node = graph.nodes.get(cities[i])
+      if node is None: return None
+      in_edge = False
+      for edge in node.edges:
+        if cities[i+1] == edge.destination:
+          in_edge = True
+          distance.append(edge.distance)
+          break
+      if not in_edge: return None
       i += 1
+    return distance
+
+  def route_cost(self, graph, cities, distance):
+    base = 0.35
+    cost = 0
+    while distance:
+      base = base - .05
+      if (base < 0):
+        base = 0.0
+      leg = distance.pop(0)
+      leg_cost = (base )*leg
+      cost += leg_cost
+    return cost
+
+  #CSAir operates a fleet of jets that all have a cruising speed of 750 kph. Each jet spends the first 200 kilometers
+  #of its flight uniformly accelerating from 0 kph to 750 kph, stays at 750 kph while it is cruising, and then
+  #decelerates uniformly from 750 kph to 0 kph during the last 200 kilometers of its flight. If a flight is less than
+  #400 kilometers in distance, the jet accelerates uniformly for the first half of the flight and decelerates uniformly
+  #for the second half of the flight. In addition, passengers will experience some layover time while waiting at
+  #airports for connecting flights. The schedule to determine the layover time works as follows. The airport with
+  #the least number of outbound flights (1) has a layover time of 2 hours. For airports with 2 outbound flights, the
+  #layover time is 1hr 50min. Continue subtracting 10 minutes for each additional outbound flight that CSAir has from
+  #an airport to calculate its layover time.
+
+  def route_time(self, graph,cities, distances):
+    time = 0
+    for leg in distances:
+      pass
+    return time
+
+  def route_info(self,graph,cities):
+    info = {}
+    info['distance'] = self.route_distance(graph,cities)
+    info['cost'] = self.route_cost(graph,cities,info['distance'])
+    info['time'] = self.route_time(graph,cities,info['distance'])
+    return info
+
 
   def dijkstra(self,graph,start,target=None):
     distances = dict()
@@ -191,7 +236,6 @@ class GraphUtils:
       distances[vertex] = queue[vertex]
       if vertex == target:
         break
-
       for edge in graph.nodes[vertex].edges:
         minLength = distances[vertex] + edge.distance
         if edge.destination in distances:
@@ -203,7 +247,7 @@ class GraphUtils:
     return (distances,predecessors)
 
   def shortestPath(self,graph,start,target):
-    distances,predecessors = self.dijkstra(graph,start,target)
+    _ , predecessors = self.dijkstra(graph,start,target)
     path = []
     while True:
       path.append(target)
@@ -211,6 +255,10 @@ class GraphUtils:
         break
       target = predecessors[target]
     path.reverse()
-    return path
+    return  path
+
+
+
+
 
 
