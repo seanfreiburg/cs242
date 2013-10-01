@@ -22,7 +22,6 @@ class Graph:
   # @param dst index of destination data
   def add_edge_to_node(self, route,src,dst):
     node = self.nodes.get(route['ports'][src])
-    print(route['ports'][src])
     node.add_edge(route['ports'][dst], route['distance'])
 
   # Adds all routes to the nodes

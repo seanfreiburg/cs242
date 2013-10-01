@@ -51,7 +51,7 @@ class View:
     print('Average flight distance:  ' + str(average_flight_distance))
 
   def print_population(self, population):
-    print('Biggest pop:  ' + population[0] + ' ' + str(population[1]) )
+    print('Pop:  ' + population[0] + ' ' + str(population[1]) )
 
   def print_population_number(self, population):
     print('Population:  ' + str(population))
@@ -63,8 +63,13 @@ class View:
         print(entry )
 
   def print_hub_cities(self, hubs):
+    i = 0
     for hub in hubs:
-      print(hub + ', ')
+      i += 1
+      if (i == len(hubs)):
+        print(hub)
+      else:
+        print(hub + ', ')
     print('\n')
 
   def print_cities(self, cities):
