@@ -1,6 +1,8 @@
 # coding=utf-8
 import json
 import sys
+from priQueue import *
+from copy import deepcopy
 
 __author__ = 'seanfreiburg'
 
@@ -172,7 +174,43 @@ class GraphUtils:
     return
 
   def route_info(self, cities):
-    pass
+    print(cities)
+    length = len(cities)
+    i = 0
+    while i < length -1 :
 
+      i += 1
+
+  def dijkstra(self,graph,start,target=None):
+    distances = dict()
+    predecessors =  dict()
+    queue = priorityDictionary()
+    queue[start] = 0
+
+    for vertex in queue:
+      distances[vertex] = queue[vertex]
+      if vertex == target:
+        break
+
+      for edge in graph.nodes[vertex].edges:
+        minLength = distances[vertex] + edge.distance
+        if edge.destination in distances:
+          pass
+        elif edge.destination not in queue or minLength < queue[edge.destination]:
+          queue[edge.destination] = minLength
+          predecessors[edge.destination] = vertex
+
+    return (distances,predecessors)
+
+  def shortestPath(self,graph,start,target):
+    distances,predecessors = self.dijkstra(graph,start,target)
+    path = []
+    while True:
+      path.append(target)
+      if target == start:
+        break
+      target = predecessors[target]
+    path.reverse()
+    return path
 
 

@@ -1,3 +1,5 @@
+import sys
+
 __author__ = 'seanfreiburg'
 from edge import *
 
@@ -14,7 +16,6 @@ class Node:
     self.population = metro['population']
     self.region = metro['region']
     self.edges = []
-    self.visited = False
 
   # Adds edge to the edges array
   # @param code - The city code in a string

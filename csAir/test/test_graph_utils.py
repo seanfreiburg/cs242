@@ -56,3 +56,6 @@ class TestGraphUtils(TestCase):
 
   def testHubs(self):
     assert self.utils.get_hub_cities(self.g) == ['IST', 'HKG']
+
+  def testDijkstra(self):
+    pass

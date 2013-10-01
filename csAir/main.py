@@ -81,6 +81,8 @@ while (True):
     cities = view.route_menu()
     route_return = utils.route_info(cities)
     view.print_route_info(route_return)
+  elif(code=='19'):
+    print(utils.shortestPath(g,'CHI','TYO'))
 
   else:
     view.print_error()
