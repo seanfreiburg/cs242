@@ -12,14 +12,18 @@ class TestGraphUtils(TestCase):
   def setUp(self):
     f = open('assets/data/map_data.json', 'r')
     decoded = json.loads(f.read())
-    self.g = graph.Graph(decoded['metros'], decoded['routes'])
+    self.g = graph.Graph( )
+    self.g.build_nodes( decoded['metros'])
+    self.g.build_edges( decoded['routes'])
     self.utils = GraphUtils()
 
   def testSave(self):
     self.utils.save_to_disk(self.g)
     f2 = open('assets/data/map_data_written.json', 'r')
     decoded = json.loads(f2.read())
-    self.g2 = graph.Graph(decoded['metros'], decoded['routes'])
+    self.g2 = graph.Graph()
+    self.g2.build_nodes( decoded['metros'])
+    self.g2.build_edges( decoded['routes'])
     self.utils = GraphUtils()
     assert (self.utils.longest_flight(self.g2) == ('SYD', 'LAX', 12051))
     assert (self.utils.shortest_flight(self.g2) == ('NYC', 'WAS', 334))
@@ -36,9 +40,8 @@ class TestGraphUtils(TestCase):
     assert (self.utils.shortest_flight(self.g) == ('NYC', 'WAS', 334))
 
   def testMapUrl(self):
-    #assert(self.utils.get_map_string(self.g) == 'PAR-ESS,+PAR-MIL,+MIL-ESS,+MIL-IST,+MIA-WAS,+CCU-HKG,+CCU-BKK,+LIM-MEX,+LIM-BOG,+ATL-WAS,+ATL-MIA,+PEK-ICN,+LON-NYC,+LON-ESS,+LON-PAR,+IST-BGW,+LOS-KRT,+LOS-FIH,+CAI-ALG,+CAI-IST,+CAI-BGW,+CAI-RUH,+DEL-CCU,+DEL-MAA,+DEL-BOM,+BOM-MAA,+BGW-THR,+BGW-KHI,+BGW-RUH,+NYC-YYZ,+BOG-MIA,+BOG-SAO,+BOG-BUE,+SCL-LIM,+SAO-MAD,+SAO-LOS,+SFO-CHI,+JKT-SYD,+BKK-HKG,+BKK-SGN,+BKK-JKT,+KHI-DEL,+KHI-BOM,+MNL-SFO,+MNL-SYD,+MNL-SGN,+SGN-JKT,+OSA-TPE,+HKG-SHA,+HKG-TPE,+HKG-MNL,+HKG-SGN,+BUE-SAO,+TPE-MNL,+ESS-LED,+ICN-TYO,+CHI-YYZ,+CHI-ATL,+THR-DEL,+THR-KHI,+THR-RUH,+KRT-CAI,+SHA-PEK,+SHA-ICN,+SHA-TYO,+SHA-TPE,+FIH-KRT,+FIH-JNB,+WAS-YYZ,+WAS-NYC,+RUH-KHI,+TYO-SFO,+TYO-OSA,+LED-MOW,+LED-IST,+SYD-LAX,+ALG-MAD,+ALG-PAR,+ALG-IST,+MOW-THR,+MOW-IST,+MAA-CCU,+MAA-BKK,+MAA-JKT,+JNB-KRT,+LAX-SFO,+LAX-CHI,+MAD-NYC,+MAD-LON,+MAD-PAR,+MEX-LAX,+MEX-CHI,+MEX-MIA,+MEX-BOG')
+    #assert(self.utils.get_map_string(self.g) == 'PAR-ALG,+PAR-MAD,+PAR-LON,+PAR-ESS,+PAR-MIL,+MIL-PAR,+MIL-ESS,+MIL-IST,+MIA-MEX,+MIA-BOG,+MIA-ATL,+MIA-WAS,+CCU-DEL,+CCU-MAA,+CCU-HKG,+CCU-BKK,+LIM-SCL,+LIM-MEX,+LIM-BOG,+ATL-CHI,+ATL-WAS,+ATL-MIA,+PEK-SHA,+PEK-ICN,+LON-MAD,+LON-NYC,+LON-ESS,+LON-PAR,+IST-CAI,+IST-ALG,+IST-MIL,+IST-LED,+IST-MOW,+IST-BGW,+LOS-SAO,+LOS-KRT,+LOS-FIH,+CAI-KRT,+CAI-ALG,+CAI-IST,+CAI-BGW,+CAI-RUH,+DEL-THR,+DEL-KHI,+DEL-CCU,+DEL-MAA,+DEL-BOM,+BOM-KHI,+BOM-DEL,+BOM-MAA,+BGW-CAI,+BGW-IST,+BGW-THR,+BGW-KHI,+BGW-RUH,+NYC-MAD,+NYC-LON,+NYC-WAS,+NYC-YYZ,+BOG-LIM,+BOG-MEX,+BOG-MIA,+BOG-SAO,+BOG-BUE,+SCL-LIM,+SAO-BOG,+SAO-BUE,+SAO-MAD,+SAO-LOS,+SFO-TYO,+SFO-MNL,+SFO-LAX,+SFO-CHI,+JKT-MAA,+JKT-BKK,+JKT-SGN,+JKT-SYD,+BKK-MAA,+BKK-CCU,+BKK-HKG,+BKK-SGN,+BKK-JKT,+KHI-BGW,+KHI-THR,+KHI-RUH,+KHI-DEL,+KHI-BOM,+MNL-HKG,+MNL-TPE,+MNL-SFO,+MNL-SYD,+MNL-SGN,+SGN-BKK,+SGN-HKG,+SGN-MNL,+SGN-JKT,+OSA-TYO,+OSA-TPE,+HKG-CCU,+HKG-BKK,+HKG-SHA,+HKG-TPE,+HKG-MNL,+HKG-SGN,+BUE-BOG,+BUE-SAO,+TPE-HKG,+TPE-SHA,+TPE-OSA,+TPE-MNL,+ESS-LON,+ESS-PAR,+ESS-MIL,+ESS-LED,+ICN-SHA,+ICN-PEK,+ICN-TYO,+CHI-MEX,+CHI-LAX,+CHI-SFO,+CHI-YYZ,+CHI-ATL,+THR-MOW,+THR-BGW,+THR-DEL,+THR-KHI,+THR-RUH,+KRT-LOS,+KRT-FIH,+KRT-JNB,+KRT-CAI,+SHA-HKG,+SHA-PEK,+SHA-ICN,+SHA-TYO,+SHA-TPE,+FIH-LOS,+FIH-KRT,+FIH-JNB,+WAS-ATL,+WAS-MIA,+WAS-YYZ,+WAS-NYC,+RUH-CAI,+RUH-BGW,+RUH-THR,+RUH-KHI,+TYO-SHA,+TYO-ICN,+TYO-SFO,+TYO-OSA,+LED-ESS,+LED-MOW,+LED-IST,+SYD-MNL,+SYD-JKT,+SYD-LAX,+ALG-CAI,+ALG-MAD,+ALG-PAR,+ALG-IST,+MOW-LED,+MOW-THR,+MOW-IST,+YYZ-CHI,+YYZ-WAS,+YYZ-NYC,+MAA-DEL,+MAA-BOM,+MAA-CCU,+MAA-BKK,+MAA-JKT,+JNB-FIH,+JNB-KRT,+LAX-MEX,+LAX-SYD,+LAX-SFO,+LAX-CHI,+MAD-SAO,+MAD-ALG,+MAD-NYC,+MAD-LON,+MAD-PAR,+MEX-LIM,+MEX-LAX,+MEX-CHI,+MEX-MIA,+MEX-BOG')
     pass
-
   def testAverageDist(self):
     assert (self.utils.average_distance(self.g) == 2300)
 
@@ -52,13 +55,15 @@ class TestGraphUtils(TestCase):
     assert self.utils.average_city(self.g) == 11796143
 
   def testContinents(self):
+    #assert self.utils.get_continents_and_cities(self.g)== {u'Europe': [u'Paris', u'Milan', u'London', u'Istanbul', u'Essen', u'St. Petersburg', u'Moscow', u'Madrid'], u'Australia': [u'Sydney'], u'Africa': [u'Lagos', u'Cairo', u'Khartoum', u'Kinshasa', u'Algiers', u'Johannesburg'], u'Asia': [u'Calcutta', u'Beijing', u'Delhi', u'Mumbai', u'Bagdad', u'Jakarta', u'Bangkok', u'Karachi', u'Manila', u'Ho Chi Minh City', u'Osaka', u'Hong Kong', u'Taipei', u'Seoul', u'Tehrah', u'Shanghai', u'Riyadh', u'Tokyo', u'Chennai'], u'North America': [u'Miami', u'Atlanta', u'New York', u'San Francisco', u'Chicago', u'Washington', u'Toronto', u'Los Angeles', u'Mexico City'], u'South America': [u'Lima', u'Bogota', u'Santiago', u'Sao Paulo', u'Buenos Aires']}
     pass
 
   def testHubs(self):
     assert self.utils.get_hub_cities(self.g) == ['IST', 'HKG']
 
-  def testDijkstra(self):
-    pass
+  def testShortestPath(self):
+    print(self.utils.shortestPath(self.g,'CHI', 'TYO'))
+    assert self.utils.shortestPath(self.g,'CHI', 'TYO') == ['CHI', 'SFO', 'TYO']
 
   def testRouteDistance(self):
-    assert self.utils.route_distance(self.g, ['CHI', 'SFO', 'TYO']) == (8296+2994)
+    assert sum(self.utils.route_distance(self.g, ['CHI', 'SFO', 'TYO'])) == (8296+2994)

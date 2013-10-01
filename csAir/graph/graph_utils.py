@@ -1,4 +1,5 @@
 # coding=utf-8
+from cmath import sqrt
 import json
 import sys
 from priQueue import *
@@ -177,7 +178,7 @@ class GraphUtils:
     length = len(cities)
     i = 0
     distance = []
-    while i < length -1 :
+    while i < length -1:
       node = graph.nodes.get(cities[i])
       if node is None: return None
       in_edge = False
@@ -193,29 +194,36 @@ class GraphUtils:
   def route_cost(self, graph, cities, distance):
     base = 0.35
     cost = 0
-    while distance:
+    dist = list(distance)
+    while dist:
       base = base - .05
       if (base < 0):
         base = 0.0
-      leg = distance.pop(0)
+      leg = dist.pop(0)
       leg_cost = (base )*leg
       cost += leg_cost
     return cost
 
-  #CSAir operates a fleet of jets that all have a cruising speed of 750 kph. Each jet spends the first 200 kilometers
-  #of its flight uniformly accelerating from 0 kph to 750 kph, stays at 750 kph while it is cruising, and then
-  #decelerates uniformly from 750 kph to 0 kph during the last 200 kilometers of its flight. If a flight is less than
-  #400 kilometers in distance, the jet accelerates uniformly for the first half of the flight and decelerates uniformly
-  #for the second half of the flight. In addition, passengers will experience some layover time while waiting at
-  #airports for connecting flights. The schedule to determine the layover time works as follows. The airport with
-  #the least number of outbound flights (1) has a layover time of 2 hours. For airports with 2 outbound flights, the
-  #layover time is 1hr 50min. Continue subtracting 10 minutes for each additional outbound flight that CSAir has from
-  #an airport to calculate its layover time.
 
   def route_time(self, graph,cities, distances):
     time = 0
+    i = 1
+    a= 1406
+    vf  =  750
     for leg in distances:
-      pass
+      starting = leg/2
+      if starting > 200:
+        starting =  200
+        slowing = 200
+        cruising = leg - starting - slowing
+        time += 750/1406 + cruising/(750/2) + 750/1406
+      else:
+        time += 2*(sqrt((2*starting)/a))
+      if (len(distances) != i):
+        layover_time = 2 - 1/6*(len(graph.nodes[cities[i-1]].edges))
+        if (layover_time < 0): layover_time = 0
+        time += layover_time
+      i += 1
     return time
 
   def route_info(self,graph,cities):

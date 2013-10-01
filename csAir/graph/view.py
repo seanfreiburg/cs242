@@ -151,6 +151,8 @@ class View:
     return cities.split(',')
 
   def print_route_info(self, route_return):
-    pass
+    print('Total Distance: ' + str(sum(route_return['distance'])))
+    print('Cost: ' + str(route_return['cost']))
+    print('Time in Hours: ' + str(route_return['time']))
 
 

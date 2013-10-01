@@ -8,9 +8,13 @@ from graph.view import View
 import json
 
 view = View()
-f = open('assets/data/map_data.json', 'r')
-decoded = json.loads(f.read())
-g = Graph(decoded['metros'], decoded['routes'])
+files = ['assets/data/map_data.json','assets/data/cmi_hub.json' ]
+g = Graph()
+for file in files:
+  f = open(file, 'r')
+  decoded = json.loads(f.read())
+  g.build_nodes( decoded['metros'])
+  g.build_edges( decoded['routes'])
 utils = GraphUtils()
 
 while (True):

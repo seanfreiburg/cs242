@@ -5,15 +5,14 @@ import sys
 
 # Holds query functions and nodes
 class Graph:
-  def __init__(self, metros, routes):
+
+  def __init__(self):
     self.nodes = dict()
-    self.build_nodes(self, metros)
-    self.build_edges(self, routes)
 
 
   # Adds all nodes from data set
   # @param metros The array from the json encoding
-  def build_nodes(self, _, metros):
+  def build_nodes(self, metros):
     for metro in metros:
       self.nodes[metro['code']] = Node(metro)
 
@@ -23,14 +22,14 @@ class Graph:
   # @param dst index of destination data
   def add_edge_to_node(self, route,src,dst):
     node = self.nodes.get(route['ports'][src])
+    print(route['ports'][src])
     node.add_edge(route['ports'][dst], route['distance'])
 
   # Adds all routes to the nodes
   # @param routes route array from json
-  def build_edges(self, _, routes):
+  def build_edges(self, routes):
     for route in routes:
       self.add_edge_to_node(route,0,1)
-      self.add_edge_to_node(route,1,0)
 
   # returns node based on code
   # @param code string of city code
