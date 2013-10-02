@@ -19,7 +19,7 @@ view.print_menu()
 while (True):
   view.print_prompt_user()
   code = raw_input()
-  if (code == '0'):
+  if (code == '0' or code == 'exit'):
     exit(0)
   elif (code == '1'):
     #@todo fix this
@@ -56,25 +56,25 @@ while (True):
     view.print_cities(cities)
   elif (code == '12'):
     # add a city
-    data = view.add_city_menu(g)
+    data = view.add_city_menu()
     g.add_node(data)
   elif (code == '13'):
-    data = view.add_route_menu(g)
+    data = view.add_route_menu()
     g.add_route(data['src'], data['dst'], data['distance'])
     # add a route
     pass
   elif (code == '14'):
     # remove a city
-    code = view.remove_city_menu(g)
+    code = view.remove_city_menu()
     g.remove_node(code)
   elif (code == '15'):
     # remove a route
-    data = view.remove_route_menu(g)
+    data = view.remove_route_menu()
     g.remove_route(data['src'], data['dst'])
 
   elif (code == '16'):
     # edit a city
-    data = view.edit_city_menu(g)
+    data = view.edit_city_menu()
     g.edit_node(data)
 
   elif (code == '17'):

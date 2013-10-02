@@ -82,7 +82,7 @@ class View:
     print("I'm sorry, Dave, I'm afraid I can't do that.")
     #os.system("say \"I'm sorry, Dave, I'm afraid I can't do that.\"")
 
-  def add_city_menu(self,graph):
+  def add_city_menu(self):
 
     data = dict()
     print('Enter City Code: \n')
@@ -101,7 +101,7 @@ class View:
     data['population'] = raw_input()
     print('Enter Region: \n')
     data['region'] = raw_input()
-    return
+    return data
 
 
   def add_route_menu(self):
@@ -115,14 +115,14 @@ class View:
     return data
 
 
-  def remove_city_menu(self,graph):
+  def remove_city_menu(self):
     print('Enter city code to remove')
     code = raw_input()
 
     return code
 
 
-  def remove_route_menu(self,graph):
+  def remove_route_menu(self):
     print('Enter source city code: \n')
     src = raw_input()
     print('Enter destination code: \n')
@@ -130,7 +130,7 @@ class View:
     return {'src': src, 'dst': dst}
 
 
-  def edit_city_menu(self,graph):
+  def edit_city_menu(self):
     data = dict()
     print('Enter City Code: \n')
     data['code'] = raw_input()

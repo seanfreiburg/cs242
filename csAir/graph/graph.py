@@ -40,7 +40,7 @@ class Graph:
     for key, node in self.nodes.iteritems():
       node.visited = False
 
-  def add_node(self, _ , data):
+  def add_node(self, data):
     if( not self.nodes.get(data['code'])):
       self.nodes[data['code']] = Node(data)
 
@@ -50,11 +50,11 @@ class Graph:
       self.remove_edges(code)
 
   def remove_edges(self,code):
-    for code,node in self.nodes.iteritems():
+    for key,node in self.nodes.iteritems():
       i = 0
       for edge in node.edges:
         if (edge.destination == code):
-          node.edges[i].pop()
+          node.edges.pop(i)
         i += 1
 
   def remove_route(self,src,dst):
@@ -63,7 +63,7 @@ class Graph:
       i =0
       for edge in node.edges:
         if edge.destination == dst:
-          node.edges[i].pop()
+          node.edges.pop(i)
         i +=1
 
   def add_route(self,src,dst,distance):
