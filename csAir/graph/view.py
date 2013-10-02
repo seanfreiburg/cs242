@@ -12,7 +12,9 @@ class View:
     print("\nEnter a number for query\n[0] exit\n[1] city info\n"
           "[2] longest flight\n[3] shortest flight\n[4] graph url\n[5] average flight distance \n["
           "6] Biggest pop\n[7] Smallest pop\n[8] Average pop\n[9] Continents and cities\n"
-          "[10] Hub cities\n[11] List all cities")
+          "[10] Hub cities\n[11] List all cities\n[12] Add a city\n[13] Add Route\n[14]"
+          " Remove city\n[15] Remove route\n[16] Edit city\n[17] Save to disk\n[18] Route Info\n"
+          "[19] Shortest Path\n[20] View Menu")
 
   # this is bad
   def print_city_info(self, graph, code):
@@ -99,26 +101,25 @@ class View:
     data['population'] = raw_input()
     print('Enter Region: \n')
     data['region'] = raw_input()
-    graph.add_node(data)
     return
 
 
-  def add_route_menu(self,graph):
+  def add_route_menu(self):
+    data = dict()
     print('Enter source city code: \n')
-    src = raw_input()
+    data['src'] = raw_input()
     print('Enter destination code: \n')
-    dst = raw_input()
+    data['dst'] = raw_input()
     print('Enter distance: \n')
-    distance = raw_input()
-    graph.add_route(src, dst, distance)
-    return
+    data['distance'] = raw_input()
+    return data
 
 
   def remove_city_menu(self,graph):
     print('Enter city code to remove')
     code = raw_input()
-    graph.remove_node(code)
-    return
+
+    return code
 
 
   def remove_route_menu(self,graph):
@@ -159,5 +160,13 @@ class View:
     print('Total Distance: ' + str(sum(route_return['distance'])))
     print('Cost: ' + str(route_return['cost']))
     print('Time in Hours: ' + str(route_return['time']))
+
+  def print_route(self, route):
+    for stop in route:
+      print(stop + " "),
+    print('\n')
+
+  def print_prompt_user(self):
+    print('Enter a menu code: ')
 
 

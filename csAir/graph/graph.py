@@ -40,7 +40,7 @@ class Graph:
     for key, node in self.nodes.iteritems():
       node.visited = False
 
-  def add_node(self,data):
+  def add_node(self, _ , data):
     if( not self.nodes.get(data['code'])):
       self.nodes[data['code']] = Node(data)
 

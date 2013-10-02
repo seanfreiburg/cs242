@@ -1,24 +1,23 @@
 # Main console execution path
 __author__ = 'seanfreiburg'
 
-
 from graph.graph import Graph
 from graph.graph_utils import GraphUtils
 from graph.view import View
 import json
 
 view = View()
-files = ['assets/data/map_data.json','assets/data/cmi_hub.json' ]
+files = ['assets/data/map_data.json', 'assets/data/cmi_hub.json']
 g = Graph()
 for file in files:
   f = open(file, 'r')
   decoded = json.loads(f.read())
-  g.build_nodes( decoded['metros'])
-  g.build_edges( decoded['routes'])
+  g.build_nodes(decoded['metros'])
+  g.build_edges(decoded['routes'])
 utils = GraphUtils()
-
+view.print_menu()
 while (True):
-  view.print_menu()
+  view.print_prompt_user()
   code = raw_input()
   if (code == '0'):
     exit(0)
@@ -31,62 +30,67 @@ while (True):
   elif (code == '3'):
     shortest_flight = utils.shortest_flight(g)
     view.print_flight(shortest_flight)
-  elif(code=='4'):
+  elif (code == '4'):
     map_string = utils.get_map_string(g)
     view.display_map(map_string)
-  elif(code=='5'):
+  elif (code == '5'):
     average_flight_distance = utils.average_distance(g)
     view.print_average_flight_distance(average_flight_distance)
-  elif(code=='6'):
+  elif (code == '6'):
     largest_population = utils.biggest_city(g)
     view.print_population(largest_population)
-  elif(code=='7'):
+  elif (code == '7'):
     smallest_population = utils.smallest_city(g)
     view.print_population(smallest_population)
-  elif(code=='8'):
+  elif (code == '8'):
     average_population = utils.average_city(g)
     view.print_population_number(average_population)
-  elif(code=='9'):
+  elif (code == '9'):
     continents_dict = utils.get_continents_and_cities(g)
     view.print_continents_and_cities(continents_dict)
-  elif(code=='10'):
+  elif (code == '10'):
     hubs = utils.get_hub_cities(g)
     view.print_hub_cities(hubs)
-  elif(code=='11'):
+  elif (code == '11'):
     cities = utils.get_cities(g)
     view.print_cities(cities)
-  elif(code=='12'):
+  elif (code == '12'):
     # add a city
-    view.add_city_menu(g) #@todo fix
-    pass
-  elif(code=='13'):
-    view.add_route_menu(g) #@todo fix
+    data = view.add_city_menu(g)
+    g.add_node(data)
+  elif (code == '13'):
+    data = view.add_route_menu(g)
+    g.add_route(data['src'], data['dst'], data['distance'])
     # add a route
     pass
-  elif(code=='14'):
+  elif (code == '14'):
     # remove a city
-    view.remove_city_menu(g) # @todo fix
-    pass
-  elif(code=='15'):
+    code = view.remove_city_menu(g)
+    g.remove_node(code)
+  elif (code == '15'):
     # remove a route
-    data =view.remove_route_menu(g)
+    data = view.remove_route_menu(g)
     g.remove_route(data['src'], data['dst'])
-    pass
-  elif(code=='16'):
+
+  elif (code == '16'):
     # edit a city
     data = view.edit_city_menu(g)
     g.edit_node(data)
-    pass
-  elif(code=='17'):
+
+  elif (code == '17'):
     # save to disk
     utils.save_to_disk(g)
     # @todo prints errors success
-  elif(code=='18'):
+  elif (code == '18'):
     cities = view.route_menu()
     route_return = utils.route_info(g, cities)
     view.print_route_info(route_return)
-  elif(code=='19'):
-    print(utils.shortestPath(g,'CHI','TYO'))
+  elif (code == '19'):
+    cities = view.route_menu()
+    route = utils.shortestPath(g, cities[0], cities[1])
+    view.print_route(route)
+  elif (code == '20'):
+    view.print_menu()
 
   else:
     view.print_error()
