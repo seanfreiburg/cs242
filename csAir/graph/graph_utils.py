@@ -205,7 +205,7 @@ class GraphUtils:
       else:
         time += sqrt((2.0 * starting)/a)*2.0
       if (len(distances) != i):
-        layover_time = 2.0 - ((1.0 / 6.0) * (len(graph.nodes[cities[i - 1]].edges) -1))
+        layover_time = 2.0 - ((1.0 / 6.0) * (len(graph.nodes[cities[i]].edges) -1))
         if (layover_time < 0.0): layover_time = 0.0
         time += layover_time
       i += 1
