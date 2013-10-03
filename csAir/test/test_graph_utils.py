@@ -50,9 +50,11 @@ class TestGraphUtils(TestCase):
 
   def testAverageDist(self):
     assert (self.utils.average_distance(self.g) == 2300)
+    assert (self.utils.average_distance(self.gSmall) == (2453+24530)/2)
 
   def testBiggestPop(self):
     assert self.utils.biggest_city(self.g) == ('TYO', 34000000)
+    assert self.utils.biggest_city(self.gSmall) == ('MEX', 23400000)
 
   def testSmallestPop(self):
     assert self.utils.smallest_city(self.g) == ( 'ESS', 589900)

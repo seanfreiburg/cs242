@@ -34,19 +34,21 @@ class Graph:
   def get_node_from_code(self, code):
     return self.nodes.get(code)
 
-  def reset_visited_nodes(self):
-    for key, node in self.nodes.iteritems():
-      node.visited = False
-
+  # add a node to the graph
+  # @param data - dictionary of data to be added
   def add_node(self, data):
     if ( not self.nodes.get(data['code'])):
       self.nodes[data['code']] = Node(data)
 
+  # removes a node and it's edges from the graph
+  # @param code - the code of the node you want deleted
   def remove_node(self, code):
     if (self.nodes.get(code)):
       self.nodes.pop(code)
       self.remove_edges(code)
 
+  # removes all edges in other nodes references the code
+  # @param code - the code of the node you want deleted
   def remove_edges(self, code):
     for key, node in self.nodes.iteritems():
       i = 0
@@ -55,6 +57,9 @@ class Graph:
           node.edges.pop(i)
         i += 1
 
+  # removes a route from the graph
+  # @param src - staring node code
+  # @param dst - ending node code
   def remove_route(self, src, dst):
     node = self.nodes.get(src)
     if node is not None:
@@ -64,11 +69,17 @@ class Graph:
           node.edges.pop(i)
         i += 1
 
+  # adds a route from the graph
+  # @param staring node code
+  # @param ending node code
+  # @param distance - int of distance of route
   def add_route(self, src, dst, distance):
     node = self.nodes.get(src)
     if node is not Node:
       node.add_edge(dst, distance)
 
+  # wrapper around node edit
+  # @param data - dictionary of data to be put in the edit
   def edit_node(self, data):
     node = self.nodes.get(data['code'])
     if node is not None:

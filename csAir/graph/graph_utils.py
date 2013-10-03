@@ -176,7 +176,7 @@ class GraphUtils:
     return distance
 
   def route_cost(self, graph, cities, distances):
-    if distances == None: return 0
+    if distances is None: return 0
     base = 0.40
     cost = 0
     dist = list(distances)
@@ -189,7 +189,7 @@ class GraphUtils:
       cost += leg_cost
     return cost
 
-
+  
   def route_time(self, graph, cities, distances):
     time = 0.0
     i = 1
@@ -210,6 +210,10 @@ class GraphUtils:
       i += 1
     return time
 
+  # finds info on a route
+  # @param graph
+  # @param list of city codes
+  # @return dictionary of info
   def route_info(self, graph, cities):
     info = {}
     info['distance'] = self.route_distance(graph, cities)
@@ -217,7 +221,13 @@ class GraphUtils:
     info['time'] = self.route_time(graph, cities, info['distance'])
     return info
 
-
+  # implements dijkstras algorithm
+  # @param graph
+  # @param start - stating node code
+  # @param target - ending node code
+  # @return if target defined - a list of codes of the path
+  # @return else - a list of all shortest paths from the starting node
+  # Cite: David Eppstein for his priQueue and idea on algorithm
   def dijkstra(self, graph, start, target=None):
     distances = dict()
     predecessors = dict()
@@ -235,10 +245,15 @@ class GraphUtils:
         elif edge.destination not in queue or minLength < queue[edge.destination]:
           queue[edge.destination] = minLength
           predecessors[edge.destination] = vertex
-    return (distances, predecessors)
+    return predecessors
 
+  # finds shortest path between 2 nodes
+  # @param graph
+  # @param start - stating node code
+  # @param target - ending node code
+  # @return list of codes of the path
   def shortestPath(self, graph, start, target):
-    _, predecessors = self.dijkstra(graph, start, target)
+    predecessors = self.dijkstra(graph, start, target)
     path = []
     while True:
       path.append(target)
