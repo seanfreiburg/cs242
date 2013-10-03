@@ -98,7 +98,7 @@ class View:
     print('Enter Coordinates: \n')
     data['coordinates'] = raw_input()
     print('Enter Population: \n')
-    data['population'] = raw_input()
+    data['population'] = get_positive_number()
     print('Enter Region: \n')
     data['region'] = raw_input()
     return data
@@ -111,7 +111,7 @@ class View:
     print('Enter destination code: \n')
     data['dst'] = raw_input()
     print('Enter distance: \n')
-    data['distance'] = raw_input()
+    data['distance'] = get_positive_number()
     return data
 
 
@@ -145,7 +145,7 @@ class View:
     print('Enter Coordinates: \n')
     data['coordinates'] = raw_input()
     print('Enter Population: \n')
-    data['population'] = raw_input()
+    data['population'] = get_positive_number()
     print('Enter Region: \n')
     data['region'] = raw_input()
 
@@ -169,4 +169,12 @@ class View:
   def print_prompt_user(self):
     print('Enter a menu code: ')
 
+
+def get_positive_number():
+  num = -1
+  while num < 0:
+    num = int(raw_input())
+    if (num < 0):
+      print('Please enter a positive number: \n')
+  return num
 

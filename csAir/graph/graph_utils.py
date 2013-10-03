@@ -29,10 +29,10 @@ class GraphUtils:
 
     return (start, end, max_distance)
 
-  '''
-  the shortest single flight in the network
-  @return a triple of start code, end code, and distance
-  '''
+  #
+  #the shortest single flight in the network
+  #@return a triple of start code, end code, and distance
+  #
 
   def shortest_flight(self, graph):
 
@@ -236,7 +236,6 @@ class GraphUtils:
         elif edge.destination not in queue or minLength < queue[edge.destination]:
           queue[edge.destination] = minLength
           predecessors[edge.destination] = vertex
-
     return (distances, predecessors)
 
   def shortestPath(self, graph, start, target):
