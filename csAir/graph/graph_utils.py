@@ -195,10 +195,11 @@ class GraphUtils:
     i = 1
     a = 1406.25
     vf = 750.0
+    accelerating_distance = 200.0
     for leg in distances:
       starting = leg / 2.0
-      if starting > 200.0:
-        starting = 200.0
+      if starting > accelerating_distance:
+        starting = accelerating_distance 
         cruising = leg - 2 * starting
         time += 2 * (vf / a) + (cruising / (vf))
       else:
