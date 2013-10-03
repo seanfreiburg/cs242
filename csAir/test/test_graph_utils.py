@@ -15,6 +15,12 @@ class TestGraphUtils(TestCase):
     self.g.build_edges(decoded['routes'])
     self.utils = GraphUtils()
 
+    f = open('assets/data/test1_map_data.json', 'r')
+    decoded = json.loads(f.read())
+    self.gSmall = graph.Graph()
+    self.gSmall.build_nodes(decoded['metros'])
+    self.gSmall.build_edges(decoded['routes'])
+
   def testSave(self):
     self.utils.save_to_disk(self.g)
     f2 = open('assets/data/map_data_written.json', 'r')
@@ -32,9 +38,11 @@ class TestGraphUtils(TestCase):
 
   def testLongestFlight(self):
     assert (self.utils.longest_flight(self.g) == ('SYD', 'LAX', 12051))
+    assert (self.utils.longest_flight(self.gSmall) == ('MEX', 'LIM', 24530))
 
   def testShortestFlight(self):
     assert (self.utils.shortest_flight(self.g) == ('NYC', 'WAS', 334))
+    assert (self.utils.shortest_flight(self.gSmall) == ('SCL', 'LIM', 2453))
 
   def testMapUrl(self):
     assert (self.utils.get_map_string(
