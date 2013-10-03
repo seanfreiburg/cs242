@@ -91,6 +91,7 @@ class Controller:
       elif (code == '17'):
         # save to disk
         utils.save_to_disk(g)
+        v.print_success()
         # @todo prints errors success
       elif (code == '18'):
         cities = v.route_menu()

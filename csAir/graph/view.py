@@ -168,6 +168,9 @@ class View:
   def print_prompt_user(self):
     print('Enter a menu code: ')
 
+  def print_success(self):
+    print('Saved\n')
+
 
 def get_positive_number():
   num = -1
