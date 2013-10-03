@@ -1,7 +1,6 @@
 __author__ = 'seanfreiburg'
 
 import webbrowser
-import os
 
 
 class View:

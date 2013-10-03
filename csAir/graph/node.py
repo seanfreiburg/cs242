@@ -1,5 +1,3 @@
-import sys
-
 __author__ = 'seanfreiburg'
 from edge import *
 
@@ -32,7 +30,7 @@ class Node:
       destinations.append(edge.destination)
     return destinations
 
-  def edit(self,data):
+  def edit(self, data):
     self.code = data['code']
     self.name = data['name']
     self.country = data['country']

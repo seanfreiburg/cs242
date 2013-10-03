@@ -1,11 +1,9 @@
 # coding=utf-8
 __author__ = 'seanfreiburg'
-from node import *
-import sys
+from node import Node
 
 # Holds query functions and nodes
 class Graph:
-
   def __init__(self):
     self.nodes = dict()
 
@@ -20,7 +18,7 @@ class Graph:
   # @param route route array from json
   # @param src index of source data
   # @param dst index of destination data
-  def add_edge_to_node(self, route,src,dst):
+  def add_edge_to_node(self, route, src, dst):
     node = self.nodes.get(route['ports'][src])
     node.add_edge(route['ports'][dst], route['distance'])
 
@@ -28,7 +26,7 @@ class Graph:
   # @param routes route array from json
   def build_edges(self, routes):
     for route in routes:
-      self.add_edge_to_node(route,0,1)
+      self.add_edge_to_node(route, 0, 1)
 
   # returns node based on code
   # @param code string of city code
@@ -41,37 +39,37 @@ class Graph:
       node.visited = False
 
   def add_node(self, data):
-    if( not self.nodes.get(data['code'])):
+    if ( not self.nodes.get(data['code'])):
       self.nodes[data['code']] = Node(data)
 
-  def remove_node(self,code):
+  def remove_node(self, code):
     if (self.nodes.get(code)):
       self.nodes.pop(code)
       self.remove_edges(code)
 
-  def remove_edges(self,code):
-    for key,node in self.nodes.iteritems():
+  def remove_edges(self, code):
+    for key, node in self.nodes.iteritems():
       i = 0
       for edge in node.edges:
         if (edge.destination == code):
           node.edges.pop(i)
         i += 1
 
-  def remove_route(self,src,dst):
+  def remove_route(self, src, dst):
     node = self.nodes.get(src)
     if node is not None:
-      i =0
+      i = 0
       for edge in node.edges:
         if edge.destination == dst:
           node.edges.pop(i)
-        i +=1
+        i += 1
 
-  def add_route(self,src,dst,distance):
-    node = self.nodes.get(src )
+  def add_route(self, src, dst, distance):
+    node = self.nodes.get(src)
     if node is not Node:
-      node.add_edge(dst,distance)
+      node.add_edge(dst, distance)
 
-  def edit_node(self,data):
+  def edit_node(self, data):
     node = self.nodes.get(data['code'])
     if node is not None:
       node.edit(data)
