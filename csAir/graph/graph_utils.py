@@ -2,7 +2,7 @@
 from cmath import sqrt
 import json
 import sys
-from priQueue import *
+from priQueue import priorityDictionary
 
 __author__ = 'seanfreiburg'
 

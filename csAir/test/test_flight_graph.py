@@ -2,7 +2,8 @@ from unittest import TestCase
 from graph.graph_utils import GraphUtils
 
 __author__ = 'seanfreiburg'
-from graph import graph
+from graph.graph import Graph
+from graph.edge import Edge
 import json
 
 
@@ -10,7 +11,7 @@ class TestFlightGraph(TestCase):
   def setUp(self):
     f = open('assets/data/map_data.json', 'r')
     decoded = json.loads(f.read())
-    self.g = graph.Graph()
+    self.g = Graph()
     self.g.build_nodes(decoded['metros'])
     self.g.build_edges(decoded['routes'])
     self.utils = GraphUtils()
@@ -31,7 +32,7 @@ class TestFlightGraph(TestCase):
   def testAddRoute(self):
     self.g.add_route('TYO', 'YYZ', 2000)
     node = self.g.get_node_from_code('TYO')
-    e = graph.Edge('YYZ', 2000)
+    e = Edge('YYZ', 2000)
     bool = False
     for edge in node.edges:
       if e.destination == edge.destination and e.distance == edge.distance:
@@ -43,7 +44,7 @@ class TestFlightGraph(TestCase):
     self.g.add_route('TYO', 'YYZ', 2000)
     self.g.remove_route('TYO', 'YYZ')
     node = self.g.get_node_from_code('TYO')
-    e = graph.Edge('YYZ', 2000)
+    e = Edge('YYZ', 2000)
     bool = False
     for edge in node.edges:
       if e.destination == edge.destination and e.distance == edge.distance:
