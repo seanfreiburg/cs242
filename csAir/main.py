@@ -89,6 +89,8 @@ while (True):
     cities = view.route_menu()
     route = utils.shortestPath(g, cities[0], cities[1])
     view.print_route(route)
+    route_return = utils.route_info(g, route)
+    view.print_route_info(route_return)
   elif (code == '20'):
     view.print_menu()
 

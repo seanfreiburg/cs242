@@ -176,11 +176,11 @@ class GraphUtils:
       i += 1
     return distance
 
-  def route_cost(self, graph, cities, distance):
-    if distance == None: return 0
-    base = 0.35
+  def route_cost(self, graph, cities, distances):
+    if distances == None: return 0
+    base = 0.40
     cost = 0
-    dist = list(distance)
+    dist = list(distances)
     while dist:
       base = base - .05
       if (base < 0):
@@ -192,22 +192,21 @@ class GraphUtils:
 
 
   def route_time(self, graph, cities, distances):
-    time = 0
+    time = 0.0
     i = 1
-    a = 1406
-    vf = 750
+    a = 1406.25
+    vf = 750.0
     for leg in distances:
-      starting = leg / 2
-      if starting > 200:
-        starting = 200
-        slowing = 200
-        cruising = leg - starting - slowing
-        time += 750 / 1406 + cruising / (750 / 2) + 750 / 1406
+      starting = leg / 2.0
+      if starting > 200.0:
+        starting = 200.0
+        cruising = leg - 2*starting
+        time += 2*(vf / a) + (cruising / (vf / 2.0))
       else:
-        time += 2 * (sqrt((2 * starting) / a))
+        time += 2.0 * (sqrt((2.0 * starting) / a))
       if (len(distances) != i):
-        layover_time = 2 - 1 / 6 * (len(graph.nodes[cities[i - 1]].edges))
-        if (layover_time < 0): layover_time = 0
+        layover_time = 2.0 - ((1.0 / 6.0) * (len(graph.nodes[cities[i - 1]].edges)))
+        if (layover_time < 0.0): layover_time = 0.0
         time += layover_time
       i += 1
     return time
