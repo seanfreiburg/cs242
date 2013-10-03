@@ -201,11 +201,11 @@ class GraphUtils:
       if starting > 200.0:
         starting = 200.0
         cruising = leg - 2*starting
-        time += 2*(vf / a) + (cruising / (vf / 2.0))
+        time += 2*(vf / a) + (cruising / (vf))
       else:
-        time += 2.0 * (sqrt((2.0 * starting) / a))
+        time += sqrt((2.0 * starting)/a)*2.0
       if (len(distances) != i):
-        layover_time = 2.0 - ((1.0 / 6.0) * (len(graph.nodes[cities[i - 1]].edges)))
+        layover_time = 2.0 - ((1.0 / 6.0) * (len(graph.nodes[cities[i - 1]].edges) -1))
         if (layover_time < 0.0): layover_time = 0.0
         time += layover_time
       i += 1
