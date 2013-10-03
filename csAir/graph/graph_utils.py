@@ -189,7 +189,7 @@ class GraphUtils:
       cost += leg_cost
     return cost
 
-  
+
   def route_time(self, graph, cities, distances):
     time = 0.0
     i = 1

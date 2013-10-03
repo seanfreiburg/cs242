@@ -50,7 +50,7 @@ class TestGraphUtils(TestCase):
 
   def testAverageDist(self):
     assert (self.utils.average_distance(self.g) == 2300)
-    assert (self.utils.average_distance(self.gSmall) == (2453+24530)/2)
+    assert (self.utils.average_distance(self.gSmall) == (2453 + (24530 * 2)) / 3)
 
   def testBiggestPop(self):
     assert self.utils.biggest_city(self.g) == ('TYO', 34000000)
@@ -58,20 +58,22 @@ class TestGraphUtils(TestCase):
 
   def testSmallestPop(self):
     assert self.utils.smallest_city(self.g) == ( 'ESS', 589900)
+    assert self.utils.smallest_city(self.gSmall) == ( 'SCL', 6000000)
 
   def testAveragePop(self):
     assert self.utils.average_city(self.g) == 11796143
+    assert self.utils.average_city(self.gSmall) == (6000000+23400000+9050000)/3
 
   def testContinents(self):
     assert self.utils.get_continents_and_cities(self.g) == {
-    u'Europe': [u'Paris', u'Milan', u'London', u'Istanbul', u'Essen', u'St. Petersburg', u'Moscow', u'Madrid'],
-    u'Australia': [u'Sydney'], u'Africa': [u'Lagos', u'Cairo', u'Johannesburg', u'Khartoum', u'Kinshasa', u'Algiers'],
-    u'Asia': [u'Beijing', u'Delhi', u'Mumbai', u'Bagdad', u'Karachi', u'Jakarta', u'Bangkok', u'Calcutta', u'Manila',
-              u'Ho Chi Minh City', u'Osaka', u'Hong Kong', u'Taipei', u'Seoul', u'Tehrah', u'Shanghai', u'Riyadh',
-              u'Tokyo', u'Chennai'],
-    u'North America': [u'Miami', u'Atlanta', u'New York', u'Chicago', u'Washington', u'Toronto', u'San Francisco',
-                       u'Los Angeles', u'Mexico City'],
-    u'South America': [u'Lima', u'Bogota', u'Santiago', u'Sao Paulo', u'Buenos Aires']}
+      u'Europe': [u'Paris', u'Milan', u'London', u'Istanbul', u'Essen', u'St. Petersburg', u'Moscow', u'Madrid'],
+      u'Australia': [u'Sydney'], u'Africa': [u'Lagos', u'Cairo', u'Johannesburg', u'Khartoum', u'Kinshasa', u'Algiers'],
+      u'Asia': [u'Beijing', u'Delhi', u'Mumbai', u'Bagdad', u'Karachi', u'Jakarta', u'Bangkok', u'Calcutta', u'Manila',
+                u'Ho Chi Minh City', u'Osaka', u'Hong Kong', u'Taipei', u'Seoul', u'Tehrah', u'Shanghai', u'Riyadh',
+                u'Tokyo', u'Chennai'],
+      u'North America': [u'Miami', u'Atlanta', u'New York', u'Chicago', u'Washington', u'Toronto', u'San Francisco',
+                         u'Los Angeles', u'Mexico City'],
+      u'South America': [u'Lima', u'Bogota', u'Santiago', u'Sao Paulo', u'Buenos Aires']}
 
   def testHubs(self):
     assert self.utils.get_hub_cities(self.g) == ['IST', 'HKG']
@@ -85,4 +87,5 @@ class TestGraphUtils(TestCase):
 
   def testShortestPath(self):
     assert (self.utils.shortestPath(self.g, 'CHI', 'TYO') == ['CHI', 'SFO', 'TYO'])
+    assert (self.utils.shortestPath(self.gSmall, 'SCL', 'MEX') == ['SCL', 'LIM', 'MEX'])
 

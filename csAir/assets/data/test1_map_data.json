@@ -42,6 +42,10 @@
 		{
 			"ports" : ["MEX" , "LIM"] ,
 			"distance" : 24530
+		},
+		{
+			"ports" : ["LIM" , "MEX"] ,
+			"distance" : 24530
 		}
 	]
 
