@@ -12,8 +12,7 @@
     $suffix = strrev($suffix);
 
     //select the folder where class should be located based on suffix
-    switch (strtolower($suffix))
-    {
+    switch (strtolower($suffix)) {
       case 'model':
 
         $folder = '/models/';
@@ -34,18 +33,14 @@
 
     //compose file name
 
-      $file = SERVER_ROOT . $folder . strtolower($filename) . '.php';
-
+    $file = SERVER_ROOT . $folder . strtolower($filename) . '.php';
 
 
     //fetch file
-    if (file_exists($file))
-    {
+    if (file_exists($file)) {
       //get file
       include_once($file);
-    }
-    else
-    {
+    } else {
       //file does not exist!
       die("File '$filename' containing class '$className' not found in
 '$folder'.");
@@ -61,7 +56,7 @@
   $request = $_SERVER['QUERY_STRING'];
 
 //parse the page request and other GET variables
-  $parsed = explode('&' , $request);
+  $parsed = explode('&', $request);
 
 //the page is the first element
   $page = array_shift($parsed);
@@ -69,10 +64,9 @@
 
 //the rest of the array are get statements, parse them out.
   $getVars = array();
-  foreach ($parsed as $argument)
-  {
+  foreach ($parsed as $argument) {
     //split GET vars along '=' symbol to separate variable, values
-    list($variable , $value) = explode('=' , $argument);
+    list($variable, $value) = explode('=', $argument);
     $getVars[$variable] = $value;
   }
 
@@ -80,26 +74,20 @@
   $target = SERVER_ROOT . '/controllers/' . $page . 'Controller.php';
 
 //get target
-  if (file_exists($target))
-  {
+  if (file_exists($target)) {
     include_once($target);
 
     //modify page to fit naming convention
     $class = ucfirst($page) . '_Controller';
 
     //instantiate the appropriate class
-    if (class_exists($class))
-    {
+    if (class_exists($class)) {
       $controller = new $class;
-    }
-    else
-    {
+    } else {
       //did we name our class correctly?
       die('class does not exist!');
     }
-  }
-  else
-  {
+  } else {
     //can't find the file in 'controllers'! 
     die('page does not exist!');
   }

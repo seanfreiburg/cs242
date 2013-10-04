@@ -8,7 +8,7 @@
     private $render = FALSE;
 
 
-    public function __construct($action,$model)
+    public function __construct($model,$action)
     {
       //compose file name
       $file = SERVER_ROOT . '/views/' . strtolower($model). '/'. $action . '.php';

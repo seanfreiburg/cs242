@@ -5,13 +5,15 @@
   {
 
     public $model = 'news';
+    private $newsModel;
 
+    public function __construct(){
+      $newsModel = new News_Model;
+
+    }
 
     public function index(array $getVars)
     {
-
-      $newsModel = new News_Model;
-
       //$article = $newsModel->get_article($getVars['author']);
       $article = array('title' => "blah", 'content' => 'blah');
       //create a new view and pass it our template
