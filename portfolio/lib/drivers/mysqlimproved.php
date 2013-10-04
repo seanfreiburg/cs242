@@ -1,4 +1,5 @@
 <?php
+  include_once('../../config/db/db.php');
   /**
    * The MySQL Improved driver extends the Database_Library to provide
    * interaction with a MySQL database
@@ -26,10 +27,10 @@
     public function connect()
     {
       //connection parameters
-      $host = 'localhost';
-      $user = 'username';
-      $password = 'password';
-      $database = 'my_test';
+      $host = HOST;
+      $user = USERNAME;
+      $password = PASSWORD;
+      $database = DATABASE;
 
       //your implementation may require these...
       $port = NULL;
