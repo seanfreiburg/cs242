@@ -17,7 +17,7 @@
     {
       $projects = $this->projectModel->get_all_projects();
       $view = new View_Model($this->model, __FUNCTION__);
-      $view->assign($projects);
+      $view->assign('projects',$projects);
     }
 
     public function show(array $getVars)
@@ -25,6 +25,6 @@
 
       $project = $this->projectModel->get_project(1);
       $view = new View_Model($this->model, __FUNCTION__);
-      $view->assign($project);
+      $view->assign('project', $project);
     }
   }

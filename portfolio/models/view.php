@@ -19,23 +19,35 @@
       }
     }
 
-    /**
-     * Receives assignments from controller and stores in local data array
-     *
-     * @param $variable
-     * @param $value
-     */
-    public function assign($data)
+
+    public function assign($variable , $value)
     {
-      $this->data = $data;
+      $this->data[$variable] = $value;
+    }
+
+    public function render($direct_output = TRUE)
+    {
+      // Turn output buffering on, capturing all output
+      if ($direct_output !== TRUE)
+      {
+        ob_start();
+      }
+
+      // Parse data variables into local variables
+      $data = $this->data;
+
+      // Get template
+      include($this->render);
+
+      // Get the contents of the buffer and return it
+      if ($direct_output !== TRUE)
+      {
+        return ob_get_clean();
+      }
     }
 
     public function __destruct()
     {
-      //parse data variables into local variables, so that they render to the view
-      $data = $this->data;
-
-      //render view
-      include($this->render);
+      $this->render();
     }
   }
