@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @file_record.name %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @file_record.size %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @file_record.project_id %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @file_record.type %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @file_record.path %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @file_record.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_file_record_path(@file_record) %> |
+<%= link_to 'Back', file_records_path %>
