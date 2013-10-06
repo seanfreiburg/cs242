@@ -13,7 +13,7 @@
 
     public function get_project($id)
     {
-      return array('title' => 'project 1', 'content' => 'stuff');
+      return array('title' => 'project' . $id, 'content' => 'stuff');
     }
 
     public function get_all_projects()

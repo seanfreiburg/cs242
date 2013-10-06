@@ -23,7 +23,7 @@
     public function show(array $getVars)
     {
 
-      $project = $this->projectModel->get_project(1);
+      $project = $this->projectModel->get_project($getVars['id']);
       $view = new View_Model($this->model, __FUNCTION__);
       $view->assign('project', $project);
     }

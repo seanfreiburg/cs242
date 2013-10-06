@@ -1,5 +1,5 @@
 <?php
-  include_once('../../config/db/db.php');
+  include_once('config/db/db.php');
   /**
    * The MySQL Improved driver extends the Database_Library to provide
    * interaction with a MySQL database
