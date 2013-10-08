@@ -14,10 +14,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @file_records = @project.file_records.all
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @project }
+      format.json { render json: {project: @project,file_records: @file_records} }
     end
   end
 

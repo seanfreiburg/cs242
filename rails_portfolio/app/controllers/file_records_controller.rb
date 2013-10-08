@@ -14,10 +14,12 @@ class FileRecordsController < ApplicationController
   # GET /file_records/1.json
   def show
     @file_record = FileRecord.find(params[:id])
+    @file_versions = @file_record.file_versions.all
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @file_record }
+      format.json { render json: {file_record: @file_record,file_versions: @file_versions} }
     end
   end
 
