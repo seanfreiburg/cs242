@@ -23,11 +23,24 @@ for entry in svn_list_hash['lists']['list']['entry']
     path = entry['name']
     name = path.split('/').last
     file_type = name.split('.').last
-    record = project.file_records.create(path: entry['name'], size: entry['size'].to_i,name: name, file_type: file_type)
+    record = project.file_records.create(path: entry['name'], size: entry['size'].to_i, name: name, file_type: file_type,
+    file: 'https://github.com/seanfreiburg/cs242/blob/master/' + entry['name'])
     commit = entry['commit']
-    record.file_versions.create(author: commit['author'], date: commit['date'], revision: commit['revision'] )
+    record.file_versions.create(author: commit['author'], date: commit['date'], revision: commit['revision'])
     #:author, :date, :file_record_id, :message, :revision
   end
 end
 
-
+#
+#for entry in svn_log_hash['log']['logentry']
+#  for path in entry['paths']
+#    split_path= path.split('/')
+#    split_path = split_path[2..path.size]
+#    split_path = split_path.join('/') if split_path
+#    #file_record = FileRecord.find_by_path(path)
+#    #puts path if file_record
+#    puts split_path
+#
+#    #file_record.file_versions.create(author: entry['author'], date: entry['date'], revision: entry['revision']) if file_record
+#  end
+#end
