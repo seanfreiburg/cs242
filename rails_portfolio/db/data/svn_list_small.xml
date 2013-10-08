@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<lists>
+  <list
+          path=".">
+    <entry
+            kind="file">
+      <name>.gitignore</name>
+      <size>47</size>
+      <commit
+              revision="27">
+        <author>sean.freiburg</author>
+        <date>2013-09-11T18:55:54.000000Z</date>
+      </commit>
+    </entry>
+    <entry
+            kind="dir">
+      <name>Assignment1</name>
+      <commit
+              revision="25">
+        <author>sean.freiburg</author>
+        <date>2013-09-11T18:55:54.000000Z</date>
+      </commit>
+    </entry>
+    <entry
+            kind="file">
+      <name>Assignment1/.gitignore</name>
+      <size>17</size>
+      <commit
+              revision="3">
+        <author>sean.freiburg</author>
+        <date>2013-09-11T18:55:54.000000Z</date>
+      </commit>
+    </entry>
+    <entry
+            kind="file">
+      <name>Assignment1/Doxyfile</name>
+      <size>101998</size>
+      <commit
+              revision="15">
+        <author>sean.freiburg</author>
+        <date>2013-09-12T21:04:17.000000Z</date>
+      </commit>
+    </entry>
+
+  </list>
+</lists>

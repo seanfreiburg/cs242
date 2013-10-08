@@ -1,33 +1,33 @@
-<h1>Listing file_records</h1>
+<h1>Listing file records</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Project</th>
+      <th>Type</th>
+      <th>Path</th>
+      <th>File</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Size</th>
-    <th>Project</th>
-    <th>Type</th>
-    <th>Path</th>
-    <th>File</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @file_records.each do |file_record| %>
-  <tr>
-    <td><%= file_record.name %></td>
-    <td><%= file_record.size %></td>
-    <td><%= file_record.project_id %></td>
-    <td><%= file_record.type %></td>
-    <td><%= file_record.path %></td>
-    <td><%= file_record.file %></td>
-    <td><%= link_to 'Show', file_record %></td>
-    <td><%= link_to 'Edit', edit_file_record_path(file_record) %></td>
-    <td><%= link_to 'Destroy', file_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+    <% @file_records.each do |file_record| %>
+        <tr>
+          <td><%= file_record.name %></td>
+          <td><%= file_record.size %></td>
+          <td><%= file_record.project_id %></td>
+          <td><%= file_record.type %></td>
+          <td><%= file_record.path %></td>
+          <td><%= file_record.file %></td>
+          <td><%= link_to 'Show', file_record %></td>
+          <td><%= link_to 'Edit', edit_file_record_path(file_record) %></td>
+          <td><%= link_to 'Destroy', file_record, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+<br/>
 
 <%= link_to 'New File record', new_file_record_path %>

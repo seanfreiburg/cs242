@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<log>
+
+  <logentry
+          revision="70">
+    <author>sean.freiburg</author>
+    <date>2013-10-06T21:30:06.000000Z</date>
+    <paths>
+      <path
+              kind="file"
+              action="M">/trunk/rails_portfolio/Gemfile
+      </path>
+      <path
+              kind="file"
+              action="M">/trunk/rails_portfolio/config/routes.rb
+      </path>
+      <path
+              kind="file"
+              action="D">/trunk/rails_portfolio/public/index.html
+      </path>
+      <path
+              kind="file"
+              action="M">/trunk/rails_portfolio/app/assets/javascripts/application.js
+      </path>
+      <path
+              kind="file"
+              action="M">/trunk/rails_portfolio/Gemfile.lock
+      </path>
+    </paths>
+    <msg>a bunch of db work
+    </msg>
+  </logentry>
+
+</log>
