@@ -16,7 +16,7 @@ for entry in svn_list_hash['lists']['list']['entry']
     name = path.split('/').last
     file_type = name.split('.').last
     record = project.file_records.create(path: entry['name'], size: entry['size'].to_i, name: name, file_type: file_type,
-    file: 'https://github.com/seanfreiburg/cs242/blob/master/' + entry['name'])
+    file: 'https://raw.github.com/seanfreiburg/cs242/master/' + entry['name']+'?login=seanfreiburg&token=82db3ca0c8ad16ea8ff53317bef4756b')
     commit = entry['commit']
     record.file_versions.create(author: commit['author'], date: commit['date'], revision: commit['revision'])
     #:author, :date, :file_record_id, :message, :revision

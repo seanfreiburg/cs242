@@ -27,7 +27,9 @@
 
 <p>
   <b>File:</b>
-  <%= link_to @file_record.file, @file_record.file %>
+<div id="file_contents"></div>
+
+<%= link_to @file_record.file, @file_record.file, id: 'file_link' %>
 </p>
 
 
