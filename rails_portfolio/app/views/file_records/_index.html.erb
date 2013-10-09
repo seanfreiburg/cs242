@@ -7,7 +7,6 @@
       <th>Project</th>
       <th>Type</th>
       <th>Path</th>
-      <th>File</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,7 +19,6 @@
           <td><%= file_record.project_id %></td>
           <td><%= file_record.file_type %></td>
           <td><%= file_record.path %></td>
-          <td><%= file_record.file %></td>
           <td><%= link_to 'Show', file_record %></td>
           <td><%= link_to 'Edit', edit_file_record_path(file_record) %></td>
           <td><%= link_to 'Destroy', file_record, method: :delete, data: {confirm: 'Are you sure?'} %></td>

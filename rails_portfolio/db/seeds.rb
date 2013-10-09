@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create
 
 svn_log_file = File.open('db/data/svn_log.xml')
 svn_log_hash = Hash.from_xml(svn_log_file.read)
@@ -17,7 +10,6 @@ for entry in svn_list_hash['lists']['list']['entry']
   project = Project.find_by_title(project_name)
   if  project.nil?
     project = Project.create(title: project_name)
-    #attr_accessible :date, :summary, :title, :version
   end
   if entry['kind'] == 'file'
     path = entry['name']
@@ -31,16 +23,17 @@ for entry in svn_list_hash['lists']['list']['entry']
   end
 end
 
-#
-#for entry in svn_log_hash['log']['logentry']
-#  for path in entry['paths']
-#    split_path= path.split('/')
-#    split_path = split_path[2..path.size]
-#    split_path = split_path.join('/') if split_path
-#    #file_record = FileRecord.find_by_path(path)
-#    #puts path if file_record
-#    puts split_path
-#
-#    #file_record.file_versions.create(author: entry['author'], date: entry['date'], revision: entry['revision']) if file_record
-#  end
-#end
+
+for log_entry in svn_log_hash['log']
+  for path in  log_entry[1][1]['paths']
+    for str in path[1]
+      split_path= str.strip.split('/').drop(2)
+      split_path = split_path.join('/')
+      file_record = FileRecord.find_by_path(split_path)
+      puts split_path if file_record
+
+      file_record.file_versions.create(author: entry['author'], date: entry['date'], revision: entry['revision']) if file_record
+    end
+  end
+
+end
