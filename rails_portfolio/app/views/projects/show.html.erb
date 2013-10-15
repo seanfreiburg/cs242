@@ -25,7 +25,5 @@
 
 
 <%= render 'comments/form', :project_id => @project.id, :parent_id => -1 %>
-<%= render 'comments/index', comments: @comments, project: @project, num_nested: 0 %>
+<%= render 'comments/index', comments: @comments, project: @project%>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
