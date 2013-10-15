@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  FILTERED_WORDS = {banana: 'apple', :poop => 'genius', elsa: 'Ocaml', :obama => 'Stalin', future: 'Garbage'}
+  before_save :filter_words
   attr_accessible :body, :user_id,:commentable
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
@@ -44,5 +46,22 @@ class Comment < ActiveRecord::Base
   # given the commentable class name and id
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
+  end
+
+  private
+  def filter_words
+    body_temp = self.body
+    body_temp = body_temp.split(' ')
+    FILTERED_WORDS.each do |key,value|
+      i = 0
+      for word in body_temp
+        if word.downcase == key.to_s
+          body_temp[i] = value
+          break
+        end
+        i += 1
+      end
+    end
+    self.body = body_temp.join(' ')
   end
 end
