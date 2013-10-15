@@ -1,0 +1,19 @@
+<% for comment in comments %>
+    <% for tabs in 0..num_nested %>
+        &nbsp;
+    <% end %>
+    <div class="well">
+      <p>
+        <% for tabs in 1..num_nested %>
+            <%= '->' %>
+        <% end %>
+        <%= 'Body: ' +  comment.body %>
+
+        <%= link_to 'Reply', new_comment_path(parent_id: comment.id, project_id: project.id) %>
+      </p>
+
+    </div>
+
+    <%= render 'comments/index', comments: comment.children, project: @project, num_nested: 1+num_nested %>
+
+<% end %>

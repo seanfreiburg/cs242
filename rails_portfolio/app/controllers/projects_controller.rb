@@ -15,6 +15,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @file_records = @project.file_records.all
+    @comment = Comment.new
+    @comments = @project.root_comments
 
     respond_to do |format|
       format.html # show.html.erb

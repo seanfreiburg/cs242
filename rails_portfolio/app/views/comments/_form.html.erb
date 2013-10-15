@@ -1,0 +1,10 @@
+<%= form_for @comment do |f | %>
+    <%= f.label 'Reply' %>
+    <%= f.text_field :body%>
+
+    <%= f.hidden_field :parent_id, value: parent_id %>
+    <%= f.hidden_field :project_id, value: project_id %>
+
+    <%= f.submit %>
+
+<% end %>
