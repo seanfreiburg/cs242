@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Word:</b>
+  <%= @filtered_word.word %>
+</p>
+
+<p>
+  <b>Replacement:</b>
+  <%= @filtered_word.replacement %>
+</p>
+
+
+<%= link_to 'Edit', edit_filtered_word_path(@filtered_word) %> |
+<%= link_to 'Back', filtered_words_path %>

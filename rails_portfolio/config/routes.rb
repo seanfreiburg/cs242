@@ -1,4 +1,7 @@
 RailsPortfolio::Application.routes.draw do
+  resources :filtered_words
+
+
   resources :file_versions
 
 
@@ -8,6 +11,8 @@ RailsPortfolio::Application.routes.draw do
   resources :projects
 
   resources :comments
+
+
 
 
   # The priority is based upon order of creation:

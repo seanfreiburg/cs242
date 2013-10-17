@@ -4,6 +4,7 @@ describe Comment do
 
   before(:each) do
     @project = Project.create(title: 'test project')
+    FilteredWord.create(word: 'penis', replacement: 'peter')
   end
 
   describe "test comments" do
@@ -39,6 +40,15 @@ describe Comment do
       comment1.children.size.should be 2
       comment1.children.first.body.should eq('child')
       comment1.children.last.body.should eq('child2')
+
+    end
+
+
+    it "filters words" do
+      comment = Comment.build_from(@project, 0, 'penis')
+      comment.save
+      @project.root_comments.size.should be(1)
+      @project.root_comments.first.body.should eq('peter')
 
     end
 

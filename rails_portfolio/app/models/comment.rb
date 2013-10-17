@@ -49,15 +49,18 @@ class Comment < ActiveRecord::Base
   end
 
   private
+
+
   def filter_words
+    words = FilteredWord.all
     body_temp = self.body
     body_temp = body_temp.split(' ')
-    FILTERED_WORDS.each do |key,value|
+    words.each do |replacement_obj|
       i = 0
-      for word in body_temp
-        if word.downcase == key.to_s
-          body_temp[i] = value
-          break
+      for word1 in body_temp
+        if word1.downcase == replacement_obj.word.to_s
+          body_temp[i] = replacement_obj.replacement
+          word1 =  replacement_obj.replacement
         end
         i += 1
       end
