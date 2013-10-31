@@ -20,6 +20,8 @@ public class Server {
         server.createContext("/get_status", new GetStatusHandler());
         server.createContext("/send_move", new SendMoveHandler());
         server.createContext("/send_action", new SendActionHandler());
+        server.createContext("/forfeit", new ForfeitHandler());
+        server.createContext("/restart", new RestartHandler());
         server.start();
 
     }
