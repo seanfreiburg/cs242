@@ -59,6 +59,9 @@ public class Client {
         else if (status.equals("b")){
             color = false;
         }
+        else{
+            System.exit(1);
+        }
 
         return new HumanPlayer(color);
 

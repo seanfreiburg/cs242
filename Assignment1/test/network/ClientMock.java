@@ -1,4 +1,3 @@
-//Let's import Mockito statically so that the code looks clearer
 package network;
 
 
@@ -8,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-public class NetworkMock  {
+public class ClientMock {
 
 
     @Mock
@@ -26,6 +25,8 @@ public class NetworkMock  {
 
         Mockito.verify(t).setPlayerFromNetwork();
     }
+
+
 
 
 }
