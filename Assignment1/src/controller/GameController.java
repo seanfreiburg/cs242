@@ -87,8 +87,8 @@ public class GameController {
     public String sendMove(int startX, int startY, int endX, int endY, Player player) {
         String status = player.sendMove(startX, startY, endX, endY, board);
         if (status.equals("Success")){
-            view.setPiece(startX,startY, null);
-            view.setPiece(endX,endY, board.getPiece(endX,endY));
+            view.setPiece(endX, endY, board.getPiece(startX, startY));
+            view.setPiece(startX, startY, null);
             currentPlayer = getNextPlayer(currentPlayer);
 
             view.setTurnText(currentPlayer.getColor());

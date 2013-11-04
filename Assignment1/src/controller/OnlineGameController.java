@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.concurrent.TimeUnit;
 
 /**
  * User: seanfreiburg
@@ -52,10 +51,11 @@ public class OnlineGameController extends GameController {
 
 
         if (status.equals("Success")) {
+            view.setPiece(endX, endY, board.getPiece(startX, startY));
             view.setPiece(startX, startY, null);
-            view.setPiece(endX, endY, board.getPiece(endX, endY));
-            currentPlayer = getNextPlayer(currentPlayer);
 
+            System.out.println(board.getPiece(endX, endY));
+            currentPlayer = getNextPlayer(currentPlayer);
             view.setTurnText(currentPlayer.getColor());
         }
 

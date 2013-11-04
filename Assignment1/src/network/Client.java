@@ -1,5 +1,9 @@
+package network;
+
 import controller.GameController;
 import controller.OnlineGameController;
+import model.player.HumanPlayer;
+import model.player.Player;
 import view.BoardView;
 
 import java.io.IOException;
@@ -12,9 +16,20 @@ import java.io.IOException;
 public class Client {
     public static void main(String[] args) throws IOException {
 
-        GameController game = new OnlineGameController();
+        Client t = new Client();
+
+
+    }
+
+    public Client(){
+        OnlineGameController game = new OnlineGameController();
         BoardView view = new BoardView("Chess", game);
         game.setView(view);
+        game.setCurrentPlayer(setPlayerFromNetwork());
+    }
+
+    public Player setPlayerFromNetwork(){
+        return new HumanPlayer(true);
 
     }
 }

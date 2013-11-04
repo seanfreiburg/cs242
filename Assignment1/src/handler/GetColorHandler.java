@@ -1,5 +1,4 @@
 package handler;
-
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -9,13 +8,22 @@ import java.io.OutputStream;
 /**
  * User: seanfreiburg
  * Date: 10/30/13
- * Time: 9:03 PM
+ * Time: 8:19 PM
  */
-public class ForfeitHandler implements HttpHandler {
+public class GetColorHandler implements HttpHandler {
 
         public void handle(HttpExchange t) throws IOException {
             final OutputStream os;
-            String response = new String("Success");
+            boolean player_color = true;
+            boolean turn = true;
+            String response;
+            if (player_color == turn){
+                response = new String("y");
+            }
+            else{
+                response = new String("n");
+            }
+
             t.getRequestHeaders();
             t.sendResponseHeaders(200, response.length());
             t.getRequestBody();
@@ -27,7 +35,6 @@ public class ForfeitHandler implements HttpHandler {
 
             os.close();
             t.close();
-            System.out.println("forfeit server");
         }
 
 }

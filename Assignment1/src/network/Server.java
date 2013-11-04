@@ -1,3 +1,5 @@
+package network;
+
 import com.sun.net.httpserver.HttpServer;
 import controller.GameController;
 
@@ -17,9 +19,8 @@ public class Server {
         GameController game = new GameController();
         InetSocketAddress addr  = new InetSocketAddress("localhost", 8000);
         HttpServer server = HttpServer.create(addr, 10);
-        server.createContext("/get_status", new GetStatusHandler());
+        server.createContext("/get_color", new GetColorHandler());
         server.createContext("/send_move", new SendMoveHandler());
-        server.createContext("/send_action", new SendActionHandler());
         server.createContext("/forfeit", new ForfeitHandler());
         server.createContext("/restart", new RestartHandler());
         server.start();
