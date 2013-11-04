@@ -1,5 +1,4 @@
 package handler;
-
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import controller.GameController;
@@ -10,16 +9,15 @@ import java.io.OutputStream;
 /**
  * User: seanfreiburg
  * Date: 10/30/13
- * Time: 9:03 PM
+ * Time: 8:19 PM
  */
-public class ForfeitHandler implements HttpHandler {
+public class SendMoveHandler implements HttpHandler {
     GameController game;
 
-    public ForfeitHandler(GameController game) {
+
+    public SendMoveHandler(GameController game) {
         this.game = game;
     }
-
-
 
     public void handle(HttpExchange t) throws IOException {
             final OutputStream os;
@@ -27,7 +25,7 @@ public class ForfeitHandler implements HttpHandler {
             t.getRequestHeaders();
             t.sendResponseHeaders(200, response.length());
             t.getRequestBody();
-            game.forfeit();
+            t.getResponseBody();
 
             os = t.getResponseBody();
 
@@ -35,7 +33,7 @@ public class ForfeitHandler implements HttpHandler {
 
             os.close();
             t.close();
-            System.out.println("forfeit server");
+            System.out.println("sendMove server");
         }
 
 }

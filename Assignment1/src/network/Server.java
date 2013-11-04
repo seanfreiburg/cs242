@@ -19,10 +19,10 @@ public class Server {
         GameController game = new GameController();
         InetSocketAddress addr  = new InetSocketAddress("localhost", 8000);
         HttpServer server = HttpServer.create(addr, 10);
-        server.createContext("/get_color", new GetColorHandler());
-        server.createContext("/send_move", new SendMoveHandler());
-        server.createContext("/forfeit", new ForfeitHandler());
-        server.createContext("/restart", new RestartHandler());
+        server.createContext("/get_color", new GetColorHandler(game));
+        server.createContext("/send_move", new SendMoveHandler(game));
+        server.createContext("/forfeit", new ForfeitHandler(game));
+        server.createContext("/restart", new RestartHandler(game));
         server.start();
 
     }

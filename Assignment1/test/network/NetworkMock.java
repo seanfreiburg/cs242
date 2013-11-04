@@ -2,7 +2,6 @@
 package network;
 
 
-import network.Client;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -23,9 +22,12 @@ public class NetworkMock  {
     @Test
     public void testNetClient() throws Exception {
         Client t = Mockito.mock(Client.class);
+        t.setPlayerFromNetwork();
 
         Mockito.verify(t).setPlayerFromNetwork();
     }
+
+
 }
 
 
