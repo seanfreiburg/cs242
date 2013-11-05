@@ -26,6 +26,11 @@ public class ClientMock {
         Mockito.verify(t).setPlayerFromNetwork();
     }
 
+/* Manual Test Plan
+    Setup the server
+    call 2 clients
+    then play and make sure they are synchronized
+ */
 
 
 
