@@ -1,0 +1,5 @@
+<%= flash[:error] %>
+<%= form_for @player, url: {action: "create"} do |f| %>
+    Name: <%= f.text_field :name %><br />
+    <%= f.submit %>
+<% end %>
