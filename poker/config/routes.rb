@@ -55,4 +55,6 @@ Poker::Application.routes.draw do
   #   end
 
   resources :players, only: [:show, :create,:new ]
+
+  root 'pages#index'
 end
