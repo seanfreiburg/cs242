@@ -56,5 +56,9 @@ Poker::Application.routes.draw do
 
   resources :players, only: [:show, :create,:new ]
 
+
+  get '/get_key/:name' => 'players#create_api'
+  get '/get_status/:key' => 'games#get_status'
+
   root 'pages#index'
 end
