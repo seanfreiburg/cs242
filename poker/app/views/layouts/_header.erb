@@ -1,0 +1,40 @@
+<header class="navbar mainheader">
+  <div class="navbar-inner">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+
+    <a class="brand" href="<%= root_path %>">
+      <p>Poker API</p>
+      <!-- <h3>SHPE UIUC</h3> -->
+    </a>
+    <!-- the correct way how to do it:  -->
+    <!-- <div class="brand">
+      <a href="#">
+        <img src="img/shpe-header.png" height="150px" width="150px" class="pull-left" />
+      </a>
+    </div> -->
+    <div class="nav-collapse collapse">
+      <ul class="nav pull-right">
+        <li class="current-page">
+          <%= link_to 'HOME', root_path %>
+        </li>
+        <li>
+          <%= link_to 'DOCUMENTATION', '#' %>
+        </li>
+        <li>
+          <%= link_to 'SIGNUP', '#' %>
+        </li>
+        <li>
+          <%= link_to 'TABLES','#' %>
+        </li>
+        <li>
+          <%= link_to 'LOGS', '#'  %>
+        </li>
+      </ul>
+      <!--</div>-->
+    </div>
+  </div>
+</header>
