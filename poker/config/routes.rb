@@ -54,11 +54,13 @@ Poker::Application.routes.draw do
   #     resources :products
   #   end
 
-  resources :players, only: [:show, :create,:new ]
+  resources :players, only: [ :create,:new ]
 
 
   get '/get_key/:name' => 'players#create_api'
   get '/get_status/:key' => 'games#get_status'
+
+  get '/player/:key' => 'players#show', as: :player
 
   root 'pages#index'
 end
