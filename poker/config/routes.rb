@@ -1,4 +1,5 @@
 Poker::Application.routes.draw do
+  devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -55,6 +56,7 @@ Poker::Application.routes.draw do
   #   end
 
   resources :players, only: [ :create,:new ]
+  resources :admins, only: [ :show]
 
 
   get '/get_key/:name' => 'players#create_api'

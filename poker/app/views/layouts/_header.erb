@@ -33,6 +33,21 @@
         <li>
           <%= link_to 'LOGS', '#'  %>
         </li>
+
+        <% if signed_in? %>
+            <li>
+              <%= link_to 'PROFILE', admin_path(current_admin)  %>
+            </li>
+            <li>
+
+              <%= link_to 'SIGN OUT', destroy_admin_session_path, method: 'delete' %>
+
+            </li>
+        <% else %>
+            <li>
+              <%= link_to 'SIGN IN', new_admin_session_path  %>
+            </li>
+        <% end %>
       </ul>
       <!--</div>-->
     </div>

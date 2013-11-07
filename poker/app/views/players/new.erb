@@ -1,5 +1,11 @@
-<%= flash[:error] %>
-<%= form_for @player, url: {action: "create"} do |f| %>
-    Name: <%= f.text_field :name %><br />
-    <%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="span4 offset4">
+    <h1>Signup and get your API key</h1>
+    <%= flash[:error] %>
+    <%= form_for @player, url: {action: "create"} do |f| %>
+        Name: <%= f.text_field :name %><br />
+        <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
