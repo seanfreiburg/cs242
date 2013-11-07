@@ -63,9 +63,3 @@ class Table
 
 end
 
-t = Table.new([1,2,3,4,5,6,7,8])
-t.dealCards()
-t.flop
-t.turn
-t.river
-t.determineWinner
