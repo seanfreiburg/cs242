@@ -1,21 +1,34 @@
 require "./Deck.rb"
+require "rubygems"
+require "ruby-poker"
 class Table
 
-
-	def initialize()
+	#Creates a table object given a playerid Array
+	def initialize(playeridArray)
+		@playerArray = playeridArray
 		@deck = Deck.new()
+		@playerhands = Hash.new()
+		@communitycards = []
 		@deck.shuffleCards
 	end
+
 	#Deals cards to numPlayers players
-	def dealCards(numPlayers)
-		if  2*numPlayers > (16)
-			puts "Too many players for Texas Hold'em."
-		end
+	def dealCards()
 		cardArray = @deck.getCards
-		print cardArray
+
+		if  @playerArray.length > 8
+			puts "Too many players for Texas Hold'em."
+			return nil
+		end
+		
+		for player in @playerArray
+			@playerhands[player] = cardArray.pop(2)
+		end
+			print @playerhands
+
 	end
 
 end
 
-t = Table.new()
-t.dealCards(2)
+t = Table.new([1,2,3,4,5])
+t.dealCards()
