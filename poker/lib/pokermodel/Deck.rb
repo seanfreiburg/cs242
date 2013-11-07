@@ -22,8 +22,13 @@ class Deck
 	end
 
 	#Returns the array of cards.
-	def getCards()
+	def getCardArray()
 		return @cards
+	end
+
+	#Removes n cards from the deck
+	def drawCards(n)
+		return @cards.pop(n)
 	end
 
 end
