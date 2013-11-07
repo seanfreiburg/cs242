@@ -68,4 +68,4 @@ t.dealCards()
 t.flop
 t.turn
 t.river
-print t.determineWinner
+t.determineWinner
