@@ -61,5 +61,18 @@ class Table
 		return winner
 	end
 
+	#Prints the player id's with thier hands and Community Cards.
+	def printTable
+		puts
+		for player in @playerArray
+			puts
+			print "Player "+player.to_s+" => "
+			print @playerhands[player]
+		end
+		puts
+		puts
+		print @communitycards
+	end
+
 end
 
