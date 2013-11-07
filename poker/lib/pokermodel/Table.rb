@@ -45,14 +45,27 @@ class Table
 	def river()
 		@communitycards += @deck.drawCards(1)
 	end
+
+	#Determines the winner of a game
+	def determineWinner 
+		winner = @playerArray[0]
+		besthand = PokerHand.new(@playerhands[winner]+@communitycards)
+
+		for player in @playerArray
+			hand = PokerHand.new(@playerhands[player]+@communitycards)
+			if hand > besthand
+				besthand = hand 
+				winner = player
+			end
+		end
+		return winner
+	end
+
 end
 
-t = Table.new([1,2,3,4,5])
+t = Table.new([1,2,3,4,5,6,7,8])
 t.dealCards()
-print t.getCommunityCards
 t.flop
-print t.getCommunityCards
 t.turn
-print t.getCommunityCards
 t.river
-print t.getCommunityCards
+print t.determineWinner
