@@ -59,6 +59,7 @@ Poker::Application.routes.draw do
 
   get '/get_key/:name' => 'players#create_api'
   get '/get_status/:key' => 'games#get_status'
+  post '/send_action' => 'games#send_action'
 
   get '/player/:key' => 'players#show', as: :player
 

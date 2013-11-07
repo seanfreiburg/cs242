@@ -8,4 +8,8 @@ class GamesController < ApplicationController
       render json: "Invalid key"
     end
   end
+
+  def send_action
+
+  end
 end
