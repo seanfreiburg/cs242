@@ -1,7 +1,7 @@
 require "./Table.rb"
 
 class PokerTest
-	table = Table.new([1,2])
+	table = Table.new([1,2,3,4])
 	table.dealCards()
 	describe "Flop" do
 		it "should draw three cards." do
@@ -29,6 +29,7 @@ class PokerTest
 			puts
 			puts
 			print "Winner: "+table.determineWinner.to_s
+			table.printTable
 		end
 	end
 
