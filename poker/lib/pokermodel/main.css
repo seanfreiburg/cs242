@@ -60,3 +60,7 @@ body{
 	-webkit-border-radius: 80px;
 	border-radius: 90px;
 }
+
+.fullcenter{
+	margin: auto auto auto auto;
+}
