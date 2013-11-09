@@ -1,64 +1,58 @@
-body
-{
-background-color: red;
+body{
+	background-color: red;
 }
-#ace_clubs
-{
+
+#ace_clubs{
 	width:71px;
 	height:96px;
 	background:url(playingcards.png) -1 -1;
 }
 
-#two_clubs
-{
+#two_clubs{
 	width:71px;
 	height:96px;
 	background:url(playingcards.png) -74 -1;
 }
 
-#three_clubs
-{
+#three_clubs{
 	width:71px;
 	height:96px;
 	background:url(playingcards.png) -147 -1;	
 }
 
-#ace_spades_tux
-{
+#ace_spades_tux{
 	width:71px;
 	height:96px;
 	background:url(tuxace.png) 0 0;
 }
 
-#ace_spades
-{
+#ace_spades{
 	width:71px;
 	height:96px;
 	background:url(playingcards.png) -1 -99;		
 }
 
-#ace_hearts
-{
+#ace_hearts{
 	width:71px;
 	height:96px;
 	background:url(playingcards.png) -1 -197;		
 }
 
-#ace_diamonds
-{
+#ace_diamonds{
 	width:71px;
 	height:96px;
 	background:url(playingcards.png) -1 -295;	
 }
 
-#card_back
-{
+#card_back{
 	width:71px;
 	height:96px;
 	background:url(cardback.png) 0 0;
 }
 
-#oval{
+#table{
+	margin-left: auto;
+	margin-right: auto;
 	width: 80%;
 	height: 60%;
 	background: green;
