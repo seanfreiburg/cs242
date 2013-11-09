@@ -57,3 +57,12 @@ background-color: red;
 	height:96px;
 	background:url(cardback.png) 0 0;
 }
+
+#oval{
+	width: 80%;
+	height: 60%;
+	background: green;
+	-moz-border-radius:80px;
+	-webkit-border-radius: 80px;
+	border-radius: 90px;
+}
