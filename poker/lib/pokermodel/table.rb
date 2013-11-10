@@ -84,5 +84,17 @@ class Table
     end
   end
 
+  def fold(player)
+
+  end
+
+  def call(player)
+
+  end
+
+  def raise(player,amount)
+
+  end
+
 end
 
