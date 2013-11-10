@@ -1,4 +1,4 @@
-require "./Table.rb"
+require "./table.rb"
 
 class PokerTest
 	table = Table.new([1,2,3,4])
