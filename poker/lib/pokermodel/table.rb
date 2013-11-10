@@ -4,9 +4,11 @@ require_relative 'player'
 require_relative 'deck'
 class Table
   STARTING_MONEY = 1000
-  attr_reader :communityCards
+  STARTING_BLIND = 10
+  attr_reader :communityCards, :playerArray, :playerHands
   #Creates a table object given a playerid Array
   def initialize(playerIdArray)
+    @numPlayers = playerIdArray.length
     @playerArray = []
     for playerId in playerIdArray
         @playerArray << Player.new(playerId, STARTING_MONEY)
@@ -14,7 +16,7 @@ class Table
     @deck = Deck.new()
     @playerHands = Hash.new()
     @communityCards = []
-
+    @dealer = @playerArray.first
     @deck.shuffleCards
   end
 
@@ -61,7 +63,7 @@ class Table
     winner
   end
 
-  #Prints the player id's with thier hands and Community Cards.
+  #Prints the player id's with their hands and Community Cards.
   def printTable
     puts
     for player in @playerArray
@@ -74,9 +76,9 @@ class Table
     print @communityCards
   end
 
-  def removeBrokePLayers
+  def removeBrokePlayers
     for player in @playerArray
-      if player.money < 0
+      if player.money <= 0
         @playerArray.delete(player)
       end
     end

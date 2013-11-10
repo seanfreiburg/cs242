@@ -8,12 +8,17 @@ if num_players < 2
   exit(1)
 end
 
-table = Table.new(1..num_players)
+table = Table.new((1..num_players).to_a)
 
 table.dealCards
 table.flop
+table.turn
+table.river
 
+puts table.playerHands
 puts table.communityCards
+puts table.determineWinner.id
+table.printTable
 
 
 
