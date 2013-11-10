@@ -44,7 +44,7 @@ body{
 	background:url(../images/playingcards.png) -1 -295;
 }
 
-#card_back{
+.card_back{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0 0;
@@ -62,5 +62,12 @@ body{
 }
 
 .fullcenter{
-	margin: auto auto auto auto;
+	margin: 0 auto 0 auto;
+	padding-top: 15%;
+	padding-left: 29%;
+}
+
+.center{
+	margin-left: 2px;
+	float: left;
 }
