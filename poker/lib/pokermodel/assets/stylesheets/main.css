@@ -1,5 +1,5 @@
 body{
-	background-color: red;
+	background-color: blue;
 }
 
 .ace_clubs{
@@ -35,7 +35,7 @@ body{
 .ace_hearts{
 	width:71px;
 	height:96px;
-	background:url(../images/playingcards.png) -1 -197;
+	background:url(../images/playingcards.png) no-repeat -1 -197;
 }
 
 .ace_diamonds{
