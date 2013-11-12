@@ -3,12 +3,15 @@ require "ruby-poker"
 require_relative 'player'
 require_relative 'deck'
 class Table
+
   STARTING_MONEY = 1000
   STARTING_BLIND = 10
+  attr_accessor  :bet, :pot,:sidePot
   attr_reader :communityCards, :playerArray, :playerHands
+
+
   #Creates a table object given a playerid Array
   def initialize(playerIdArray)
-    @numPlayers = playerIdArray.length
     @playerArray = []
     for playerId in playerIdArray
         @playerArray << Player.new(playerId, STARTING_MONEY)
@@ -18,6 +21,7 @@ class Table
     @communityCards = []
     @dealer = @playerArray.first
     @deck.shuffleCards
+
   end
 
   #Deals cards to numPlayers players
@@ -29,7 +33,7 @@ class Table
     end
 
     for player in @playerArray
-      @playerHands[player] = @deck.drawCards(2)
+      player.hand = @deck.drawCards(2)
     end
   end
 
@@ -51,10 +55,10 @@ class Table
   #Determines the winner of a game
   def determineWinner
     winner = @playerArray[0]
-    besthand = PokerHand.new(@playerHands[winner]+@communityCards)
+    besthand = PokerHand.new(winner.hand+@communityCards)
 
     for player in @playerArray
-      hand = PokerHand.new(@playerHands[player]+@communityCards)
+      hand = PokerHand.new(player.hand+@communityCards)
       if hand > besthand
         besthand = hand
         winner = player
@@ -69,7 +73,7 @@ class Table
     for player in @playerArray
       puts
       print "Player "+player.to_s+" => "
-      print @playerHands[player]
+      print player.hand
     end
     puts
     puts
@@ -85,7 +89,7 @@ class Table
   end
 
   def fold(player)
-
+    @playerArray.delete(player)
   end
 
   def call(player)
