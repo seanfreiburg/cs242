@@ -152,13 +152,15 @@ class Game
 
       determineWinner
     end
-
     declareWinner
-
+    distributePot
   end
 
   def declareWinner
-    puts "#{@winners.map(&:id).join(' and ')} #{@winners.size == 1 ? 'is' : 'are'} the winner#{'s' unless @winners.size == 1}! Beer for them!"
+    puts "#{@winners.map(&:id).join(' and ')} #{@winners.size == 1 ? 'is' : 'are'} the winner#{'s' unless @winners.size == 1}"
+  end
+
+  def distributePot
     for winner in @winners
       winner.money += @pot/@winners.size
     end
@@ -187,7 +189,6 @@ class Game
   #Draws one card for the river
   def river()
     @communityCards += @deck.drawCards!(1)
-
 
     if @debug
       puts "the river..."

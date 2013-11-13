@@ -10,6 +10,6 @@ class Player
   end
 
   def clearHand
-    @hand = nil
+    @hand = Hash.new
   end
 end
