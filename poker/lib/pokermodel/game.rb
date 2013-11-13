@@ -30,6 +30,8 @@ class Game
           else
             bet(player, amount.to_i)
           end
+        elsif action == 'call'
+            call(player)
         else
           puts 'Invalid action, folding' if @debug
           fold(player)
@@ -49,6 +51,10 @@ class Game
     @activePlayers.delete(player)
     @currentBets.delete(player)
     puts "#{player.id} folds" if @debug
+  end
+
+  def call(player)
+    bet(player,@currentHighBet - @currentBets[player])
   end
 
   def bet(player, amount)
@@ -71,7 +77,7 @@ class Game
         winner = player
       end
     end
-    winner
+    @winners = [winner]
   end
 
   def deal
@@ -142,6 +148,9 @@ class Game
       accept_bets
       @deck.burn!(1)
       river
+      accept_bets
+
+      determineWinner
     end
 
     declareWinner
@@ -150,7 +159,9 @@ class Game
 
   def declareWinner
     puts "#{@winners.map(&:id).join(' and ')} #{@winners.size == 1 ? 'is' : 'are'} the winner#{'s' unless @winners.size == 1}! Beer for them!"
-    #todo distribute @pot
+    for winner in @winners
+      winner.money += @pot/@winners.size
+    end
   end
 
   #Draws three cards for the flop
@@ -186,11 +197,8 @@ class Game
 
   def shuffle_up_and_deal(players)
     @players = players.shuffle
-
     @count = 0
-
     deal
-
   end
 
 end
