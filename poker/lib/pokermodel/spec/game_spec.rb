@@ -4,46 +4,44 @@ require_relative '../game'
 class GameSpec
   describe 'Fold' do
 
-    it 'should do something' do
+    it 'should remove the players from active players' do
+      pending
 
-      #To change this template use File | Settings | File Templates.
-      true.should == true
+    end
+
+    it 'should remove the players current bet' do
+      pending
     end
   end
 
   describe 'Call' do
 
     it 'should do something' do
+      pending
 
-      #To change this template use File | Settings | File Templates.
-      true.should == true
     end
   end
 
   describe 'Bet' do
 
     it 'should do something' do
+      pending
 
-      #To change this template use File | Settings | File Templates.
-      true.should == true
     end
   end
 
   describe 'DetermineWinner' do
 
     it 'should do something' do
+      pending
 
-      #To change this template use File | Settings | File Templates.
-      true.should == true
     end
   end
 
   describe 'DistributePot' do
 
     it 'should do something' do
-
-      #To change this template use File | Settings | File Templates.
-      true.should == true
+      pending
     end
   end
 
