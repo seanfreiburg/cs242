@@ -53,18 +53,31 @@ body{
 #table{
 	margin-left: auto;
 	margin-right: auto;
-	width: 85%;
-	height: 70%;
+	width: 800px;
+	height: 400px;
 	background: green;
-	-moz-border-radius:80px;
-	-webkit-border-radius: 80px;
+	-moz-border-radius:90px;
+	-webkit-border-radius: 90px;
 	border-radius: 90px;
+}
+
+#table_edge{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	padding: 25px;
+	width: 800px;
+	height: 400px;
+	background: brown;
+	-moz-border-radius:100px;
+	-webkit-border-radius: 100px;
+	border-radius: 110px;
 }
 
 .fullcenter{
 	margin: 0 auto 0 auto;
-	padding-top: 15%;
-	padding-left: 29%;
+	padding-top: 152px;
+	padding-left: 218.5px;
 }
 
 .center{
