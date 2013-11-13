@@ -6,10 +6,15 @@ require_relative 'deck'
 
 class Game
   #https://github.com/jjulian/pitboss/blob/master/lib/pitboss/game.rb
+
+  attr_accessor :communityCards,:deck
   STARTING_ANTE = 2
 
   def initialize(options={})
     @debug = options[:debug]
+    @communityCards = []
+    @deck = Deck.new
+
   end
 
   def game_status(id)
@@ -58,6 +63,7 @@ class Game
   end
 
   def bet(player, amount)
+    return fold(player) if amount > player.money
     player.money -= amount
     @pot += amount
     @currentBets[player] += amount
