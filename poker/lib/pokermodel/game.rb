@@ -19,14 +19,17 @@ class Game
   def accept_bets
     while @activePlayers.size > 1
       for player in @activePlayers
-        puts 'Enter action'
+        puts "...action to #{player.id}" if @debug
         action, amount = gets.chomp.split(' ')
         if action == 'fold'
-          table.fold(player)
+          fold(player)
         elsif action == 'bet'
-          fold(player) if amount.to_i < @ante
-          bet(player,amount.to_i)
 
+          if amount.to_i < @ante
+            fold(player)
+          else
+            bet(player, amount.to_i)
+          end
         else
           puts 'Invalid action, folding' if @debug
           fold(player)
@@ -37,7 +40,7 @@ class Game
           throw :winner
         end
       end
-      break unless @current_bets.values.uniq.size > 1
+      break unless @currentBets.values.uniq.size > 1
     end
 
   end
@@ -88,15 +91,16 @@ class Game
       end
 
       if @players.size <= 2
-        @smallBlind = dealer
+        @smallBlind = @dealer
         @bigBlind = @players.first
       else
         @smallBlind = @players.first
-        @bigBlind = @players.second
+        @bigBlind = @players[1]
+
       end
 
-      bet(@small_blind, @ante / 2)
-      bet(@big_blind, @ante)
+      bet(@smallBlind, @ante / 2)
+      bet(@bigBlind, @ante)
 
       @deck = Deck.new
 
@@ -122,7 +126,7 @@ class Game
 
 
       # shift if game count is 0 so the person after small blind is first
-      if @gameCount.zero? && @players.size > 2
+      if @gameCount == 0 && @players.size > 2
         2.times do
           player = @activePlayers.shift
           @activePlayers << player
@@ -144,7 +148,7 @@ class Game
 
   end
 
-  def declare_winner
+  def declareWinner
     puts "#{@winners.map(&:id).join(' and ')} #{@winners.size == 1 ? 'is' : 'are'} the winner#{'s' unless @winners.size == 1}! Beer for them!"
     #todo distribute @pot
   end
@@ -152,25 +156,41 @@ class Game
   #Draws three cards for the flop
   def flop()
     @communityCards += @deck.drawCards!(3)
+
+    if @debug
+      puts "the flop..."
+      @communityCards.each { |c| puts c }
+    end
   end
 
   #Draws one card for the turn
   def turn()
     @communityCards += @deck.drawCards!(1)
+
+    if @debug
+      puts "the turn..."
+      puts @communityCards.last
+    end
   end
 
   #Draws one card for the river
   def river()
     @communityCards += @deck.drawCards!(1)
+
+
+    if @debug
+      puts "the river..."
+      puts @communityCards.last
+    end
   end
 
   def shuffle_up_and_deal(players)
     @players = players.shuffle
 
     @count = 0
-    3.times do #temporarily play 3 hands
-      deal
-    end
+
+    deal
+
   end
 
 end
