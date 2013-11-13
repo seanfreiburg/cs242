@@ -1,6 +1,7 @@
 require_relative 'table'
 
 def round(table)
+  table.printTable
   for player in table.playerArray
     i=0
     puts table.playerHands[player]
@@ -12,10 +13,14 @@ def round(table)
     elsif action == 'call'
       table.call(player)
     elsif action == 'raise'
-      table.raise(player,amount)
+      table.raise(player,amount.to_i)
+    elsif action == 'printTable'
+      table.printTable
     else
       puts 'Invalid action, folding'
     end
+
+    table.printTable
 
   end
 end

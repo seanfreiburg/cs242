@@ -6,21 +6,24 @@ class Table
 
   STARTING_MONEY = 1000
   STARTING_BLIND = 10
-  attr_accessor  :bet, :pot,:sidePot
+  attr_accessor :bet, :pot, :sidePot
   attr_reader :communityCards, :playerArray, :playerHands
 
 
   #Creates a table object given a playerid Array
   def initialize(playerIdArray)
     @playerArray = []
+    @foldedPlayers = []
     for playerId in playerIdArray
-        @playerArray << Player.new(playerId, STARTING_MONEY)
+      @playerArray << Player.new(playerId, STARTING_MONEY)
     end
     @deck = Deck.new()
     @playerHands = Hash.new()
     @communityCards = []
     @dealer = @playerArray.first
     @deck.shuffleCards
+    @bet = 0
+    @pot =0
 
   end
 
@@ -55,12 +58,12 @@ class Table
   #Determines the winner of a game
   def determineWinner
     winner = @playerArray[0]
-    besthand = PokerHand.new(winner.hand+@communityCards)
+    bestHand = PokerHand.new(winner.hand+@communityCards)
 
     for player in @playerArray
       hand = PokerHand.new(player.hand+@communityCards)
-      if hand > besthand
-        besthand = hand
+      if hand > bestHand
+        bestHand = hand
         winner = player
       end
     end
@@ -89,15 +92,27 @@ class Table
   end
 
   def fold(player)
-    @playerArray.delete(player)
+    @foldedPlayers = @playerArray.delete(player)
   end
 
   def call(player)
-
+    if player.money >= bet
+      @pot += bet
+      player.money -= bet
+    else
+      #@todo fix this
+      self.fold(player)
+    end
   end
 
-  def raise(player,amount)
-
+  def raise(player, amount)
+    if player.money >= bet + amount
+      @bet += amount
+      player.money -= bet+amount
+    else
+      #@todo fix this
+      self.fold(player)
+    end
   end
 
 end
