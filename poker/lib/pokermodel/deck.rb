@@ -8,11 +8,12 @@ class Deck
 			for suit in ['S','C','H','D']
 				@cards += [value+suit]
 			end
-		end
+    end
+    shuffleCards!
 	end
 
 	#Shuffle the cards in the deck so they aren't in order.
-	def shuffleCards()
+	def shuffleCards!()
 		@cards.shuffle!
 	end
 
@@ -27,9 +28,13 @@ class Deck
 	end
 
 	#Removes n cards from the deck
-	def drawCards(n)
+	def drawCards!(n)
 		return @cards.pop(n)
-	end
+  end
+
+  def burn!(n)
+    drawCards!(n)
+  end
 
 end
 

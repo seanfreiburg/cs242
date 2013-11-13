@@ -21,7 +21,7 @@ class Table
     @playerHands = Hash.new()
     @communityCards = []
     @dealer = @playerArray.first
-    @deck.shuffleCards
+    @deck.shuffleCards!
     @bet = 0
     @pot =0
 
@@ -36,24 +36,11 @@ class Table
     end
 
     for player in @playerArray
-      player.hand = @deck.drawCards(2)
+      player.hand = @deck.drawCards!(2)
     end
   end
 
-  #Draws three cards for the flop
-  def flop()
-    @communityCards += @deck.drawCards(3)
-  end
 
-  #Draws one card for the turn
-  def turn()
-    @communityCards += @deck.drawCards(1)
-  end
-
-  #Draws one card for the river
-  def river()
-    @communityCards += @deck.drawCards(1)
-  end
 
   #Determines the winner of a game
   def determineWinner

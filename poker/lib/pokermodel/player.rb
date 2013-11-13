@@ -8,4 +8,8 @@ class Player
     @money = money
     @hand = Hash.new
   end
+
+  def clearHand
+    @hand = nil
+  end
 end
