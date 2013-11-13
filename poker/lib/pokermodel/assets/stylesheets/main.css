@@ -55,10 +55,10 @@ body{
 	margin-right: auto;
 	width: 800px;
 	height: 400px;
-	background: green;
+	background: #16BF04;
 	-moz-border-radius:90px;
 	-webkit-border-radius: 90px;
-	border-radius: 90px;
+	border-radius: 200px;
 }
 
 #table_edge{
@@ -68,10 +68,10 @@ body{
 	padding: 25px;
 	width: 800px;
 	height: 400px;
-	background: #663300;
+	background:url(../images/wood-texture.jpg) 0 0;
 	-moz-border-radius:100px;
 	-webkit-border-radius: 100px;
-	border-radius: 110px;
+	border-radius: 217px;
 }
 
 .fullcenter{
