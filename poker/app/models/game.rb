@@ -14,7 +14,7 @@ class Game
 
 
   attr_accessor :communityCards, :deck
-  attr_reader :MASTER_API_KEY
+  attr_reader :MASTER_API_KEY,:players
 
 
   def initialize(options={})
@@ -32,6 +32,8 @@ class Game
     @currentBets = Hash.new
     @turn = nil
     @MASTER_API_KEY = API_KEY
+    @deck = Deck.new
+    @communityCards = []
 
   end
 
@@ -249,7 +251,7 @@ class Game
     end
     @open = true
     @started = false
-    self.reset_game
+    self.reset
     'tournament is now open'
 
   end
@@ -260,7 +262,7 @@ class Game
     shuffle_up_and_deal
   end
 
-  def reset_game
+  def reset
     @communityCards = []
     @players = []
     @activePlayers = []
