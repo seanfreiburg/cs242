@@ -8,7 +8,7 @@ class Game
   #https://github.com/jjulian/pitboss/blob/master/lib/pitboss/game.rb
   include Singleton
 
-  STARTING_ANTE = 500
+  STARTING_ANTE = 1000
   STARTING_MONEY = 1000
   API_KEY = 'boobs'
 
@@ -36,6 +36,7 @@ class Game
     @communityCards = []
     @hands = Hash.new
     @game_over = false
+    @stacks = Hash.new
 
   end
 
@@ -101,8 +102,8 @@ class Game
   end
 
   def bet(player, amount)
-    return fold(player) if amount > player.money
-    player.money -= amount
+    return fold(player) if amount > @stacks[player]
+    @stacks[player] -= amount
     @pot += amount
     @currentBets[player] += amount
     @currentHighBet = amount if amount > @currentHighBet
@@ -136,7 +137,7 @@ class Game
       @activePlayers = @players
 
       for player in @players
-        player.clearHand
+        @hands[player] = nil
         @currentBets[player] = 0
       end
 
@@ -163,13 +164,13 @@ class Game
         puts "\nNEW GAME:"
         @players.each do |p|
           if p == @dealer
-            puts "D #{p.id} #{@hands[player]} $#{p.money}"
+            puts "D #{p.id} #{@hands[player]} $#{@stacks[p]}"
           elsif p == @smallBlind
-            puts "B #{p.id} #{@hands[player]} $#{p.money}"
+            puts "B #{p.id} #{@hands[player]} $#{@stacks[p]}"
           elsif p == @bigBlind
-            puts "BB #{p.id} #{@hands[player]} $#{p.money}"
+            puts "BB #{p.id} #{@hands[player]} $#{@stacks[p]}"
           else
-            puts " #{p.id} #{@hands[player]} $#{p.money}"
+            puts " #{p.id} #{@hands[player]} $#{@stacks[p]}"
           end
         end
       end
@@ -197,6 +198,8 @@ class Game
       determineWinner
     end
     declareWinner
+    puts 'Im nuts'
+    puts @winners
     distributePot
   end
 
@@ -205,13 +208,18 @@ class Game
   end
 
   def distributePot
+    puts 'This is dumb'
     for winner in @winners
-      winner.money += @pot/@winners.size
+      puts winner
+      puts @stacks[winner]
+      @stacks[winner] += @pot/@winners.size
+      puts @stacks[winner]
+      puts winner.id + ' won ' + @pot/@winners.size
     end
   end
 
   #Draws three cards for the flop
-  def flop()
+  def flop
     @communityCards += @deck.drawCards!(3)
 
     if @debug
@@ -221,7 +229,7 @@ class Game
   end
 
   #Draws one card for the turn
-  def turn()
+  def turn
     @communityCards += @deck.drawCards!(1)
 
     if @debug
@@ -231,7 +239,7 @@ class Game
   end
 
   #Draws one card for the river
-  def river()
+  def river
     @communityCards += @deck.drawCards!(1)
 
     if @debug
@@ -243,10 +251,12 @@ class Game
   def shuffle_up_and_deal
     @players = @players.shuffle
     for player in @players
-      player.money = STARTING_MONEY
+      @stacks[player] = STARTING_MONEY
     end
     loop {
+      puts 'deal'
       deal
+      puts 'loop'
       remove_broke_players
       break if @players.size == 1
     }
@@ -306,8 +316,9 @@ class Game
   end
 
   def remove_broke_players
+    puts 'removeBrokePlayers'
     for player in @player
-      if player.money <= 0
+      if @stacks[player] <= 0
         @players.delete(player)
         puts @player.id if @debug
       end
