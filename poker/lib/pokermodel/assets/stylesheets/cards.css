@@ -1,0 +1,312 @@
+
+.ace_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -1 -1;
+}
+
+.ace_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -1 -99;
+}
+
+.ace_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -1 -197;
+}
+
+.ace_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -1 -295;
+}
+
+.two_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -74 -1;
+}
+
+.two_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -74 -99;
+}
+
+.two_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -74 -197;
+}
+
+.two_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -74 -295;
+}
+
+.three_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -147 -1;
+}
+
+.three_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -147 -99;
+}
+
+.three_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -147 -197;
+}
+
+.three_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -147 -295;
+}
+
+.four_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -220 -1;
+}
+
+.four_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -220 -99;
+}
+
+.four_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -220 -197;
+}
+
+.four_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -220 -295;
+}
+
+.five_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -293 -1;
+}
+
+.five_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -293 -99;
+}
+
+.five_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -293 -197;
+}
+
+.five_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -293 -295;
+}
+
+.six_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -366 -1;
+}
+
+.six_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -366 -99;
+}
+
+.six_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -366 -197;
+}
+
+.six_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -366 -295;
+}
+
+.seven_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -439 -1;
+}
+
+.seven_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -439 -99;
+}
+
+.seven_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -439 -197;
+}
+
+.seven_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -439 -295;
+}
+
+.eight_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -512 -1;
+}
+
+.eight_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -512 -99;
+}
+
+.eight_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -512 -197;
+}
+
+.eight_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -512 -295;
+}
+
+.nine_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -585 -1;
+}
+
+.nine_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -585 -99;
+}
+
+.nine_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -585 -197;
+}
+
+.nine_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -585 -295;
+}
+
+.ten_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -658 -1;
+}
+
+.ten_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -658 -99;
+}
+
+.ten_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -658 -197;
+}
+
+.ten_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -658 -295;
+}
+
+.jack_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -731 -1;
+}
+
+.jack_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -731 -99;
+}
+
+.jack_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -731 -197;
+}
+
+.jack_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -731 -295;
+}
+
+.queen_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -804 -1;
+}
+
+.queen_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -804 -99;
+}
+
+.queen_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -804 -197;
+}
+
+.queen_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -804 -295;
+}
+
+.king_clubs{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -877 -1;
+}
+
+.king_spades{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -877 -99;
+}
+
+.king_hearts{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -877 -197;
+}
+
+.king_diamonds{
+	width:71px;
+	height:96px;
+	background:url(../images/playingcards.png) -877 -295;
+}
