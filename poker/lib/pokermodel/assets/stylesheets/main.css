@@ -68,7 +68,7 @@ body{
 	padding: 25px;
 	width: 800px;
 	height: 400px;
-	background:url(../images/wood-texture.jpg) 0 0;
+	background:url(../images/wood-texture.jpg) -200 -100;
 	-moz-border-radius:217px;
 	-webkit-border-radius: 217px;
 	border-radius: 217px;
