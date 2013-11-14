@@ -10,37 +10,38 @@ player2_key = 'a41dd2fb6597bb629c29455afb2edead'
 player3_key = '5b2caf4c6a9711cfbe2f36563c7cf64e'
 
 
-players = ['55123172e0e107acaaf08c88b77e11e5','a41dd2fb6597bb629c29455afb2edead','5b2caf4c6a9711cfbe2f36563c7cf64e']
+players = ['55123172e0e107acaaf08c88b77e11e5', 'a41dd2fb6597bb629c29455afb2edead', '5b2caf4c6a9711cfbe2f36563c7cf64e']
 
 
 master_key = 'boobs'
 
 uri = URI(CODE_EM_URI)
-http = Net::HTTP.new(CODE_EM_URI,8080)
+http = Net::HTTP.new(CODE_EM_URI, 8080)
 response = http.get('/open_tournament/'+master_key)
 puts response.body
 
 for player_key in players
-  response = http.get( '/get_status/'+player_key)
+  response = http.get('/get_status/'+player_key)
   puts response.body
 end
 
-response = http.get( '/start_tournament/'+master_key)
+response = http.get('/start_tournament/'+master_key)
 puts response.body
 
 
-
-
-10.times do
+loop {
   for player_key in players
-    response = JSON.parse(http.get( '/get_status/'+player_key).body)
+    response = JSON.parse(http.get('/get_status/'+player_key).body)
     puts response
+    break if response['winner']
     if response['your_turn']
-      response = http.get( '/send_action_and_amount/'+player_key +'?move=call')
+      response = http.get('/send_action_and_amount/'+player_key +'?move=call')
       puts response.body
     end
   end
-end
+}
+
+puts response['winner']
 
 
 

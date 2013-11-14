@@ -8,7 +8,7 @@ class Game
   #https://github.com/jjulian/pitboss/blob/master/lib/pitboss/game.rb
   include Singleton
 
-  STARTING_ANTE = 2
+  STARTING_ANTE = 500
   STARTING_MONEY = 1000
   API_KEY = 'boobs'
 
@@ -35,11 +35,14 @@ class Game
     @deck = Deck.new
     @communityCards = []
     @hands = Hash.new
+    @game_over = false
 
   end
 
   def game_status(player)
-    if @open
+    if @game_over
+      {winner: @players.first}
+    elsif @open
       unless @players.any? { |a| a.id == player.id }
         @players << player
       end
@@ -242,7 +245,15 @@ class Game
     for player in @players
       player.money = STARTING_MONEY
     end
-    deal
+    loop {
+      deal
+      remove_broke_players
+      break if @players.size == 1
+    }
+    @game_over = true
+    puts 'Game Over' if @debug
+    @winners = @players
+
   end
 
   def open_tournament
@@ -292,6 +303,15 @@ class Game
     @action = action
     @amount = amount.to_i
 
+  end
+
+  def remove_broke_players
+    for player in @player
+      if player.money <= 0
+        @players.delete(player)
+        puts @player.id if @debug
+      end
+    end
   end
 
 end
