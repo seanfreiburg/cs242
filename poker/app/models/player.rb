@@ -12,5 +12,9 @@ class Player < ActiveRecord::Base
     self.key = SecureRandom.hex
   end
 
+  def clearHand
+    @hand = nil
+  end
+
 end
 

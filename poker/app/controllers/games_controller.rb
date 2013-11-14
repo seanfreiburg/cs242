@@ -9,11 +9,11 @@ class GamesController < ApplicationController
     end
   end
 
-=begin
-  def send_action
 
+  def send_action_and_amount
+    Game.instance.set_action(params[:action],params[:amount])
   end
-=end
+
 
   def open_tournament
     if params[:key] == Game.instance.MASTER_API_KEY
@@ -26,7 +26,7 @@ class GamesController < ApplicationController
 
 
   def start_tournament
-    if params[:key] == Game.MASTER_API_KEY
+    if params[:key] == Game.instance.MASTER_API_KEY
       Game.instance.start_tournament
       render json: 'Tournament has started'
     else

@@ -9,6 +9,8 @@ class Game
   include Singleton
 
   STARTING_ANTE = 2
+  STARTING_MONEY = 1000
+  API_KEY = 'boobs'
 
 
   attr_accessor :communityCards, :deck
@@ -19,24 +21,34 @@ class Game
     @open = false
     @started = false
     @debug = options[:debug]
-    @communityCards = []
-    @deck = Deck.new
-    @MASTER_API_KEY = 'boobs'
+    @players = []
+    @activePlayers = []
+    @winners = []
+    @pot = 0
+    @ante = STARTING_ANTE
+    @smallBlind = nil
+    @bigBlind = nil
+    @currentHighBet = 0
+    @currentBets = Hash.new
+    @turn = nil
+    @MASTER_API_KEY = API_KEY
 
   end
 
   def game_status(player)
     if @open
-      # @todo say that they are resisted or not
       unless @players.any? { |a| a.id == player.id }
         @players << player
       end
-      { players: @players }
+      p = []
+      {players: @players.map { |a| a.name }, active: false}
 
     elsif @started
-      # @todo say if its their turn or not
+
+      # @todo return game data
+      return {community_cards: @communityCards, your_turn: player == @turn, hand: player.hand }
     else
-      return 'Game is not open'
+      return {error: 'Game is not open'}
     end
   end
 
@@ -44,15 +56,17 @@ class Game
     while @activePlayers.size > 1
       for player in @activePlayers
         puts "...action to #{player.id}" if @debug
-        action, amount = gets.chomp.split(' ')
+        @turn = player
+        action, amount = get_action
+        @turn = nil
         if action == 'fold'
           fold(player)
         elsif action == 'bet'
 
-          if amount.to_i < @ante
+          if amount < @ante
             fold(player)
           else
-            bet(player, amount.to_i)
+            bet(player, amount)
           end
         elsif action == 'call'
           call(player)
@@ -221,8 +235,11 @@ class Game
     end
   end
 
-  def shuffle_up_and_deal(players)
-    @players = players.shuffle
+  def shuffle_up_and_deal
+    @players = @players.shuffle
+    for player in @players
+      player.money = STARTING_MONEY
+    end
     deal
   end
 
@@ -233,13 +250,14 @@ class Game
     @open = true
     @started = false
     self.reset_game
-     'tournament is now open'
+    'tournament is now open'
 
   end
 
   def start_tournament
     @started = true
     @open = false
+    shuffle_up_and_deal
   end
 
   def reset_game
@@ -255,6 +273,23 @@ class Game
     @bigBlind = nil
     @currentHighBet = 0
     @currentBets = Hash.new
+    @turn = nil
+  end
+
+  def get_action
+    @action = nil
+    @amount = nil
+    while @action.nil?
+
+    end
+    [@action, @amount]
+  end
+
+  def set_action(action,amount)
+    #@todo do validations here so player can get feedback
+    @action = action
+    @amount = amount.to_i
+
   end
 
 end
