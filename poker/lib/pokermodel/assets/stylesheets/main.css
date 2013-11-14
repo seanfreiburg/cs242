@@ -84,3 +84,31 @@ body{
 	margin-left: 2px;
 	float: left;
 }
+
+.deal{
+	margin-left:146px; 
+	width:71px;
+	height:96px;
+	background:url(../images/cardback.png) 0 0;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal 2s; /* Safari and Chrome */	
+}
+
+@keyframes deal
+{
+0%   {left:0px; top:0px;}
+25%  {left:200px; top:0px;}
+50%  {left:200px; top:200px;}
+75%  {left:0px; top:200px;}
+100% {left:0px; top:0px;}
+}
+
+@-webkit-keyframes deal /* Safari and Chrome */
+{
+0%   {}
+25%  {}
+50%  {}
+75%  {}
+100% {left:-10px;top:-150px;-webkit-transform:rotate(360deg);}
+}
