@@ -11,7 +11,8 @@ class GamesController < ApplicationController
 
 
   def send_action_and_amount
-    Game.instance.set_action(params[:action],params[:amount])
+    Game.instance.set_action(params[:move],params[:amount])
+    render json: "move sent"
   end
 
 
@@ -27,7 +28,10 @@ class GamesController < ApplicationController
 
   def start_tournament
     if params[:key] == Game.instance.MASTER_API_KEY
-      Game.instance.start_tournament
+      Thread.new do
+        Game.instance.start_tournament
+      end
+
       render json: 'Tournament has started'
     else
       render json: "Invalid key"

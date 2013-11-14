@@ -34,6 +34,7 @@ class Game
     @MASTER_API_KEY = API_KEY
     @deck = Deck.new
     @communityCards = []
+    @hands = Hash.new
 
   end
 
@@ -46,9 +47,8 @@ class Game
       {players: @players.map { |a| a.name }, active: false}
 
     elsif @started
-
-      # @todo return game data
-      return {community_cards: @communityCards, your_turn: player == @turn, hand: player.hand }
+      @players.bsearch {|x| x.id ==   player.id }
+      return {community_cards: @communityCards, your_turn: player == @turn, hand: @hands[player] }
     else
       return {error: 'Game is not open'}
     end
@@ -73,7 +73,7 @@ class Game
         elsif action == 'call'
           call(player)
         else
-          puts 'Invalid action, folding' if @debug
+          puts "Invalid action, folding, action was #{action}" if @debug
           fold(player)
         end
 
@@ -109,10 +109,10 @@ class Game
   #Determines the winner of a game
   def determineWinner
     winner = @players.first
-    bestHand = PokerHand.new(winner.hand+@communityCards)
+    bestHand = PokerHand.new(@hands[winner]+@communityCards)
 
     for player in @players
-      hand = PokerHand.new(player.hand+@communityCards)
+      hand = PokerHand.new(@hands[player]+@communityCards)
       if hand > bestHand
         bestHand = hand
         winner = player
@@ -152,7 +152,7 @@ class Game
       @deck = Deck.new
 
       for player in @players
-        player.hand = @deck.drawCards!(2)
+        @hands[player] = @deck.drawCards!(2)
       end
 
 
@@ -160,13 +160,13 @@ class Game
         puts "\nNEW GAME:"
         @players.each do |p|
           if p == @dealer
-            puts "D #{p.id} #{p.hand} $#{p.money}"
+            puts "D #{p.id} #{@hands[player]} $#{p.money}"
           elsif p == @smallBlind
-            puts "B #{p.id} #{p.hand} $#{p.money}"
+            puts "B #{p.id} #{@hands[player]} $#{p.money}"
           elsif p == @bigBlind
-            puts "BB #{p.id} #{p.hand} $#{p.money}"
+            puts "BB #{p.id} #{@hands[player]} $#{p.money}"
           else
-            puts " #{p.id} #{p.hand} $#{p.money}"
+            puts " #{p.id} #{@hands[player]} $#{p.money}"
           end
         end
       end
