@@ -55,9 +55,9 @@ body{
 	margin-right: auto;
 	width: 800px;
 	height: 400px;
-	background: #16BF04;
-	-moz-border-radius:90px;
-	-webkit-border-radius: 90px;
+	background:url(../images/PokerFelt.png) 0 0;
+	-moz-border-radius:200px;
+	-webkit-border-radius: 200px;
 	border-radius: 200px;
 }
 
@@ -69,8 +69,8 @@ body{
 	width: 800px;
 	height: 400px;
 	background:url(../images/wood-texture.jpg) 0 0;
-	-moz-border-radius:100px;
-	-webkit-border-radius: 100px;
+	-moz-border-radius:217px;
+	-webkit-border-radius: 217px;
 	border-radius: 217px;
 }
 
@@ -92,7 +92,7 @@ body{
 	background:url(../images/cardback.png) 0 0;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal 2s; /* Safari and Chrome */	
+	-webkit-animation:deal 1s; /* Safari and Chrome */	
 }
 
 @keyframes deal
