@@ -1,6 +1,7 @@
 require 'net/http'
 require 'json'
 require 'open-uri'
+require 'securerandom'
 
 
 CODE_EM_URI = '0.0.0.0'

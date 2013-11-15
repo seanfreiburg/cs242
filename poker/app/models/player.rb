@@ -2,7 +2,7 @@ require 'securerandom'
 
 class Player < ActiveRecord::Base
 
-  attr_accessor :money
+  attr_accessor :name
 
   before_validation :create_key
   validates :name, presence: true, length: { in: 1..255 } , uniqueness: true

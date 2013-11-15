@@ -13,67 +13,75 @@ class Game
   API_KEY = 'boobs'
 
 
-  attr_accessor :communityCards, :deck
-  attr_reader :MASTER_API_KEY,:players
+  attr_accessor :community_cards, :deck, :active_players, :players, :current_bets,:stacks
+  attr_reader :MASTER_API_KEY
 
 
-  def initialize(options={})
+  def initialize
     @open = false
     @started = false
-    @debug = options[:debug]
+    @debug = true
     @players = []
-    @activePlayers = []
+    @active_players = []
     @winners = []
     @pot = 0
     @ante = STARTING_ANTE
-    @smallBlind = nil
-    @bigBlind = nil
-    @currentHighBet = 0
-    @currentBets = Hash.new
+    @small_blind = nil
+    @big_blind = nil
+    @current_high_bet = 0
+    @current_bets = Hash.new
     @turn = nil
     @MASTER_API_KEY = API_KEY
     @deck = Deck.new
-    @communityCards = []
+    @community_cards = []
     @hands = Hash.new
     @game_over = false
     @stacks = Hash.new
+    @overall_winner = nil
 
   end
 
   def game_status(player)
     if @game_over
-      {winner: @players.first}
+      game_over_status(player)
     elsif @open
-      unless @players.any? { |a| a.id == player.id }
-        @players << player
-      end
-      p = []
-      {players: @players.map { |a| a.name }, active: false}
-
+      open_status(player)
     elsif @started
-      @players.bsearch {|x| x.id ==   player.id }
-      return {community_cards: @communityCards, your_turn: player == @turn, hand: @hands[player] }
+      started_status(player)
     else
-      return {error: 'Game is not open'}
+      closed_status(player)
     end
   end
 
+  def game_over_status(player)
+    {winner: @overall_winner, active: false}
+  end
+
+  def open_status(player)
+    @players << player unless @players.any? { |a| a.id == player.id }
+    {players: @players.map { |a| a.name }, active: false}
+  end
+
+  def started_status(player)
+    {community_cards: @community_cards, your_turn: player == @turn, hand: @hands[player], big_blind: @big_blind.name, small_blind: @small_blind,
+     dealer: @dealer.name, money: @stacks[player], ante: @ante, active: true}
+  end
+
+  def closed_status(player)
+    {error: 'Game is not open', active: false}
+  end
+
   def accept_bets
-    while @activePlayers.size > 1
-      for player in @activePlayers
-        puts "...action to #{player.id}" if @debug
+    while @active_players.size > 1
+      for player in @active_players
+        puts "...action to #{player.id}: #{player.name}" if @debug
         @turn = player
         action, amount = get_action
         @turn = nil
         if action == 'fold'
           fold(player)
-        elsif action == 'bet'
-
-          if amount < @ante
-            fold(player)
-          else
-            bet(player, amount)
-          end
+        elsif action == 'raise' || action == 'bet'
+          bet(player, amount)
         elsif action == 'call'
           call(player)
         else
@@ -81,42 +89,49 @@ class Game
           fold(player)
         end
 
-        if @activePlayers.size == 1
-          @winners = @activePlayers
+        if @active_players.size == 1
+          @winners = @active_players
           throw :winner
         end
       end
-      break unless @currentBets.values.uniq.size > 1
+      break unless @current_bets.values.uniq.size > 1
     end
 
   end
 
   def fold(player)
-    @activePlayers.delete(player)
-    @currentBets.delete(player)
-    puts "#{player.id} folds" if @debug
+    @active_players.delete(player)
+    @current_bets.delete(player)
+    puts "#{player.id}: #{player.name} folds" if @debug
   end
 
   def call(player)
-    bet(player, @currentHighBet - @currentBets[player])
+    bet_action(player, @current_high_bet - @current_bets[player])
   end
 
   def bet(player, amount)
-    return fold(player) if amount > @stacks[player]
+    if amount < @ante
+      fold(player)
+    else
+      bet_action(player, amount)
+    end
+  end
+
+  def bet_action(player, amount)
     @stacks[player] -= amount
     @pot += amount
-    @currentBets[player] += amount
-    @currentHighBet = amount if amount > @currentHighBet
-    puts "#{player.id} bets $#{amount}" if @debug
+    @current_bets[player] += amount
+    @current_high_bet = amount if amount > @current_high_bet
+    puts "#{player.id}: #{player.name} bets $#{amount}" if @debug
   end
 
   #Determines the winner of a game
   def determineWinner
     winner = @players.first
-    bestHand = PokerHand.new(@hands[winner]+@communityCards)
+    bestHand = PokerHand.new(@hands[winner]+@community_cards)
 
     for player in @players
-      hand = PokerHand.new(@hands[player]+@communityCards)
+      hand = PokerHand.new(@hands[player]+@community_cards)
       if hand > bestHand
         bestHand = hand
         winner = player
@@ -127,31 +142,31 @@ class Game
 
   def deal
     catch :winner do
-      @communityCards = []
+      @community_cards = []
       @dealer = @players.shift
       @players << @dealer
       @ante = STARTING_ANTE
-      @currentHighBet = @ante
-      @currentBets = Hash.new
+      @current_high_bet = @ante
+      @current_bets = Hash.new
       @pot = 0
-      @activePlayers = @players
+      @active_players = @players
 
       for player in @players
-        @hands[player] = nil
-        @currentBets[player] = 0
+        @hands[player] = []
+        @current_bets[player] = 0
       end
 
       if @players.size <= 2
-        @smallBlind = @dealer
-        @bigBlind = @players.first
+        @small_blind = @dealer
+        @big_blind = @players.first
       else
-        @smallBlind = @players.first
-        @bigBlind = @players[1]
+        @small_blind = @players.first
+        @big_blind = @players[1]
 
       end
 
-      bet(@smallBlind, @ante / 2)
-      bet(@bigBlind, @ante)
+      bet(@small_blind, @ante / 2)
+      bet(@big_blind, @ante)
 
       @deck = Deck.new
 
@@ -165,9 +180,9 @@ class Game
         @players.each do |p|
           if p == @dealer
             puts "D #{p.id} #{@hands[player]} $#{@stacks[p]}"
-          elsif p == @smallBlind
+          elsif p == @small_blind
             puts "B #{p.id} #{@hands[player]} $#{@stacks[p]}"
-          elsif p == @bigBlind
+          elsif p == @big_blind
             puts "BB #{p.id} #{@hands[player]} $#{@stacks[p]}"
           else
             puts " #{p.id} #{@hands[player]} $#{@stacks[p]}"
@@ -179,8 +194,8 @@ class Game
       # shift if game count is 0 so the person after small blind is first
       if  @players.size > 2
         2.times do
-          player = @activePlayers.shift
-          @activePlayers << player
+          player = @active_players.shift
+          @active_players << player
         end
       end
 
@@ -198,8 +213,6 @@ class Game
       determineWinner
     end
     declareWinner
-    puts 'Im nuts'
-    puts @winners
     distributePot
   end
 
@@ -208,9 +221,7 @@ class Game
   end
 
   def distributePot
-    puts 'This is dumb'
     for winner in @winners
-      puts winner
       puts @stacks[winner]
       @stacks[winner] += @pot/@winners.size
       puts @stacks[winner]
@@ -220,31 +231,31 @@ class Game
 
   #Draws three cards for the flop
   def flop
-    @communityCards += @deck.drawCards!(3)
+    @community_cards += @deck.drawCards!(3)
 
     if @debug
       puts "the flop..."
-      @communityCards.each { |c| puts c }
+      @community_cards.each { |c| puts c }
     end
   end
 
   #Draws one card for the turn
   def turn
-    @communityCards += @deck.drawCards!(1)
+    @community_cards += @deck.drawCards!(1)
 
     if @debug
       puts "the turn..."
-      puts @communityCards.last
+      puts @community_cards.last
     end
   end
 
   #Draws one card for the river
   def river
-    @communityCards += @deck.drawCards!(1)
+    @community_cards += @deck.drawCards!(1)
 
     if @debug
       puts "the river..."
-      puts @communityCards.last
+      puts @community_cards.last
     end
   end
 
@@ -284,18 +295,18 @@ class Game
   end
 
   def reset
-    @communityCards = []
+    @community_cards = []
     @players = []
-    @activePlayers = []
+    @active_players = []
     @debug = Hash.new
     @winners = []
     @deck = Deck.new
     @pot = 0
     @ante = 0
-    @smallBlind = nil
-    @bigBlind = nil
-    @currentHighBet = 0
-    @currentBets = Hash.new
+    @small_blind = nil
+    @big_blind = nil
+    @current_high_bet = 0
+    @current_bets = Hash.new
     @turn = nil
   end
 
@@ -308,19 +319,55 @@ class Game
     [@action, @amount]
   end
 
-  def set_action(action,amount)
+  def set_action(action, amount)
     #@todo do validations here so player can get feedback
+    message, action = validate_action(action, amount)
     @action = action
-    @amount = amount.to_i
-
+    @amount = amount
+    message
   end
+
+  def validate_action(action, amount)
+    if action == 'fold'
+      validate_fold
+    elsif action == 'raise' || action == 'bet'
+      validate_bet(amount)
+    elsif action == 'call'
+      validate_call
+    else
+      puts "Invalid action, folding, action was #{action}" if @debug
+      [{message: 'Action was invalid, folding'}, 'fold']
+    end
+  end
+
+  def validate_fold
+    [{message: 'Folding'}, 'fold']
+  end
+
+  def validate_bet(amount)
+    if amount < @ante || amount > @stacks[@turn]
+      [{message: 'Bet was invalid, folding'}, 'fold']
+    else
+      [{message: "Betting #{amount}"}, 'bet']
+    end
+  end
+
+  def validate_call
+    diff = @current_high_bet - @current_bets[@turn]
+    if @stacks[@turn] - diff < 0
+      [{message: 'Call was invalid, folding'}, 'fold']
+    else
+      [{message: "Calling #{diff}"}, 'call']
+    end
+  end
+
 
   def remove_broke_players
     puts 'removeBrokePlayers'
-    for player in @player
+    for player in @players
       if @stacks[player] <= 0
         @players.delete(player)
-        puts @player.id if @debug
+        puts player.id if @debug
       end
     end
   end

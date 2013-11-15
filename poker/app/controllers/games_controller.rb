@@ -11,8 +11,8 @@ class GamesController < ApplicationController
 
 
   def send_action_and_amount
-    Game.instance.set_action(params[:move],params[:amount])
-    render json: "move sent"
+
+    render json: Game.instance.set_action(params[:move],params[:amount].to_i)
   end
 
 

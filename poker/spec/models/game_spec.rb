@@ -8,12 +8,22 @@ class GameSpec
   describe 'Fold' do
 
     it 'should remove the players from active players' do
-      pending
+      player1 =Player.create(name: 'adssadad')
+      player2 = Player.create(name: 'adssadad4')
+      Game.instance.reset
+      Game.instance.active_players = [player1,player2]
+      Game.instance.fold(player1)
+      Game.instance.active_players.size.should eq(1)
 
     end
 
     it 'should remove the players current bet' do
-      pending
+      player1 =Player.create(name: 'adssadad')
+      player2 = Player.create(name: 'adssadad4')
+      Game.instance.reset
+      Game.instance.players = [player1,player2]
+      Game.instance.fold(player1)
+      Game.instance.current_bets[player1].should eq(nil)
     end
   end
 
@@ -27,10 +37,24 @@ class GameSpec
 
   describe 'Bet' do
 
-    it 'should do something' do
+    it 'should return an error on a negative amount' do
       pending
 
     end
+
+    it 'should return an error when you have less money than you bet' do
+      pending
+
+    end
+
+
+
+    it 'should return an error when the bet is less than the big blind' do
+      pending
+
+    end
+
+
   end
 
   describe 'DetermineWinner' do
@@ -53,7 +77,7 @@ class GameSpec
       Game.instance.reset
       game = Game.instance
       game.flop
-      game.communityCards.length.should eq(3)
+      game.community_cards.length.should eq(3)
     end
   end
 
@@ -62,7 +86,7 @@ class GameSpec
       Game.instance.reset
       game = Game.instance
       game.turn
-      game.communityCards.length.should eq(1)
+      game.community_cards.length.should eq(1)
     end
   end
 
@@ -71,7 +95,7 @@ class GameSpec
       Game.instance.reset
       game = Game.instance
       game.river
-      game.communityCards.length.should eq(1)
+      game.community_cards.length.should eq(1)
     end
   end
 
@@ -116,6 +140,23 @@ class GameSpec
 
 
 
+
+
+  end
+
+  describe "Remove Broke Players" do
+    it "should draw one card." do
+      Game.instance.reset
+      game = Game.instance
+      player1 =Player.create(name: 'adssadad')
+      player2 = Player.create(name: 'adssadad4')
+      Game.instance.players = [player1,player2]
+      Game.instance.stacks[player1] = 100
+      Game.instance.stacks[player2] = 0
+      Game.instance.remove_broke_players
+      Game.instance.players.size.should eq(1)
+
+    end
   end
 
 
