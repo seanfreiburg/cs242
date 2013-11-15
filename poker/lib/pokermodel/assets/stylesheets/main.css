@@ -2,6 +2,16 @@ body{
 	background-color: blue;
 }
 
+.controls button{
+	width: 70px;
+}
+
+.controls{
+	float: right;
+	margin-right: 25%;
+	margin-top: 15px;
+}
+
 .ace_clubs{
 	width:71px;
 	height:96px;
