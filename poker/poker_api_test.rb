@@ -30,18 +30,19 @@ response = http.get('/start_tournament'+'?key='+master_key)
 puts response.body
 
 
-loop {
+while true
   for player_key in players
     response = JSON.parse(http.get('/get_status'+'?key='+player_key).body)
     puts response
-    break if !response['active']
+    break if response['active'] == false
     if response['your_turn']
       response = http.get('/send_move'+'?key='+player_key +'&move=call')
       puts response.body
     end
-    #sleep 1
+
   end
-}
+  break if response['active'] == false
+end
 
 puts response['winner']
 

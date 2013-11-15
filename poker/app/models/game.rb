@@ -318,7 +318,7 @@ class Game
 
   def set_action(action, amount)
     #@todo do validations here so player can get feedback
-    message, action = validate_action(action, amount)
+    message, action,amount = validate_action(action, amount)
     @action = action
     @amount = amount
     message
@@ -338,23 +338,28 @@ class Game
   end
 
   def validate_fold
-    [{message: 'Folding'}, 'fold']
+    [{message: 'Folding'}, 'fold',0]
   end
 
   def validate_bet(amount)
-    if amount < @ante || amount > @stacks[@turn]
-      [{message: 'Bet was invalid, folding'}, 'fold']
+    if amount < @ante
+      [{message: 'Bet was invalid, folding'}, 'fold',0]
+    elsif amount >= @stacks[@turn]
+      [{message: "Going all in! Betting #{amount}"}, 'bet', @stacks[@turn]]
+
     else
-      [{message: "Betting #{amount}"}, 'bet']
+      [{message: "Betting #{amount}"}, 'bet',amount]
     end
   end
 
   def validate_call
     diff = @current_high_bet - @current_bets[@turn]
     if @stacks[@turn] - diff < 0
-      [{message: 'Call was invalid, folding'}, 'fold']
+      [{message: 'Call was invalid, folding'}, 'fold',0]
+    elsif  @stacks[@turn] - diff == 0
+      [{message: "Going all in! Calling #{diff}"}, 'call',0]
     else
-      [{message: "Calling #{diff}"}, 'call']
+      [{message: "Calling #{diff}"}, 'call',0]
     end
   end
 
