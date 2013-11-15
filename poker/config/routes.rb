@@ -59,16 +59,16 @@ Poker::Application.routes.draw do
   resources :admins, only: [ :show]
 
 
-  get '/get_key/:name' => 'players#create_api'
+  get '/get_key' => 'players#create_api'
 
-  get '/get_status/:key' => 'games#get_status'
-  get '/send_action_and_amount/:key' => 'games#send_action_and_amount'
+  get '/get_status' => 'games#get_status'
+  get '/send_move' => 'games#send_action_and_amount'
 
-  get '/player/:key' => 'players#show', as: :player
+  get '/player' => 'players#show', as: :player
 
   #admin routes
-  get '/open_tournament/:key' => 'games#open_tournament'
-  get '/start_tournament/:key' => 'games#start_tournament'
+  get '/open_tournament' => 'games#open_tournament'
+  get '/start_tournament' => 'games#start_tournament'
 
   get '/documentation' => 'pages#documentation'
   root 'pages#index'

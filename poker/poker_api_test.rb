@@ -18,28 +18,28 @@ master_key = 'boobs'
 
 uri = URI(CODE_EM_URI)
 http = Net::HTTP.new(CODE_EM_URI, 3000)
-response = http.get('/open_tournament/'+master_key)
+response = http.get('/open_tournament'+'?key='+ master_key)
 puts response.body
 
 for player_key in players
-  response = http.get('/get_status/'+player_key)
+  response = http.get('/get_status'+'?key='+player_key)
   puts response.body
 end
 
-response = http.get('/start_tournament/'+master_key)
+response = http.get('/start_tournament'+'?key='+master_key)
 puts response.body
 
 
 loop {
   for player_key in players
-    response = JSON.parse(http.get('/get_status/'+player_key).body)
+    response = JSON.parse(http.get('/get_status'+'?key='+player_key).body)
     puts response
     break if !response['active']
     if response['your_turn']
-      response = http.get('/send_action_and_amount/'+player_key +'?move=call')
+      response = http.get('/send_move'+'?key='+player_key +'&move=call')
       puts response.body
     end
-    sleep 1
+    #sleep 1
   end
 }
 

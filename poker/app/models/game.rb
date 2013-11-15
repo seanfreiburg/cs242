@@ -58,12 +58,12 @@ class Game
   end
 
   def open_status(player)
-    @players << player unless @players.any? { |a| a.id == player.id }
+    @players << player unless @players.any? { |a| a.id == player.id && @players.size > 8}
     {players: @players.map { |a| a.name }, active: false}
   end
 
   def started_status(player)
-    {community_cards: @community_cards, your_turn: player == @turn, hand: @hands[player], big_blind: @big_blind.name, small_blind: @small_blind,
+    {community_cards: @community_cards, your_turn: player == @turn, hand: @hands[player], big_blind: @big_blind.name, small_blind: @small_blind.name,
      dealer: @dealer.name, money: @stacks[player], ante: @ante, active: true}
   end
 

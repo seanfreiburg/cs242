@@ -8,18 +8,16 @@ class PlayersController < ApplicationController
   def create_api
     @player = Player.new params.permit(:name)
     if @player.save
-      render json: @player
-
+      render json: {name: @player.name, key: @player.key}
     else
-      render json: 'Name already taken'
+      render json: {error: 'Name already taken'}
     end
   end
 
   def create
     @player = Player.new params.require(:player).permit(:name)
     if @player.save
-      redirect_to player_path(:key => @player.key )
-
+      redirect_to player_path(:key => @player.key)
     else
       flash[:error] = @player.errors.full_messages
       render 'new'
