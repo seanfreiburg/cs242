@@ -44,6 +44,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    colorize (0.6.0)
     debug_inspector (0.0.2)
     devise (3.0.0)
       bcrypt-ruby (~> 3.0)
@@ -76,8 +77,6 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    puma (2.6.0)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -160,11 +159,11 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (= 2.3.2.1)
   coffee-rails (~> 4.0.0)
+  colorize
   devise
   jbuilder (~> 1.2)
   jquery-rails
   pry
-  puma
   rails (= 4.0.0)
   rspec-rails
   ruby-poker

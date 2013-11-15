@@ -8,12 +8,12 @@ class Game
   #https://github.com/jjulian/pitboss/blob/master/lib/pitboss/game.rb
   include Singleton
 
-  STARTING_ANTE = 1000
+  STARTING_ANTE = 500
   STARTING_MONEY = 1000
   API_KEY = 'boobs'
 
 
-  attr_accessor :community_cards, :deck, :active_players, :players, :current_bets,:stacks
+  attr_accessor :community_cards, :deck, :active_players, :players, :current_bets, :stacks
   attr_reader :MASTER_API_KEY
 
 
@@ -264,14 +264,15 @@ class Game
     for player in @players
       @stacks[player] = STARTING_MONEY
     end
-    loop {
+    until @game_over
       puts 'deal'
       deal
       puts 'loop'
       remove_broke_players
-      break if @players.size == 1
-    }
-    @game_over = true
+      if @players.size == 1
+        @game_over = true
+      end
+    end
     puts 'Game Over' if @debug
     @winners = @players
 

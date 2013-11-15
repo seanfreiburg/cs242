@@ -6,18 +6,18 @@ require 'securerandom'
 
 CODE_EM_URI = '0.0.0.0'
 
-player1_key = '55123172e0e107acaaf08c88b77e11e5'
-player2_key = 'a41dd2fb6597bb629c29455afb2edead'
-player3_key = '5b2caf4c6a9711cfbe2f36563c7cf64e'
+player1_key = '776564ba0d8a6cbd081671db5e320670'
+player2_key = 'c58ede57ba39e07809b9298fbf2bb826'
+player3_key = '88f4839b5bbaee0e7f07eb3908002e39'
 
 
-players = ['55123172e0e107acaaf08c88b77e11e5', 'a41dd2fb6597bb629c29455afb2edead', '5b2caf4c6a9711cfbe2f36563c7cf64e']
+players = [player1_key, player2_key, player3_key]
 
 
 master_key = 'boobs'
 
 uri = URI(CODE_EM_URI)
-http = Net::HTTP.new(CODE_EM_URI, 8080)
+http = Net::HTTP.new(CODE_EM_URI, 3000)
 response = http.get('/open_tournament/'+master_key)
 puts response.body
 
