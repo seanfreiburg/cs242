@@ -6,9 +6,9 @@ require 'securerandom'
 
 CODE_EM_URI = '0.0.0.0'
 
-player1_key = '776564ba0d8a6cbd081671db5e320670'
-player2_key = 'c58ede57ba39e07809b9298fbf2bb826'
-player3_key = '88f4839b5bbaee0e7f07eb3908002e39'
+player1_key = '4ab5d8d5e86460d95eabdfec0ae5c7f9'
+player2_key = 'ea390b7be8ad721d57d002c7fddb448d'
+player3_key = '44b687ad88176d550048cba96bb5395f'
 
 
 players = [player1_key, player2_key, player3_key]
@@ -34,11 +34,12 @@ loop {
   for player_key in players
     response = JSON.parse(http.get('/get_status/'+player_key).body)
     puts response
-    break if response['winner']
+    break if !response['active']
     if response['your_turn']
       response = http.get('/send_action_and_amount/'+player_key +'?move=call')
       puts response.body
     end
+    sleep 1
   end
 }
 

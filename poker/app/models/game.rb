@@ -165,8 +165,8 @@ class Game
 
       end
 
-      bet(@small_blind, @ante / 2)
-      bet(@big_blind, @ante)
+      bet_action(@small_blind, @ante / 2)
+      bet_action(@big_blind, @ante)
 
       @deck = Deck.new
 
@@ -218,14 +218,12 @@ class Game
 
   def declareWinner
     puts "#{@winners.map(&:id).join(' and ')} #{@winners.size == 1 ? 'is' : 'are'} the winner#{'s' unless @winners.size == 1}"
+    #binding.pry
   end
 
   def distributePot
     for winner in @winners
-      puts @stacks[winner]
       @stacks[winner] += @pot/@winners.size
-      puts @stacks[winner]
-      puts winner.id + ' won ' + @pot/@winners.size
     end
   end
 
@@ -265,11 +263,9 @@ class Game
       @stacks[player] = STARTING_MONEY
     end
     until @game_over
-      puts 'deal'
       deal
-      puts 'loop'
       remove_broke_players
-      if @players.size == 1
+      if @players.size == 1 || @players.nil?
         @game_over = true
       end
     end
