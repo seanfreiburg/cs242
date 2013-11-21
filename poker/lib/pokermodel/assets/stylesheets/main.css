@@ -26,14 +26,12 @@ body{
 
 #player5{
 	top: 295px;
-	left: 190px;
-	-webkit-transform:rotate(180deg);
+	left: 157px;
 }
 
 #player6{
 	top: 295px;
-	left: -70px;
-	-webkit-transform:rotate(180deg);
+	left: -105px;
 }
 
 #player7{
