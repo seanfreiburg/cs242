@@ -19,9 +19,11 @@
 			</div>
 		</div>
 		<div class="controls">
-			<button class="btn btn-primary">Bet</button>
-			<button class="btn btn-primary">Call</button>
-			<button class="btn btn-primary">Fold</button>
+			<!-- Make it so max is players total money -->
+			<input type="range" min="0" max="1000" step="1" value="0" />
+			<button id="bet" class="btn btn-primary">Bet</button>
+			<button id="call" class="btn btn-primary">Call</button>
+			<button id="fold" class="btn btn-primary">Fold</button>
 		</div>	
 	</body>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

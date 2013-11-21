@@ -1,3 +1,8 @@
+.card_back{
+	width:71px;
+	height:96px;
+	background:url(../images/cardback.png) 0 0;
+}
 
 .ace_clubs{
 	width:71px;
@@ -9,6 +14,12 @@
 	width:71px;
 	height:96px;
 	background:url(../images/playingcards.png) -1 -99;
+}
+
+.ace_spades_tux{
+	width:71px;
+	height:96px;
+	background:url(../images/tuxace.png) 0 0;
 }
 
 .ace_hearts{
