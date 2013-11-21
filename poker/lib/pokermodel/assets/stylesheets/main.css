@@ -2,13 +2,69 @@ body{
 	background-color: #0D98BA;
 }
 
+#player1{
+	top: 10px;
+	left: 250px;
+}
+
+#player2{
+	top:10px;
+	left: 370px;
+}
+
+#player3{
+	top:50px;
+	left:515px;
+	-webkit-transform:rotate(45deg);
+}
+
+#player4{
+	top: 230px;
+	left: 470px;
+	-webkit-transform:rotate(135deg);
+}
+
+#player5{
+	top: 295px;
+	left: 190px;
+	-webkit-transform:rotate(180deg);
+}
+
+#player6{
+	top: 295px;
+	left: -70px;
+	-webkit-transform:rotate(180deg);
+}
+
+#player7{
+	top: 255px;
+	left: -355px;
+	-webkit-transform:rotate(225deg);
+}
+
+#player8{
+	top: 75px;
+	left: -450px;
+	-webkit-transform:rotate(315deg);
+}
+
+
+
+#amount{
+	text-align: center;
+	font-size: 36px;
+}
+#bet_slider{
+	width: 300px;
+}
+
 .controls button{
 	width: 70px;
 }
 
 .controls{
 	float: right;
-	margin-right: 25%;
+	margin-right: 32%;
 	margin-top: 15px;
 }
 
@@ -17,7 +73,7 @@ body{
 	margin-right: auto;
 	width: 800px;
 	height: 400px;
-	background:url(../images/PokerFelt.png) 0 0;
+	background:url(../images/PokerFelt.png) 0px 0px;
 	-moz-border-radius:200px;
 	-webkit-border-radius: 200px;
 	border-radius: 200px;
@@ -30,7 +86,7 @@ body{
 	padding: 25px;
 	width: 800px;
 	height: 400px;
-	background:url(../images/wood-texture.jpg) -200 -100;
+	background:url(../images/wood-texture.jpg) -200px -100px;
 	-moz-border-radius:217px;
 	-webkit-border-radius: 217px;
 	border-radius: 217px;
@@ -47,11 +103,16 @@ body{
 	float: left;
 }
 
+.hand{
+	position: relative;
+	float: left;
+}
+
 .deal{
 	margin-left:146px; 
 	width:71px;
 	height:96px;
-	background:url(../images/cardback.png) 0 0;
+	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
 	-webkit-animation:deal 1s; /* Safari and Chrome */	
