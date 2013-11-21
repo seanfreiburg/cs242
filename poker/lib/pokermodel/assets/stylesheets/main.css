@@ -2,6 +2,54 @@ body{
 	background-color: #0D98BA;
 }
 
+#player1{
+	top: 10px;
+	left: 250px;
+}
+
+#player2{
+	top:10px;
+	left: 370px;
+}
+
+#player3{
+	top:50px;
+	left:515px;
+	-webkit-transform:rotate(45deg);
+}
+
+#player4{
+	top: 230px;
+	left: 470px;
+	-webkit-transform:rotate(135deg);
+}
+
+#player5{
+	top: 295px;
+	left: 190px;
+	-webkit-transform:rotate(180deg);
+}
+
+#player6{
+	top: 295px;
+	left: -70px;
+	-webkit-transform:rotate(180deg);
+}
+
+#player7{
+	top: 255px;
+	left: -355px;
+	-webkit-transform:rotate(225deg);
+}
+
+#player8{
+	top: 75px;
+	left: -450px;
+	-webkit-transform:rotate(315deg);
+}
+
+
+
 #amount{
 	text-align: center;
 	font-size: 36px;
@@ -52,6 +100,11 @@ body{
 
 .center{
 	margin-left: 2px;
+	float: left;
+}
+
+.hand{
+	position: relative;
 	float: left;
 }
 

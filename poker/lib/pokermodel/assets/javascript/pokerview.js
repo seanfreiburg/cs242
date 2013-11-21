@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-$('.card_back').hide();
+//$('.card_back').hide();
 $('#bet_slider').hide();
 $('#amount').hide();
 
@@ -19,7 +19,12 @@ $('#bet').click(function(){
 
 $('#bet_slider').change(function(){
 	var value = $('#bet_slider').val();
-	$('#amount').html('$'+value);
+	if(value == $('#bet_slider').attr("max"))
+		value = "All-in";
+	else
+		value = '$'+value;
+
+	$('#amount').html(value);
 });
 
 var changeButtons = function(){
