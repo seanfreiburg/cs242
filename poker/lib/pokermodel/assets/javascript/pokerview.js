@@ -1,6 +1,22 @@
 $(document).ready(function(){
 
 $('.card_back').hide();
+$('#bet_slider').hide();
+$('#amount').hide();
+
+$('#bet').click(function(){
+	$('#bet_slider').toggle();
+	$('#amount').toggle();
+	if( $('#bet').html() == 'Bet' )
+		$('#bet').html('Submit');
+	else
+		$('#bet').html('Bet');
+});
+
+$('#bet_slider').change(function(){
+	var value = $('#bet_slider').val();
+	$('#amount').html('$'+value);
+});
 
 var dealCommunity = function(){
 	$('#0').fadeIn(500,function(){
@@ -40,6 +56,6 @@ var showRiver = function(card_array){
 }
 
 dealCommunity();
-//ShowFlop(['AD','AS','AC']);
+//showFlop(['AD','AS','AC','KH','KS']);
 
 });

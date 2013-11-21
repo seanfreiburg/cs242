@@ -2,6 +2,10 @@ body{
 	background-color: #0D98BA;
 }
 
+#bet_slider{
+	width: 300px;
+}
+
 .controls button{
 	width: 70px;
 }
