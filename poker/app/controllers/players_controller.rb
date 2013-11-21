@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
     if @player.save
       render json: {name: @player.name, key: @player.key}
     else
-      render json: {error: 'Name already taken'}
+      render json: @player.errors
     end
   end
 

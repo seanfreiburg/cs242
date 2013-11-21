@@ -4,7 +4,7 @@ require 'open-uri'
 require 'securerandom'
 
 
-CODE_EM_URI = '0.0.0.0'
+GAME_URI = '0.0.0.0'
 
 player1_key = '4ab5d8d5e86460d95eabdfec0ae5c7f9'
 player2_key = 'ea390b7be8ad721d57d002c7fddb448d'
@@ -16,8 +16,8 @@ players = [player1_key, player2_key, player3_key]
 
 master_key = 'boobs'
 
-uri = URI(CODE_EM_URI)
-http = Net::HTTP.new(CODE_EM_URI, 3000)
+
+http = Net::HTTP.new(GAME_URI, 3000)
 response = http.get('/open_tournament'+'?key='+ master_key)
 puts response.body
 

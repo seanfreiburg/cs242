@@ -8,7 +8,7 @@ class Game
   #https://github.com/jjulian/pitboss/blob/master/lib/pitboss/game.rb
   include Singleton
 
-  STARTING_ANTE = 500
+  STARTING_ANTE = 2
   STARTING_MONEY = 1000
   API_KEY = 'boobs'
 
@@ -54,11 +54,11 @@ class Game
   end
 
   def game_over_status(player)
-    {winner: @overall_winner, active: false}
+    {winner: @overall_winner.name, active: false}
   end
 
   def open_status(player)
-    @players << player unless @players.any? { |a| a.id == player.id && @players.size > 8}
+    @players << player unless @players.any? { |a| a.id == player.id || @players.size > 8}
     {players: @players.map { |a| a.name }, active: false}
   end
 
@@ -265,12 +265,12 @@ class Game
     until @game_over
       deal
       remove_broke_players
-      if @players.size == 1 || @players.nil?
+      if @players.size == 1
         @game_over = true
       end
     end
     puts 'Game Over' if @debug
-    @winners = @players
+    @overall_winner = @players.first
 
   end
 
@@ -369,7 +369,8 @@ class Game
     for player in @players
       if @stacks[player] <= 0
         @players.delete(player)
-        puts player.id if @debug
+        puts 'im nuts'.red
+        puts @stacks[player].red if @debug
       end
     end
   end
