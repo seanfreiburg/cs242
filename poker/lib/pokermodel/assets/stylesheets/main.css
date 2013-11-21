@@ -4,12 +4,14 @@ body{
 
 #player1{
 	top: 10px;
-	left: 250px;
+	left: 280px;
+	-webkit-transform:rotate(180deg);
 }
 
 #player2{
 	top:10px;
-	left: 370px;
+	left: 400px;
+	-webkit-transform:rotate(180deg);
 }
 
 #player3{
