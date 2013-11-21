@@ -17,7 +17,7 @@ body{
 	margin-right: auto;
 	width: 800px;
 	height: 400px;
-	background:url(../images/PokerFelt.png) 0 0;
+	background:url(../images/PokerFelt.png) 0px 0px;
 	-moz-border-radius:200px;
 	-webkit-border-radius: 200px;
 	border-radius: 200px;
@@ -30,7 +30,7 @@ body{
 	padding: 25px;
 	width: 800px;
 	height: 400px;
-	background:url(../images/wood-texture.jpg) -200 -100;
+	background:url(../images/wood-texture.jpg) -200px -100px;
 	-moz-border-radius:217px;
 	-webkit-border-radius: 217px;
 	border-radius: 217px;
@@ -51,7 +51,7 @@ body{
 	margin-left:146px; 
 	width:71px;
 	height:96px;
-	background:url(../images/cardback.png) 0 0;
+	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
 	-webkit-animation:deal 1s; /* Safari and Chrome */	
