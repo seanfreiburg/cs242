@@ -5,10 +5,14 @@ $('#bet_slider').hide();
 $('#amount').hide();
 
 $('#bet').click(function(){
+	showFlop(['AD','AS','AC','KH','KS']);
 	$('#bet_slider').toggle();
 	$('#amount').toggle();
-	if( $('#bet').html() == 'Bet' )
+	if( $('#bet').html() == 'Bet' ){
 		$('#bet').html('Submit');
+		$('#bet_slider').val(0);
+		$('#amount').html('$0');
+	}
 	else
 		$('#bet').html('Bet');
 });
@@ -17,6 +21,11 @@ $('#bet_slider').change(function(){
 	var value = $('#bet_slider').val();
 	$('#amount').html('$'+value);
 });
+
+var changeButtons = function(){
+	$('#bet').html('Raise');
+	$('#check').html('Call');
+}
 
 var dealCommunity = function(){
 	$('#0').fadeIn(500,function(){
@@ -34,8 +43,25 @@ var showFlop = function(card_array){
 	$('#0').fadeOut(500,function(){
 		$('#0').removeClass('card_back');
 		$('#0').addClass(card_array[0]);
-		$('#0').fadeIn(500);
+		$('#0').fadeIn(500,	
+			function(){
+				$('#1').fadeOut(500,function(){
+					$('#1').removeClass('card_back');
+					$('#1').addClass(card_array[1]);
+					$('#1').fadeIn(500,	
+						function(){
+							$('#2').fadeOut(500,function(){
+								$('#2').removeClass('card_back');
+								$('#2').addClass(card_array[2]);
+								$('#2').fadeIn(500);
+							});
+						});
+				});
+			});
 	});
+
+
+
 
 }
 
@@ -56,6 +82,5 @@ var showRiver = function(card_array){
 }
 
 dealCommunity();
-//showFlop(['AD','AS','AC','KH','KS']);
-
+//
 });

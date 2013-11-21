@@ -2,6 +2,10 @@ body{
 	background-color: #0D98BA;
 }
 
+#amount{
+	text-align: center;
+	font-size: 36px;
+}
 #bet_slider{
 	width: 300px;
 }
