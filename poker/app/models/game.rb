@@ -8,7 +8,7 @@ class Game
   #https://github.com/jjulian/pitboss/blob/master/lib/pitboss/game.rb
   include Singleton
 
-  STARTING_ANTE = 2
+  STARTING_ANTE = 500
   STARTING_MONEY = 1000
   API_KEY = 'boobs'
 
@@ -149,7 +149,10 @@ class Game
       @current_high_bet = @ante
       @current_bets = Hash.new
       @pot = 0
-      @active_players = @players
+      @small_blind = nil
+      @big_blind = nil
+      @dealer = nil
+      @active_players = @players.dup
 
       for player in @players
         @hands[player] = []
@@ -263,6 +266,7 @@ class Game
       @stacks[player] = STARTING_MONEY
     end
     until @game_over
+      @deck = Deck.new
       deal
       remove_broke_players
       if @players.size == 1
@@ -311,7 +315,6 @@ class Game
     @action = nil
     @amount = nil
     while @action.nil?
-
     end
     [@action, @amount]
   end

@@ -159,6 +159,36 @@ class GameSpec
     end
   end
 
+  describe "Validate Action" do
+    it "should draw one card." do
+
+    end
+  end
+
+  describe "Validate Fold" do
+    it "should draw one card." do
+
+    end
+  end
+
+  describe "Validate Call" do
+    it "should draw one card." do
+
+    end
+  end
+
+  describe "Validate Bet" do
+    it "should draw one card." do
+
+    end
+  end
+
+  describe "Open Tournament" do
+    it "should draw one card." do
+
+    end
+  end
+
 
 end
 
