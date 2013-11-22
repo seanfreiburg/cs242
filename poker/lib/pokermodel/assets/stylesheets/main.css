@@ -15,15 +15,15 @@ body{
 }
 
 #player3{
-	top:50px;
-	left:515px;
-	-webkit-transform:rotate(45deg);
+	top:70px;
+	left:538px;
+	-webkit-transform:rotate(225deg);
 }
 
 #player4{
-	top: 230px;
-	left: 470px;
-	-webkit-transform:rotate(135deg);
+	top: 257px;
+	left: 446px;
+	-webkit-transform:rotate(315deg);
 }
 
 #player5{
@@ -37,15 +37,15 @@ body{
 }
 
 #player7{
-	top: 255px;
-	left: -355px;
-	-webkit-transform:rotate(225deg);
+	top: 236px;
+	left: -375px;
+	-webkit-transform:rotate(45deg);
 }
 
 #player8{
-	top: 75px;
-	left: -450px;
-	-webkit-transform:rotate(315deg);
+	top: 49px;
+	left: -425px;
+	-webkit-transform:rotate(135deg);
 }
 
 
