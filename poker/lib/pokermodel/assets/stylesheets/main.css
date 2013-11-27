@@ -61,12 +61,16 @@ body{
 
 .controls button{
 	width: 70px;
+	float: right;
+	margin-right: 5px;
 }
 
 .controls{
-	float: right;
-	margin-right: 32%;
+	width: 529px;
+	margin-right: auto;
+	margin-left: auto;
 	margin-top: 15px;
+
 }
 
 #table{
