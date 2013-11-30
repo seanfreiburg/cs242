@@ -113,8 +113,11 @@ body{
 	float: left;
 }
 
+.deal_static{
+	margin-left:146px;
+}
+
 .deal{
-	margin-left:146px; 
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
@@ -124,9 +127,9 @@ body{
 }
 
 @keyframes deal {
-	100% {left:-10px;top:-150px;transform:rotate(360deg);-ms-transform:rotate(360deg);}
+	100% {left:-100px;top:-150px;transform:rotate(360deg);-ms-transform:rotate(360deg);}
 }
 
 @-webkit-keyframes deal /* Safari and Chrome */{
-	100% {left:-10px;top:-150px;-webkit-transform:rotate(360deg);}
+	100% {left:-114px;top:-142px;-webkit-transform:rotate(360deg);}
 }

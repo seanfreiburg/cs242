@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+/*$('.deal').animate({
+	left:'-114px',
+	top:'-142px'},500);*/
+
 //$('.card_back').hide();
 $('#bet_slider').hide();
 $('#amount').hide();
