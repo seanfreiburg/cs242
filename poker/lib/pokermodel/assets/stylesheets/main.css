@@ -3,48 +3,48 @@ body{
 }
 
 #player1{
-	top: 10px;
+	top: 5px;
 	left: 280px;
 	-webkit-transform:rotate(180deg);
 }
 
 #player2{
-	top:10px;
-	left: 400px;
+	top: 5px;
+	left: 406px;
 	-webkit-transform:rotate(180deg);
 }
 
 #player3{
-	top:70px;
-	left:538px;
+	top:55px;
+	left:510px;
 	-webkit-transform:rotate(225deg);
 }
 
 #player4{
-	top: 257px;
-	left: 446px;
+	top: 225px;
+	left: 418px;
 	-webkit-transform:rotate(315deg);
 }
 
 #player5{
-	top: 295px;
-	left: 157px;
+	top: 255px;
+	left: 163px;
 }
 
 #player6{
-	top: 295px;
+	top: 255px;
 	left: -105px;
 }
 
 #player7{
-	top: 236px;
-	left: -375px;
+	top: 204px;
+	left: -350px;
 	-webkit-transform:rotate(45deg);
 }
 
 #player8{
-	top: 49px;
-	left: -425px;
+	top: 34px;
+	left: -400px;
 	-webkit-transform:rotate(135deg);
 }
 
@@ -67,6 +67,7 @@ body{
 
 .controls{
 	width: 529px;
+	height: 120px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 15px;
@@ -117,6 +118,19 @@ body{
 	margin-left:146px;
 }
 
+.money_flipped{
+	text-align: center;
+	padding: 0 0 0 0;
+	margin: 0 -18px 3px 10px;
+	-webkit-transform:rotate(180deg);
+}
+
+.money{
+	text-align: center;
+	padding: 0 0 0 0;
+	margin: 0 -18px 3px 10px;
+}
+
 .deal{
 	width:71px;
 	height:96px;
@@ -131,5 +145,5 @@ body{
 }
 
 @-webkit-keyframes deal /* Safari and Chrome */{
-	100% {left:-114px;top:-142px;-webkit-transform:rotate(360deg);}
+	100% {left:-114px;top:-147px;-webkit-transform:rotate(360deg);}
 }
