@@ -67,7 +67,7 @@ body{
 
 .controls{
 	width: 529px;
-	height: 120px;
+	height: 115px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 15px;
@@ -131,19 +131,67 @@ body{
 	margin: 0 -18px 3px 10px;
 }
 
-.deal{
+.deal_player1_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal 1s; /* Safari and Chrome */	
+	-webkit-animation:deal_player1_card1 1s; /* Safari and Chrome */	
 }
 
-@keyframes deal {
-	100% {left:-100px;top:-150px;transform:rotate(360deg);-ms-transform:rotate(360deg);}
-}
-
-@-webkit-keyframes deal /* Safari and Chrome */{
+@-webkit-keyframes deal_player1_card1 /* Safari and Chrome */{
 	100% {left:-114px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player1_card2{
+	width:71px;
+	height:96px;
+	background:url(../images/cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player1_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player1_card2 /* Safari and Chrome */{
+	100% {left:-84px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player2_card1{
+	width:71px;
+	height:96px;
+	background:url(../images/cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player2_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player2_card1 /* Safari and Chrome */{
+	100% {right:-83px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player2_card2{
+	width:71px;
+	height:96px;
+	background:url(../images/cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player2_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player2_card2 /* Safari and Chrome */{
+	100% {right:-113px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player3_card1{
+	width:71px;
+	height:96px;
+	background:url(../images/cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player3_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player3_card1 /* Safari and Chrome */{
+	100% {right:-270px;top:-130px;-webkit-transform:rotate(405deg);}
 }
