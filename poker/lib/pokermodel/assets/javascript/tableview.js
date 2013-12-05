@@ -41,6 +41,9 @@ function TableView(num_players){
 	var deal_recursive = function(sequence,i,j){
 		if(i == sequence.length && j == 2){
 			$('.deal_static').hide(dealCommunity());
+			sequence.forEach(function(id){
+				$('#player'+id+' .well').animate({'opacity':'1.0'},1000);
+			});
 			return;
 		}
 		if(i == sequence.length){

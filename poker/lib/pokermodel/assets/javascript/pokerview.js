@@ -32,5 +32,4 @@ $(document).ready(function(){
 	bet_slider_handler();
 	table.start_of_round();
 	table.deal_players();
-
 });
