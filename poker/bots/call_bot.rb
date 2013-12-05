@@ -9,9 +9,7 @@ require 'securerandom'
 GAME_URI = '0.0.0.0'
 
 def logic(turn_data)
-
   return 'call', nil
-
 end
 
 

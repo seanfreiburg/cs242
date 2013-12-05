@@ -28,6 +28,7 @@ class Game
     @ante = STARTING_ANTE
     @small_blind = nil
     @big_blind = nil
+    @dealer = nil
     @current_high_bet = 0
     @current_bets = Hash.new
     @turn = nil
@@ -149,9 +150,6 @@ class Game
       @current_high_bet = @ante
       @current_bets = Hash.new
       @pot = 0
-      @small_blind = nil
-      @big_blind = nil
-      @dealer = nil
       @active_players = @players.dup
 
       for player in @players
@@ -266,7 +264,6 @@ class Game
       @stacks[player] = STARTING_MONEY
     end
     until @game_over
-      @deck = Deck.new
       deal
       remove_broke_players
       if @players.size == 1
