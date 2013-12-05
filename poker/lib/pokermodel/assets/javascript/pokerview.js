@@ -13,7 +13,7 @@ var modal_close_handler = function(){
 
 var modal_submit_handler = function(){
 	$('#modal_submit').click(function(){
-		key = api.get_key($('.modal-body input').val());
+		console.log(api.get_key($('.modal-body input').val()));
 		data = api.get_status(key);
 		gameloop(/*num_players*/);
 	});
