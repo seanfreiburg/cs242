@@ -146,6 +146,26 @@ body{
 	margin: 0 -18px 3px 10px;
 }
 
+#name{
+	width: 300px;
+	left: 60%;
+}
+
+#name button{
+	margin-right: 5px;
+}
+
+.modal-body p{
+	text-align: center;
+	font-size: 18px;
+}
+
+.modal-body input{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .deal_player1_card2{
 	width:71px;
 	height:96px;
