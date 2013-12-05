@@ -1,11 +1,16 @@
 $(document).ready(function(){
 
+/*$('.deal').animate({
+	left:'-114px',
+	top:'-142px'},500);*/
+
 //$('.card_back').hide();
 $('#bet_slider').hide();
 $('#amount').hide();
 
 $('#bet').click(function(){
 	showFlop(['AD','AS','AC','KH','KS']);
+	showHand(['KD','KC']);
 	$('#bet_slider').toggle();
 	$('#amount').toggle();
 	if( $('#bet').html() == 'Bet' ){
@@ -69,6 +74,24 @@ var showFlop = function(card_array){
 
 
 }
+
+var showHand = function(hand_array){
+		$('#player5card2').fadeOut(500,function(){
+		$('#player5card2').removeClass('card_back');
+		$('#player5card2').addClass(hand_array[1]);
+		$('#player5card2').fadeIn(500,
+			function(){
+				$('#player5card1').fadeOut(500,function(){
+				$('#player5card1').removeClass('card_back');
+				$('#player5card1').addClass(hand_array[0]);
+				$('#player5card1').fadeIn(500);
+			});
+	});
+
+});
+	}
+
+
 
 var showTurn = function(card_array){
 	$('#3').fadeOut(500,function(){
