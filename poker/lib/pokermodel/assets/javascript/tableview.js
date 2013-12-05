@@ -88,6 +88,9 @@ function TableView(num_players){
 	}
 
 	this.showFlop = function(card_array){
+		for(i=0;i<3;i++){
+			card_array[i] = '_'+card_array[i];
+		}
 		$('#community0').fadeOut(500,function(){
 			$('#community0').removeClass('card_back');
 			$('#community0').addClass(card_array[0]);
@@ -112,6 +115,7 @@ function TableView(num_players){
 	}
 
 	this.showTurn = function(card_array){
+		card_array[3] = '_'+card_array[3];
 		$('#community3').fadeOut(500,function(){
 			$('#community3').removeClass('card_back');
 			$('#community3').addClass(card_array[3]);
@@ -120,6 +124,7 @@ function TableView(num_players){
 	}
 
 	this.showRiver = function(card_array){
+		card_array[4] = '_'+card_array[4];
 		$('#community4').fadeOut(500,function(){
 			$('#community4').removeClass('card_back');
 			$('#community4').addClass(card_array[4]);

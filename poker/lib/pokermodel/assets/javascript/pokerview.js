@@ -27,7 +27,7 @@ var bet_slider_handler = function(){
 }
 
 $(document).ready(function(){
-	var table = new TableView(2);
+	var table = new TableView(4);
 	bet_raise_button_handler();
 	bet_slider_handler();
 	table.start_of_round();
