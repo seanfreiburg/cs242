@@ -132,43 +132,30 @@ body{
 	margin: 0 -18px 3px 10px;
 }
 
-.deal_player1_card1{
-	width:71px;
-	height:96px;
-	background:url(../images/cardback.png) 0px 0px;
-	position:relative;
-	animation:deal 1s;
-	-webkit-animation:deal_player1_card1 1s; /* Safari and Chrome */	
-}
-
-@-webkit-keyframes deal_player1_card1 /* Safari and Chrome */{
-	100% {left:-114px;top:-147px;-webkit-transform:rotate(360deg);}
-}
-
 .deal_player1_card2{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player1_card2 1s; /* Safari and Chrome */		
+	-webkit-animation: deal_player1_card2 1s; /* Safari and Chrome */	
 }
 
 @-webkit-keyframes deal_player1_card2 /* Safari and Chrome */{
-	100% {left:-84px;top:-147px;-webkit-transform:rotate(360deg);}
+	100% {left:-114px;top:-147px;-webkit-transform:rotate(360deg);}
 }
 
-.deal_player2_card1{
+.deal_player1_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player2_card1 1s; /* Safari and Chrome */		
+	-webkit-animation:deal_player1_card1 1s; /* Safari and Chrome */		
 }
 
-@-webkit-keyframes deal_player2_card1 /* Safari and Chrome */{
-	100% {right:-83px;top:-147px;-webkit-transform:rotate(360deg);}
+@-webkit-keyframes deal_player1_card1 /* Safari and Chrome */{
+	100% {left:-84px;top:-147px;-webkit-transform:rotate(360deg);}
 }
 
 .deal_player2_card2{
@@ -181,20 +168,20 @@ body{
 }
 
 @-webkit-keyframes deal_player2_card2 /* Safari and Chrome */{
-	100% {right:-113px;top:-147px;-webkit-transform:rotate(360deg);}
+	100% {right:-83px;top:-147px;-webkit-transform:rotate(360deg);}
 }
 
-.deal_player3_card1{
+.deal_player2_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player3_card1 1s; /* Safari and Chrome */		
+	-webkit-animation:deal_player2_card1 1s; /* Safari and Chrome */		
 }
 
-@-webkit-keyframes deal_player3_card1 /* Safari and Chrome */{
-	100% {right:-283px;top:-112px;-webkit-transform:rotate(405deg);}
+@-webkit-keyframes deal_player2_card1 /* Safari and Chrome */{
+	100% {right:-113px;top:-147px;-webkit-transform:rotate(360deg);}
 }
 
 .deal_player3_card2{
@@ -207,20 +194,20 @@ body{
 }
 
 @-webkit-keyframes deal_player3_card2 /* Safari and Chrome */{
-	100% {right:-303px;top:-90px;-webkit-transform:rotate(405deg);}
+	100% {right:-283px;top:-112px;-webkit-transform:rotate(405deg);}
 }
 
-.deal_player4_card1{
+.deal_player3_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player4_card1 1s; /* Safari and Chrome */		
+	-webkit-animation:deal_player3_card1 1s; /* Safari and Chrome */		
 }
 
-@-webkit-keyframes deal_player4_card1 /* Safari and Chrome */{
-	100% {right:-303px;bottom:-90px;-webkit-transform:rotate(315deg);}
+@-webkit-keyframes deal_player3_card1 /* Safari and Chrome */{
+	100% {right:-303px;top:-90px;-webkit-transform:rotate(405deg);}
 }
 
 .deal_player4_card2{
@@ -233,20 +220,20 @@ body{
 }
 
 @-webkit-keyframes deal_player4_card2 /* Safari and Chrome */{
-	100% {right:-283px;bottom:-112px;-webkit-transform:rotate(315deg);}
+	100% {right:-303px;bottom:-90px;-webkit-transform:rotate(315deg);}
 }
 
-.deal_player5_card1{
+.deal_player4_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player5_card1 1s; /* Safari and Chrome */		
+	-webkit-animation:deal_player4_card1 1s; /* Safari and Chrome */		
 }
 
-@-webkit-keyframes deal_player5_card1 /* Safari and Chrome */{
-	100% {right:-113px;bottom:-147px;-webkit-transform:rotate(360deg);}
+@-webkit-keyframes deal_player4_card1 /* Safari and Chrome */{
+	100% {right:-283px;bottom:-112px;-webkit-transform:rotate(315deg);}
 }
 
 .deal_player5_card2{
@@ -259,20 +246,20 @@ body{
 }
 
 @-webkit-keyframes deal_player5_card2 /* Safari and Chrome */{
-	100% {right:-83px;bottom:-147px;-webkit-transform:rotate(360deg);}
+	100% {right:-113px;bottom:-147px;-webkit-transform:rotate(360deg);}
 }
 
-.deal_player6_card1{
+.deal_player5_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player6_card1 1s; /* Safari and Chrome */		
+	-webkit-animation:deal_player5_card1 1s; /* Safari and Chrome */		
 }
 
-@-webkit-keyframes deal_player6_card1 /* Safari and Chrome */{
-	100% {left:-84px;bottom:-147px;-webkit-transform:rotate(360deg);}
+@-webkit-keyframes deal_player5_card1 /* Safari and Chrome */{
+	100% {right:-83px;bottom:-147px;-webkit-transform:rotate(360deg);}
 }
 
 .deal_player6_card2{
@@ -285,20 +272,20 @@ body{
 }
 
 @-webkit-keyframes deal_player6_card2 /* Safari and Chrome */{
-	100% {left:-114px;bottom:-147px;-webkit-transform:rotate(360deg);}
+	100% {left:-84px;bottom:-147px;-webkit-transform:rotate(360deg);}
 }
 
-.deal_player7_card1{
+.deal_player6_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player7_card1 1s; /* Safari and Chrome */		
+	-webkit-animation:deal_player6_card1 1s; /* Safari and Chrome */		
 }
 
-@-webkit-keyframes deal_player7_card1 /* Safari and Chrome */{
-	100% {left:-283px;bottom:-112px;-webkit-transform:rotate(405deg);}
+@-webkit-keyframes deal_player6_card1 /* Safari and Chrome */{
+	100% {left:-114px;bottom:-147px;-webkit-transform:rotate(360deg);}
 }
 
 .deal_player7_card2{
@@ -311,20 +298,20 @@ body{
 }
 
 @-webkit-keyframes deal_player7_card2 /* Safari and Chrome */{
-	100% {left:-303px;bottom:-90px;-webkit-transform:rotate(405deg);}
+	100% {left:-283px;bottom:-112px;-webkit-transform:rotate(405deg);}
 }
 
-.deal_player8_card1{
+.deal_player7_card1{
 	width:71px;
 	height:96px;
 	background:url(../images/cardback.png) 0px 0px;
 	position:relative;
 	animation:deal 1s;
-	-webkit-animation:deal_player8_card1 1s; /* Safari and Chrome */		
+	-webkit-animation:deal_player7_card1 1s; /* Safari and Chrome */		
 }
 
-@-webkit-keyframes deal_player8_card1 /* Safari and Chrome */{
-	100% {left:-303px;top:-90px;-webkit-transform:rotate(315deg);}
+@-webkit-keyframes deal_player7_card1 /* Safari and Chrome */{
+	100% {left:-303px;bottom:-90px;-webkit-transform:rotate(405deg);}
 }
 
 .deal_player8_card2{
@@ -337,5 +324,18 @@ body{
 }
 
 @-webkit-keyframes deal_player8_card2 /* Safari and Chrome */{
+	100% {left:-303px;top:-90px;-webkit-transform:rotate(315deg);}
+}
+
+.deal_player8_card1{
+	width:71px;
+	height:96px;
+	background:url(../images/cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player8_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player8_card1 /* Safari and Chrome */{
 	100% {left:-283px;top:-112px;-webkit-transform:rotate(315deg);}
 }
