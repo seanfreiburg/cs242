@@ -147,7 +147,6 @@ class GameSpec
   describe "Remove Broke Players" do
     it "should draw one card." do
       Game.instance.reset
-      game = Game.instance
       player1 =Player.create(name: 'adssadad')
       player2 = Player.create(name: 'adssadad4')
       Game.instance.players = [player1,player2]
@@ -184,9 +183,23 @@ class GameSpec
   end
 
   describe "Open Tournament" do
-    it "should draw one card." do
+    it "should let players register" do
+      Game.instance.reset
+      Game.instance.open_tournament
+      player1 =Player.create(name: 'adssadad')
+      Game.instance.game_status(player1)
+      Game.instance.players.size.should eq(1)
 
     end
+
+    it "should set the game to not started"  do
+
+    end
+
+    it "should reset the game" do
+
+    end
+
   end
 
 

@@ -39,6 +39,7 @@ class Game
     @game_over = false
     @stacks = Hash.new
     @overall_winner = nil
+    @all_in_player = nil
 
   end
 
@@ -59,7 +60,7 @@ class Game
   end
 
   def open_status(player)
-    @players << player unless @players.any? { |a| a.id == player.id || @players.size > 8}
+    @players << player unless @players.any? { |a| a.id == player.id || @players.size > 8 }
     {players: @players.map { |a| a.name }, active: false}
   end
 
@@ -119,14 +120,35 @@ class Game
   end
 
   def bet_action(player, amount)
+    if @all_in_player
+      amount = @current_high_bet if amount > @current_high_bet
+    end
+
+    if amount > @stacks[player]
+      @all_in_player = player
+      if @current_high_bet > @stacks[player]
+        @current_bets.each do |k, v|
+          if v > @stacks[player]
+            @stacks[k] += v - @stacks[player]
+            @current_bets[k] = @stacks[player]
+            pot -= v - @stacks[player]
+          end
+        end
+      end
+      amount = @stacks[player]
+      @current_high_bet = amount
+      @all_in_player = player
+    end
+
     @stacks[player] -= amount
     @pot += amount
     @current_bets[player] += amount
     @current_high_bet = amount if amount > @current_high_bet
     puts "#{player.id}: #{player.name} bets $#{amount}" if @debug
+
   end
 
-  #Determines the winner of a game
+#Determines the winner of a game
   def determineWinner
     winner = @players.first
     bestHand = PokerHand.new(@hands[winner]+@community_cards)
@@ -151,6 +173,7 @@ class Game
       @current_bets = Hash.new
       @pot = 0
       @active_players = @players.dup
+      @all_in_player = nil
 
       for player in @players
         @hands[player] = []
@@ -228,7 +251,7 @@ class Game
     end
   end
 
-  #Draws three cards for the flop
+#Draws three cards for the flop
   def flop
     @community_cards += @deck.drawCards!(3)
 
@@ -238,7 +261,7 @@ class Game
     end
   end
 
-  #Draws one card for the turn
+#Draws one card for the turn
   def turn
     @community_cards += @deck.drawCards!(1)
 
@@ -248,7 +271,7 @@ class Game
     end
   end
 
-  #Draws one card for the river
+#Draws one card for the river
   def river
     @community_cards += @deck.drawCards!(1)
 
@@ -306,6 +329,7 @@ class Game
     @current_high_bet = 0
     @current_bets = Hash.new
     @turn = nil
+    @all_in_player = nil
   end
 
   def get_action
@@ -318,7 +342,7 @@ class Game
 
   def set_action(action, amount)
     #@todo do validations here so player can get feedback
-    message, action,amount = validate_action(action, amount)
+    message, action, amount = validate_action(action, amount)
     @action = action
     @amount = amount
     message
@@ -338,28 +362,28 @@ class Game
   end
 
   def validate_fold
-    [{message: 'Folding'}, 'fold',0]
+    [{message: 'Folding'}, 'fold', 0]
   end
 
   def validate_bet(amount)
     if amount < @ante
-      [{message: 'Bet was invalid, folding'}, 'fold',0]
+      [{message: 'Bet was invalid, folding'}, 'fold', 0]
     elsif amount >= @stacks[@turn]
       [{message: "Going all in! Betting #{amount}"}, 'bet', @stacks[@turn]]
 
     else
-      [{message: "Betting #{amount}"}, 'bet',amount]
+      [{message: "Betting #{amount}"}, 'bet', amount]
     end
   end
 
   def validate_call
     diff = @current_high_bet - @current_bets[@turn]
     if @stacks[@turn] - diff < 0
-      [{message: 'Call was invalid, folding'}, 'fold',0]
+      [{message: 'Call was invalid, folding'}, 'fold', 0]
     elsif  @stacks[@turn] - diff == 0
-      [{message: "Going all in! Calling #{diff}"}, 'call',0]
+      [{message: "Going all in! Calling #{diff}"}, 'call', 0]
     else
-      [{message: "Calling #{diff}"}, 'call',0]
+      [{message: "Calling #{diff}"}, 'call', 0]
     end
   end
 
@@ -369,8 +393,6 @@ class Game
     for player in @players
       if @stacks[player] <= 0
         @players.delete(player)
-        puts 'im nuts'.red
-        puts @stacks[player].red if @debug
       end
     end
   end
