@@ -6,12 +6,16 @@ var modal_close_handler = function(){
 
 	$('#modal_close').click(function(){
 		key = api.get_key('Anon'+Math.floor((Math.random()*1000)+1));
+		data = api.get_status(key);
+		gameloop(/*numplaters*/);
 	});
 }
 
 var modal_submit_handler = function(){
 	$('#modal_submit').click(function(){
 		key = api.get_key($('.modal-body input').val());
+		data = api.get_status(key);
+		gameloop(/*num_players*/);
 	});
 }
 
