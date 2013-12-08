@@ -66,7 +66,7 @@ class Game
 
   def started_status(player)
     {community_cards: @community_cards, your_turn: player == @turn, hand: @hands[player], big_blind: @big_blind.name, small_blind: @small_blind.name,
-     dealer: @dealer.name, money: @stacks[player], ante: @ante, active: true}
+     dealer: @dealer.name, money: @stacks[player], ante: @ante, active: true, pot: @pot}
   end
 
   def closed_status(player)
