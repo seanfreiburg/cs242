@@ -1,0 +1,375 @@
+body{
+	background-color: #0D98BA;
+}
+
+#player1{
+	top: 5px;
+	left: 280px;
+	-webkit-transform:rotate(180deg);
+}
+
+#player2{
+	top: 5px;
+	left: 406px;
+	-webkit-transform:rotate(180deg);
+}
+
+#player3{
+	top:55px;
+	left:510px;
+	-webkit-transform:rotate(225deg);
+}
+
+#player4{
+	top: 225px;
+	left: 418px;
+	-webkit-transform:rotate(315deg);
+}
+
+#player5{
+	top: 255px;
+	left: 163px;
+}
+
+#player6{
+	top: 255px;
+	left: -105px;
+}
+
+#player7{
+	top: 204px;
+	left: -350px;
+	-webkit-transform:rotate(45deg);
+}
+
+#player8{
+	top: 34px;
+	left: -400px;
+	-webkit-transform:rotate(135deg);
+}
+
+#pot{
+	margin-top: 10px;
+	text-align: center;
+	font-size: 36px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+#pot div{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#amount{
+	text-align: center;
+	font-size: 36px;
+}
+
+#bet_slider{
+	width: 300px;
+	margin-top:8px;
+}
+
+.controls button{
+	width: 70px;
+	float: right;
+	margin-right: 5px;
+}
+
+.controls{
+	width: 529px;
+	height: 115px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 15px;
+
+}
+
+#table{
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+	height: 400px;
+	background:url(PokerFelt.png) 0px 0px;
+	-moz-border-radius:200px;
+	-webkit-border-radius: 200px;
+	border-radius: 200px;
+}
+
+#table_edge{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	padding: 25px;
+	width: 800px;
+	height: 400px;
+	background:url(wood-texture.jpg) -200px -100px;
+	-moz-border-radius:217px;
+	-webkit-border-radius: 217px;
+	border-radius: 217px;
+}
+
+.fullcenter{
+	margin: 0 auto 0 auto;
+	padding-top: 152px;
+	padding-left: 218.5px;
+}
+
+.center{
+	margin-left: 2px;
+	float: left;
+}
+
+.hand{
+	position: relative;
+	float: left;
+}
+
+.deal_static{
+	margin-left:146px;
+}
+
+.money_flipped{
+	text-align: center;
+	padding: 0 0 0 0;
+	margin: 0 -18px 3px 10px;
+	-webkit-transform:rotate(180deg);
+}
+
+.money{
+	text-align: center;
+	padding: 0 0 0 0;
+	margin: 0 -18px 3px 10px;
+}
+
+#name{
+	width: 300px;
+	left: 60%;
+}
+
+#name button{
+	margin-right: 5px;
+}
+
+.modal-body p{
+	text-align: center;
+	font-size: 18px;
+}
+
+.modal-body input{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.deal_player1_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation: deal_player1_card2 1s; /* Safari and Chrome */	
+}
+
+@-webkit-keyframes deal_player1_card2 /* Safari and Chrome */{
+	100% {left:-114px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player1_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player1_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player1_card1 /* Safari and Chrome */{
+	100% {left:-84px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player2_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player2_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player2_card2 /* Safari and Chrome */{
+	100% {right:-83px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player2_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player2_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player2_card1 /* Safari and Chrome */{
+	100% {right:-113px;top:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player3_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player3_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player3_card2 /* Safari and Chrome */{
+	100% {right:-283px;top:-112px;-webkit-transform:rotate(405deg);}
+}
+
+.deal_player3_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player3_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player3_card1 /* Safari and Chrome */{
+	100% {right:-303px;top:-90px;-webkit-transform:rotate(405deg);}
+}
+
+.deal_player4_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player4_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player4_card2 /* Safari and Chrome */{
+	100% {right:-303px;bottom:-90px;-webkit-transform:rotate(315deg);}
+}
+
+.deal_player4_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player4_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player4_card1 /* Safari and Chrome */{
+	100% {right:-283px;bottom:-112px;-webkit-transform:rotate(315deg);}
+}
+
+.deal_player5_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player5_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player5_card2 /* Safari and Chrome */{
+	100% {right:-113px;bottom:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player5_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player5_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player5_card1 /* Safari and Chrome */{
+	100% {right:-83px;bottom:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player6_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player6_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player6_card2 /* Safari and Chrome */{
+	100% {left:-84px;bottom:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player6_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player6_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player6_card1 /* Safari and Chrome */{
+	100% {left:-114px;bottom:-147px;-webkit-transform:rotate(360deg);}
+}
+
+.deal_player7_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player7_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player7_card2 /* Safari and Chrome */{
+	100% {left:-283px;bottom:-112px;-webkit-transform:rotate(405deg);}
+}
+
+.deal_player7_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player7_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player7_card1 /* Safari and Chrome */{
+	100% {left:-303px;bottom:-90px;-webkit-transform:rotate(405deg);}
+}
+
+.deal_player8_card2{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player8_card2 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player8_card2 /* Safari and Chrome */{
+	100% {left:-303px;top:-90px;-webkit-transform:rotate(315deg);}
+}
+
+.deal_player8_card1{
+	width:71px;
+	height:96px;
+	background:url(cardback.png) 0px 0px;
+	position:relative;
+	animation:deal 1s;
+	-webkit-animation:deal_player8_card1 1s; /* Safari and Chrome */		
+}
+
+@-webkit-keyframes deal_player8_card1 /* Safari and Chrome */{
+	100% {left:-283px;top:-112px;-webkit-transform:rotate(315deg);}
+}
