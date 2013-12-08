@@ -4,18 +4,15 @@ function PokerApi(url) {
 }
 
 
-PokerApi.prototype.send_move = function (key, move, amount) {
-    var result = null;
+PokerApi.prototype.send_move = function (key, move, amount, callback) {
     $.ajax({
-            async: false,
+            async: true,
             url: this.url + "/send_move?key=" + key + "&move=" + move + "&amount=" + amount,
-            datatype: "json",
-            crossDomain: true
+            datatype: "json"
         }
     ).done(function (data) {
-            result = data;
+            callback(data);
         });
-    return result;
 };
 
 PokerApi.prototype.get_key = function (name) {
@@ -35,18 +32,15 @@ PokerApi.prototype.get_key = function (name) {
 };
 
 
-PokerApi.prototype.get_status = function (key) {
-    var result = null;
+PokerApi.prototype.get_status = function (key,callback) {
     $.ajax({
-            async: false,
+            async: true,
             url: this.url + "/get_status?key=" + key,
-            datatype: "json",
-            crossDomain: true
+            datatype: "json"
         }
     ).done(function (data) {
-            result = data;
+            callback(data);
         });
-    return result;
 };
 
 

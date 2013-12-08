@@ -18,7 +18,7 @@ function TableView(num_players){
 		$('#bet_slider').hide();
 		$('#amount').hide();
 	 	for(i=1; i<9; i++){
-
+	 		$('#player'+i+' .well').css('opacity','0.0');
 	 		$('#player'+i+'card1').css('opacity','0.0');
 	 		$('#player'+i+'card2').css('opacity','0.0');
 	 		if(i < 6)
@@ -41,9 +41,6 @@ function TableView(num_players){
 	var deal_recursive = function(sequence,i,j){
 		if(i == sequence.length && j == 2){
 			$('.deal_static').hide(dealCommunity());
-			sequence.forEach(function(id){
-				$('#player'+id+' .well').animate({'opacity':'1.0'},1000);
-			});
 			return;
 		}
 		if(i == sequence.length){
@@ -63,11 +60,22 @@ function TableView(num_players){
 		var deal_orders = {2:[1,5],3:[1,2,5],4:[1,2,5,6],
 							5:[1,3,5,7,8],6:[1,2,3,5,6,7],7:[1,2,3,4,5,6,7],8:[1,2,3,4,5,6,7,8]};
 		deal_sequence = deal_orders[this.num_players];
+		i = 1
+		deal_sequence.forEach(function(id){
+				$('#player'+id+' .well').animate({'opacity':'1.0'},1000);
+				if(id != 5){
+					$('#player'+id+' .well').html('Bot_'+i+'<br/>$1000');
+					i++;
+				}
+			});
 		deal_recursive(deal_sequence,0,1);
 		
 	}
 
 	this.showHand = function(hand_array){
+		for(i = 0; i<2; i++){
+			hand_array[i] = '_'+hand_array[i];
+		}
 		$('#player5card1').fadeOut(500,
 		function(){
 			$('#player5card1').removeClass('card_back');

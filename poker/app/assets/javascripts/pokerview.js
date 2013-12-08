@@ -8,9 +8,11 @@ var modal_close_handler = function(){
         var name = 'Anon'+Math.floor((Math.random()*1000)+1);
 		api_key = api.get_key(name);
         key = api_key.key;
-		data = api.get_status(key);
-        $('#player5 .well').html(name+'<br/>$1000');
-		gameloop(data.players.length);
+		api.get_status(key,function(data){
+			$('#player5 .well').html(name+'<br/>$1000');
+			gameloop(data);
+		});
+
 	});
 }
 
@@ -19,10 +21,12 @@ var modal_submit_handler = function(){
         var name =  $('.modal-body input').val();
 		api_key = api.get_key(name);
         key = api_key.key;
-		data = api.get_status(key);
-        $('#player5 .well').html(name+'<br/>$1000');
-        console.log(data);
-		gameloop(data.players.length);
+		api.get_status(key,function(data){
+			$('#player5 .well').html(name+'<br/>$1000');
+        	console.log(data);
+			gameloop(data);
+		});
+
 	});
 }
 
@@ -54,9 +58,22 @@ var bet_slider_handler = function(){
 	});
 }
 
-var gameloop = function(num_players){
-	var table = new TableView(num_players);
+var handwait = function(return_data){
+			console.log(return_data);
+			if(return_data.hand != undefined){
+				var table = new TableView(2);
+				table.showHand(return_data.hand);
+			}
+			else
+				api.get_status(key,handwait);
+		}
+
+var gameloop = function(data){
+	var table = new TableView(data.players.length);
 	table.deal_players();
+	api.get_status(key,handwait);
+	
+	
 }
 
 $(document).ready(function(){
