@@ -71,5 +71,6 @@ Poker::Application.routes.draw do
   get '/start_tournament' => 'games#start_tournament'
 
   get '/documentation' => 'pages#documentation'
+  get '/table' => 'tables#index'
   root 'pages#index'
 end
