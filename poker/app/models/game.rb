@@ -66,7 +66,7 @@ class Game
 
   def started_status(player)
     stacks_hash = {}
-    @stacks_hash.each do  |k,v|
+    stacks_hash.each do  |k,v|
       stacks_hash[k.name] = v
     end
     {community_cards: @community_cards, your_turn: player == @turn, hand: @hands[player], big_blind: @big_blind.name, small_blind: @small_blind.name,
