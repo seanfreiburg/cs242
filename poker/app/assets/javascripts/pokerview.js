@@ -9,7 +9,7 @@ var modal_close_handler = function(){
 		api_key = api.get_key(name);
         key = api_key.key;
 		api.get_status(key,function(data){
-			$('#player5 .well').html(name+'<br/>$1000');
+			$('#player5 .well div:nth-child(1)').html(name);
 			gameloop(data);
 		});
 
@@ -22,7 +22,7 @@ var modal_submit_handler = function(){
 		api_key = api.get_key(name);
         key = api_key.key;
 		api.get_status(key,function(data){
-			$('#player5 .well').html(name+'<br/>$1000');
+			$('#player5 .well div:nth-child(1)').html(name);
         	console.log(data);
 			gameloop(data);
 		});
@@ -63,6 +63,9 @@ var handwait = function(return_data){
 			if(return_data.hand != undefined){
 				var table = new TableView(2);
 				table.showHand(return_data.hand);
+				$('#pot div:nth-child(2)').html('$'+return_data.pot);
+				$('#player5 .well div:nth-child(2)').html('$'+return_data.money);
+				$('#bet_slider').attr('max',return_data.money);
 			}
 			else
 				api.get_status(key,handwait);

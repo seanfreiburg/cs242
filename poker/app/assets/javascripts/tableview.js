@@ -64,7 +64,8 @@ function TableView(num_players){
 		deal_sequence.forEach(function(id){
 				$('#player'+id+' .well').animate({'opacity':'1.0'},1000);
 				if(id != 5){
-					$('#player'+id+' .well').html('Bot_'+i+'<br/>$1000');
+					$('#player'+id+' .well div:nth-child(1)').html('Bot_'+i);
+					$('#player'+id+' .well div:nth-child(2)').html('$1000');
 					i++;
 				}
 			});
@@ -76,21 +77,16 @@ function TableView(num_players){
 		for(i = 0; i<2; i++){
 			hand_array[i] = '_'+hand_array[i];
 		}
-		$('#player5card1').fadeOut(500,
+		$('#player5card1').fadeOut(1000,
 		function(){
 			$('#player5card1').removeClass('card_back');
 			$('#player5card1').addClass(hand_array[1]);
 			$('#player5card2').css('opacity','0.0');
-			$('#player5card1').fadeIn(500,
-				function(){
-					$('#player5card2').fadeOut(500,
-						function(){
-							$('#player5card2').removeClass('card_back');
-							$('#player5card2').addClass(hand_array[0]);
-							$('#player5card2').css('opacity','1.0');
-							$('#player5card2').fadeIn(500);
+			$('#player5card1').fadeIn(2000,function(){
+						$('#player5card2').removeClass('card_back');
+						$('#player5card2').addClass(hand_array[0]);
+						$('#player5card2').animate({'opacity':'1.0'},1000);
 						});
-				});
 
 		});
 	}
